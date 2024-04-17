@@ -1,0 +1,141 @@
+$width : 550px;
+$border: 1px solid #ccc;
+$imageWidth: 200px;
+$imgHeight:100%;
+$floatImg:right;
+$titleTop:5px;
+
+.item-center-columns {
+    display: contents;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.main {
+    // display: inline-flexbox;
+    flex-direction: row;
+
+    .wrapper {
+        margin-bottom: 10px;
+        margin-left: 30%;
+
+        .sidebarHome {
+            float: left;
+            width: 150px;
+            height: 600px;
+            flex-direction: column;
+            display: flex;
+            // margin: 100px;
+            margin-right: 10%;
+            padding-top: 20px;
+
+            .item {
+                img {
+                    width: 25%;
+                    height: 100%;
+                    padding-left: 5px;
+                }
+
+                p {
+                    width: 100px;
+                    padding-right: 10px;
+                    float: left;
+                }
+
+                width: 250px;
+                height: 60px;
+                display: flex;
+                flex-direction: row;
+                float: left;
+                margin-right: auto;
+                padding-bottom: 10px;
+            }
+
+        }
+
+
+
+        .middle-items {
+            width: 550px;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            display: flex;
+            flex-direction: column;
+
+            .football {
+                background-color: lightblue;
+            }
+
+            .lessons {
+                background-color: lightgreen;
+            }
+
+            .title-type {
+                height: 30px;
+                width: $width;
+
+
+
+                span {
+                    float: right;
+                    padding-right: 10px;
+                    padding-top: $titleTop;
+                }
+
+                p {
+                    margin-bottom: 3px;
+                    padding-left: $titleTop;
+                    margin-top: $titleTop;
+                    border: $border;
+                    float: left;
+                }
+            }
+        }
+
+        .football-container {
+            display: flex;
+            width: $width;
+            height: 150px;
+            border: $border;
+
+            .football-info {
+                width: $width;
+                height: $imgHeight;
+                margin: 5px;
+
+                .abstract {
+                    margin: 0px;
+
+                    h2 {
+                        padding-bottom: 8px;
+                        padding-top: 5px;
+                        margin: 0px;
+                    }
+
+                    p {
+                        padding-top: 5px;
+                        margin: 0px;
+                    }
+                }
+            }
+
+            .football-image {
+                height: $imgHeight;
+                width: $imageWidth;
+                float: $floatImg;
+
+                img {
+                    height: $imgHeight;
+                    width: $imageWidth;
+                    float: $floatImg;
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,107 @@
+.item-center-columns {
+  display: contents;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.main {
+  flex-direction: row;
+}
+.main .wrapper {
+  margin-bottom: 10px;
+  margin-left: 30%;
+}
+.main .wrapper .sidebarHome {
+  float: left;
+  width: 150px;
+  height: 600px;
+  flex-direction: column;
+  display: flex;
+  margin-right: 10%;
+  padding-top: 20px;
+}
+.main .wrapper .sidebarHome .item {
+  width: 250px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  float: left;
+  margin-right: auto;
+  padding-bottom: 10px;
+}
+.main .wrapper .sidebarHome .item img {
+  width: 25%;
+  height: 100%;
+  padding-left: 5px;
+}
+.main .wrapper .sidebarHome .item p {
+  width: 100px;
+  padding-right: 10px;
+  float: left;
+}
+.main .wrapper .middle-items {
+  width: 550px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.main .wrapper .middle-items .football {
+  background-color: lightblue;
+}
+.main .wrapper .middle-items .lessons {
+  background-color: lightgreen;
+}
+.main .wrapper .middle-items .title-type {
+  height: 30px;
+  width: 550px;
+}
+.main .wrapper .middle-items .title-type span {
+  float: right;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.main .wrapper .middle-items .title-type p {
+  margin-bottom: 3px;
+  padding-left: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  float: left;
+}
+.main .wrapper .football-container {
+  display: flex;
+  width: 550px;
+  height: 150px;
+  border: 1px solid #ccc;
+}
+.main .wrapper .football-container .football-info {
+  width: 550px;
+  height: 100%;
+  margin: 5px;
+}
+.main .wrapper .football-container .football-info .abstract {
+  margin: 0px;
+}
+.main .wrapper .football-container .football-info .abstract h2 {
+  padding-bottom: 8px;
+  padding-top: 5px;
+  margin: 0px;
+}
+.main .wrapper .football-container .football-info .abstract p {
+  padding-top: 5px;
+  margin: 0px;
+}
+.main .wrapper .football-container .football-image {
+  height: 100%;
+  width: 200px;
+  float: right;
+}
+.main .wrapper .football-container .football-image img {
+  height: 100%;
+  width: 200px;
+  float: right;
+}
