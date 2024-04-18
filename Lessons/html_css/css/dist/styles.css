@@ -1,10 +1,82 @@
+.red {
+  background-color: red;
+}
+
+.light-green {
+  background-color: lightgreen;
+}
+
+.light-blue {
+  background-color: lightblue;
+}
+
+.light-coral {
+  background-color: lightcoral;
+}
+
+.light-grey {
+  background-color: lightgrey;
+}
+
+.light-sea-grean {
+  background-color: lightseagreen;
+}
+
+.light-sky-blue {
+  background-color: lightskyblue;
+}
+
+.light-cyan {
+  background-color: lightcyan;
+}
+
+.light-pink {
+  background-color: lightpink;
+}
+
+.light-salmon {
+  background-color: lightsalmon;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 0;
+  font-size: 2em;
+}
+ul li {
+  border: 1px solid #ccc;
+  width: 5em;
+  height: 40px;
+  display: inline-block;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+ul li.grow {
+  transition: all 0.2s ease-in-out;
+}
+ul li.grow:hover {
+  transform: scale(1.2);
+}
+
 .item-center-columns {
   display: contents;
   justify-content: center;
   justify-items: center;
   align-items: center;
-  text-align: center;
   flex-direction: column;
+}
+.item-center-columns img:hover {
+  cursor: pointer;
+  background-color: black;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.2);
 }
 
 .main {
@@ -29,7 +101,6 @@
   display: flex;
   flex-direction: row;
   float: left;
-  margin-right: auto;
   padding-bottom: 10px;
 }
 .main .wrapper .sidebarHome .item img {
@@ -104,4 +175,24 @@
   height: 100%;
   width: 200px;
   float: right;
+}
+
+footer {
+  padding-top: 50px;
+}
+footer ul {
+  display: contents;
+  justify-content: space-between;
+  justify-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+footer li {
+  height: fit-content;
+  background-color: #6699FF;
+  color: #FFFFFF;
+  font-family: "Droid Sans", sans-serif;
+  text-align: center;
+  transform: scale(1.1);
+  margin-right: 15px;
 }
