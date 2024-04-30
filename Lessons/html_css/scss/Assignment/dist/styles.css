@@ -1,0 +1,30 @@
+.main {
+  width: 350px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin-left: 40%;
+  margin-right: 50%;
+  margin-top: 200px;
+}
+.main .blog .image img {
+  width: 300px;
+  height: 300px;
+}
+.main .blog h1 {
+  font-style: normal;
+  font-weight: lighter;
+}
+.main .blog span {
+  font-style: italic;
+  font-weight: bold;
+}
+.main .blog p {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+}

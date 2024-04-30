@@ -1,0 +1,42 @@
+.main {
+    width: 350px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    // text-align: center;
+    justify-items: center;
+    margin-left: 40%;
+    margin-right: 50%;
+    margin-top: 200px;
+
+
+    .blog {
+        .image {
+            img {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        // display: left;
+
+        h1 {
+            font-style: normal;
+            font-weight: lighter;
+        }
+
+        span {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        p {
+            font-family: "Rubik", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 32px;
+        }
+    }
+}

@@ -1,0 +1,198 @@
+.red {
+  background-color: red;
+}
+
+.light-green {
+  background-color: lightgreen;
+}
+
+.light-blue {
+  background-color: lightblue;
+}
+
+.light-coral {
+  background-color: lightcoral;
+}
+
+.light-grey {
+  background-color: lightgrey;
+}
+
+.light-sea-grean {
+  background-color: lightseagreen;
+}
+
+.light-sky-blue {
+  background-color: lightskyblue;
+}
+
+.light-cyan {
+  background-color: lightcyan;
+}
+
+.light-pink {
+  background-color: lightpink;
+}
+
+.light-salmon {
+  background-color: lightsalmon;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 0;
+  font-size: 2em;
+}
+ul li {
+  border: 1px solid #ccc;
+  width: 5em;
+  height: 40px;
+  display: inline-block;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+ul li.grow {
+  transition: all 0.2s ease-in-out;
+}
+ul li.grow:hover {
+  transform: scale(1.2);
+}
+
+.item-center-columns {
+  display: contents;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+.item-center-columns img:hover {
+  cursor: pointer;
+  background-color: black;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.2);
+}
+
+.main {
+  flex-direction: row;
+}
+.main .wrapper {
+  margin-bottom: 10px;
+  margin-left: 30%;
+}
+.main .wrapper .sidebarHome {
+  float: left;
+  width: 150px;
+  height: 600px;
+  flex-direction: column;
+  display: flex;
+  margin-right: 10%;
+  padding-top: 20px;
+}
+.main .wrapper .sidebarHome .item {
+  width: 250px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  float: left;
+  padding-bottom: 10px;
+}
+.main .wrapper .sidebarHome .item img {
+  width: 25%;
+  height: 100%;
+  padding-left: 5px;
+}
+.main .wrapper .sidebarHome .item p {
+  width: 100px;
+  padding-right: 10px;
+  float: left;
+}
+.main .wrapper .middle-items {
+  width: 550px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.main .wrapper .middle-items .football {
+  background-color: lightblue;
+}
+.main .wrapper .middle-items .lessons {
+  background-color: lightgreen;
+}
+.main .wrapper .middle-items .title-type {
+  height: 30px;
+  width: 550px;
+}
+.main .wrapper .middle-items .title-type span {
+  float: right;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.main .wrapper .middle-items .title-type p {
+  margin-bottom: 3px;
+  padding-left: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  float: left;
+}
+.main .wrapper .football-container {
+  display: flex;
+  width: 550px;
+  height: 150px;
+  border: 1px solid #ccc;
+}
+.main .wrapper .football-container .football-info {
+  width: 550px;
+  height: 100%;
+  margin: 5px;
+}
+.main .wrapper .football-container .football-info .abstract {
+  margin: 0px;
+}
+.main .wrapper .football-container .football-info .abstract h2 {
+  padding-bottom: 8px;
+  padding-top: 5px;
+  margin: 0px;
+}
+.main .wrapper .football-container .football-info .abstract p {
+  padding-top: 5px;
+  margin: 0px;
+}
+.main .wrapper .football-container .football-image {
+  height: 100%;
+  width: 200px;
+  float: right;
+}
+.main .wrapper .football-container .football-image img {
+  height: 100%;
+  width: 200px;
+  float: right;
+}
+
+footer {
+  padding-top: 50px;
+}
+footer ul {
+  display: contents;
+  justify-content: space-between;
+  justify-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+footer li {
+  height: fit-content;
+  background-color: #6699FF;
+  color: #FFFFFF;
+  font-family: "Droid Sans", sans-serif;
+  text-align: center;
+  transform: scale(1.1);
+  margin-right: 15px;
+}
