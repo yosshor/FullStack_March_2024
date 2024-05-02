@@ -1,12 +1,80 @@
 .main {
-  width: 350px;
+  width: 370px;
   height: 600px;
-  display: flex;
-  justify-content: center;
   justify-items: center;
   margin-left: 40%;
   margin-right: 50%;
   margin-top: 200px;
+}
+.main .back-button {
+  width: 120px;
+  height: 50px;
+}
+.main .back-button input, .main .back-button button {
+  color: blue;
+  background-color: white;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  font-size: larger;
+  padding-bottom: 5px;
+  padding-left: 0px;
+}
+.main .back-button i {
+  padding-left: 0px;
+  float: left;
+}
+.main .back-button a :hover {
+  cursor: pointer;
+}
+.main .blog-info .blog-font-title {
+  padding-top: 0;
+  padding-left: 5px;
+  font-weight: bolder;
+  font-size: x-large;
+  font-family: "Rubik", sans-serif;
+}
+.main .blog-info .by-user {
+  display: flex;
+  flex-direction: row;
+}
+.main .blog-info .by-user img {
+  width: 30px;
+  height: 30px;
+  padding-right: 15px;
+}
+.main .blog-info .by-user p {
+  font-family: "Rubik", sans-serif;
+}
+.main .blog-info .all-comments {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 16px;
+  line-height: 23px;
+}
+.main .blog-info .all-comments .user-comment {
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  height: 200px;
+}
+.main .blog-info .all-comments .user-comment .comment-user-title p {
+  margin: 0px;
+}
+.main .blog-info .all-comments .user-comment .comment {
+  float: right;
+}
+.main .blog-info .all-comments .user-comment .user-img {
+  float: left;
+  width: 40px;
+  height: 100%;
+}
+.main .blog-info .all-comments .user-comment .user-img img {
+  width: 30px;
+  height: 30px;
+  padding-right: 15px;
 }
 .main .blog .image img {
   width: 300px;
@@ -20,15 +88,7 @@
   font-style: italic;
   font-weight: bold;
 }
-.main .blog p {
-  font-family: "Rubik", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 32px;
-}
-.main .blog button {
+.main .blog .button input {
   margin-top: 20px;
   width: 250px;
   height: 70px;
@@ -41,4 +101,13 @@
   cursor: pointer;
   outline: none;
   transition: all 0.3s ease;
+}
+
+.blog-font {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
 }
