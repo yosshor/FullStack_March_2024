@@ -1,0 +1,69 @@
+.home {
+  height: 100px;
+  background-color: #d5e0bd;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin-bottom: 20px;
+  font-size: large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.center .builder {
+  width: 1000px;
+  height: 300px;
+  align-items: center;
+  border: 2px solid black;
+  padding: 30px;
+}
+.center .builder .story {
+  width: 900px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+}
+.center .builder .story .info {
+  width: 100%;
+  height: 100%;
+}
+.center .builder .story .info h3 {
+  font-size: x-large;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.center .builder .story .info p {
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline;
+}
+.center .builder .story .images img {
+  width: 300px;
+  height: 300px;
+  float: left;
+  padding-right: 20px;
+}
+.center .builder .story .social-network {
+  width: 100px;
+  float: right;
+}
+.center .builder .story .social-network ul {
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.center .builder .story .social-network li {
+  padding-bottom: 20px;
+  font-size: xx-large;
+  border: 2px solid black;
+  width: 100px;
+  height: 15px;
+  padding-top: 20%;
+  margin-bottom: 10px;
+  background-color: #98dbe7;
+  color: black;
+}

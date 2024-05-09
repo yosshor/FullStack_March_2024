@@ -1,0 +1,134 @@
+$redColor:red;
+$header-color: rgb(118, 116, 235);
+$font-family:Arial,
+Helvetica,
+sans-serif;
+$align-center:center;
+
+
+
+body {
+    align-items: $align-center;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    align-items: $align-center;
+    text-align: $align-center;
+
+    background-color: $header-color;
+    width: 100%;
+    height: 500px;
+    display: inline-block;
+
+
+    .navbar {
+        float: left;
+        padding-left: 10%;
+        padding-bottom: 20px;
+
+        ul {
+            text-align: $align-center;
+        }
+
+        li {
+            width: 100px;
+            display: inline;
+            padding-left: 40px;
+            border: 3px black solid;
+            color: white;
+        }
+    }
+
+    .header-center {
+        align-items: $align-center;
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+
+        .info {
+            display: flex;
+            width: 1200px;
+            height: 500px;
+            align-items: $align-center;
+            flex-direction: column;
+        }
+
+
+
+        h1,
+        p {
+            color: white;
+            font-family: $font-family;
+            text-align: $align-center;
+
+        }
+    }
+
+    .blog {
+        align-items: $align-center;
+        justify-content: $align-center;
+        text-align: $align-center;
+        display: flex;
+        padding-bottom: 20px;
+
+        .sub-blog {
+            width: 800px;
+            height: 200px;
+            align-items: $align-center;
+            display: flex;
+            background-color: white;
+
+            p,
+            h1 {
+                color: black;
+            }
+
+            .img {
+                img {
+                    width: 200px;
+                    height: 150px;
+                    padding-right: 10px;
+                }
+
+                float: left;
+
+            }
+
+            .blog-info {
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 500px;
+
+                p,
+                h1 {
+                    text-align: left;
+                    font-family: $font-family;
+                    font-size: 1.2rem;
+                }
+            }
+
+            .rank {
+                width: 100px;
+                font-size: small;
+
+                p {
+                    text-align: center;
+                    font-family: $font-family;
+                    color: gray;
+
+                }
+
+                .num {
+                    color: $header-color;
+                    font-size: 1.3rem;
+                    font-weight: bolder;
+                }
+            }
+
+        }
+    }
+}
