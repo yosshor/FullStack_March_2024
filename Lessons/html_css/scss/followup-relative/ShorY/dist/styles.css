@@ -1,0 +1,38 @@
+.wrapper {
+  width: 400px;
+  height: 100px;
+  position: relative;
+  transform: rotate(45deg);
+  margin-top: 200px;
+}
+.wrapper .one {
+  background-color: lightblue;
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  left: 0px;
+}
+.wrapper .two {
+  background-color: lightcyan;
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  right: 50%;
+}
+.wrapper .three {
+  background-color: lightcoral;
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  top: 50px;
+  bottom: 0px;
+}
+.wrapper .four {
+  background-color: lightgreen;
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  top: 50px;
+  bottom: 0px;
+  right: 50%;
+}
