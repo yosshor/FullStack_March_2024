@@ -29,6 +29,20 @@
     z-index: 7;
     padding-bottom: 20px;
 
+    .logo {
+        font-weight: bolder;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        border: 2px solid black;
+        width: 27px;
+        height: 28px;
+        background-color: white;
+        color: red;
+        border-radius: 80%;
+        position: absolute;
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
     ul {
         display: flex;
         flex-direction: row;
@@ -41,7 +55,7 @@
             align-items: center;
             justify-content: center;
             width: 100px;
-            height: 30px;
+            height: 40px;
             background-color: red;
             color: white;
         }
@@ -76,6 +90,13 @@
     right: 0px;
 }
 
+.colorblue {
+    color: blue;
+}
+
+.colorred {
+    color: red;
+}
 
 .main {
     display: flex;
@@ -105,7 +126,7 @@
 
                 img {
 
-                    width:70%;
+                    width: 70%;
                     height: 45%;
                 }
 
@@ -189,10 +210,10 @@
     height: 150px;
     position: relative;
     padding-left: 20px;
-    
+
 }
 
-.center{
+.center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,6 +251,7 @@
         height: 200px;
         position: relative;
         top: 40px;
+
         .items {
             position: absolute;
             display: flex;
@@ -262,11 +284,26 @@
                     width: 150px;
                     height: 100px;
                     padding-right: 10px;
+                    position: relative;
 
                     img {
                         width: 170px;
                         height: 100%;
                         padding-right: 20px;
+                    }
+
+                    h3 {
+                        padding: 0px;
+                        margin: 0px;
+                        width: 100px;
+                        position: absolute;
+                        top: 70px;
+                        left: 5px;
+                        background-color: red;
+                        border: 2 solid black;
+                        border-radius: 25px;
+                        color: white;
+                        text-align: center;
                     }
 
                 }
@@ -276,7 +313,7 @@
 }
 
 
-.combine-wrappers{
+.combine-wrappers {
     width: 1200px;
     position: relative;
     height: 200px;
@@ -284,8 +321,76 @@
     flex-direction: row;
     justify-content: center;
 
-    
-    // left: 45%;
+}
 
-    
+
+.footer {
+    justify-content: center;
+    display: flex;
+
+    footer {
+        width: 1100px;
+        height: 150px;
+        background-color: rgb(70, 69, 69);
+        color: white;
+        justify-content: center;
+
+        .social-network {
+            width: 100px;
+            justify-content: center;
+            left: 270px;
+            position: relative;
+
+            ul {
+                text-align: center;
+                // align-items: center;
+                // justify-content: space-between;
+                display: flex;
+            }
+
+            li {
+                padding-bottom: 20px;
+                font-size: xx-large;
+                // border: 2px solid black;
+                width: 90px;
+                height: 15px;
+                padding-top: 20%;
+                margin-bottom: 10px;
+                color: white;
+            }
+        }
+
+        .footer-list {
+            justify-content: center;
+            text-align: center;
+
+            ul {
+                display: flex;
+                justify-content: center;
+                padding: 0px;
+
+                li {
+                    display: flex;
+                    flex-direction: row;
+                    padding-right: 30px;
+                    font-size: larger;
+
+                }
+
+                li:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+
+        .copyright {
+            text-align: center;
+            background-color: black;
+            font-size: larger;
+            font-family: sans-serif;
+            height: 40px;
+            justify-items: center;
+        }
+    }
 }

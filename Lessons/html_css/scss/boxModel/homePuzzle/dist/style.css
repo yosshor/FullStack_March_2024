@@ -24,6 +24,19 @@
   z-index: 7;
   padding-bottom: 20px;
 }
+.header .logo {
+  font-weight: bolder;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  border: 2px solid black;
+  width: 27px;
+  height: 28px;
+  background-color: white;
+  color: red;
+  border-radius: 80%;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 5px;
+}
 .header ul {
   display: flex;
   flex-direction: row;
@@ -36,7 +49,7 @@
   align-items: center;
   justify-content: center;
   width: 100px;
-  height: 30px;
+  height: 40px;
   background-color: red;
   color: white;
 }
@@ -65,6 +78,14 @@
   position: absolute;
   top: 0px;
   right: 0px;
+}
+
+.colorblue {
+  color: blue;
+}
+
+.colorred {
+  color: red;
 }
 
 .main {
@@ -215,11 +236,25 @@
   width: 150px;
   height: 100px;
   padding-right: 10px;
+  position: relative;
 }
 .more-content .more-articles .items .images .img-info img {
   width: 170px;
   height: 100%;
   padding-right: 20px;
+}
+.more-content .more-articles .items .images .img-info h3 {
+  padding: 0px;
+  margin: 0px;
+  width: 100px;
+  position: absolute;
+  top: 70px;
+  left: 5px;
+  background-color: red;
+  border: 2 solid black;
+  border-radius: 25px;
+  color: white;
+  text-align: center;
 }
 
 .combine-wrappers {
@@ -229,4 +264,61 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.footer {
+  justify-content: center;
+  display: flex;
+}
+.footer footer {
+  width: 1100px;
+  height: 150px;
+  background-color: #464545;
+  color: white;
+  justify-content: center;
+}
+.footer footer .social-network {
+  width: 100px;
+  justify-content: center;
+  left: 270px;
+  position: relative;
+}
+.footer footer .social-network ul {
+  text-align: center;
+  display: flex;
+}
+.footer footer .social-network li {
+  padding-bottom: 20px;
+  font-size: xx-large;
+  width: 90px;
+  height: 15px;
+  padding-top: 20%;
+  margin-bottom: 10px;
+  color: white;
+}
+.footer footer .footer-list {
+  justify-content: center;
+  text-align: center;
+}
+.footer footer .footer-list ul {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+}
+.footer footer .footer-list ul li {
+  display: flex;
+  flex-direction: row;
+  padding-right: 30px;
+  font-size: larger;
+}
+.footer footer .footer-list ul li:hover {
+  cursor: pointer;
+}
+.footer footer .copyright {
+  text-align: center;
+  background-color: black;
+  font-size: larger;
+  font-family: sans-serif;
+  height: 40px;
+  justify-items: center;
 }
