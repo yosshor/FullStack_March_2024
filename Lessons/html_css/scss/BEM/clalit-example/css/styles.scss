@@ -1,0 +1,72 @@
+@import "./header.scss";
+
+
+.insert-into-my-page {
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: none;
+    position: relative;
+    margin: 20px 0;
+    
+    h2 {
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .insert-info {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: 2px;
+        right: 2px;
+        input[type=text]:focus {
+            outline: none;
+            border-color: #007BFF; 
+        }
+
+
+        input[type=text] {
+            text-decoration: none;
+            width: 200px;
+            margin: 20px;
+            text-align: right;
+            margin-left: 40px;
+            border: none;
+            border-bottom: 1px solid black;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+
+        }
+        label {
+            position: absolute;
+            top: 0px;
+            right: 60px;
+            font-size: 16px;
+            color: #999;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+// .insert-into{
+//     // justify-content: center;
+//     width: 100%;
+//     height: 100%;
+//     justify-content: center;
+
+//     input[type=text]{
+//         text-decoration: none;
+//         width: 200px;
+//         margin: 20px;
+//         text-align: right;
+
+//     }
+// }
+// }
