@@ -1,0 +1,102 @@
+body {
+    background-color: rgb(163, 228, 222);
+}
+
+.animation-example {
+    background-color: yellow;
+    // border: 1px solid black;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0;
+    animation-iteration-count: infinite;
+    animation-name: sun;
+    animation-duration: 10s;
+    // animation-timing-function: cubic-bezier(.18, .68, .08, .87);
+    // animation-timing-function: cubic-bezier(0, .84, .08, .87);
+    animation-timing-function: linear;
+
+
+
+    @keyframes sun {
+
+        0% {
+            bottom: 0px;
+            left: 0;
+
+        }
+       20% {
+            bottom: 30%;
+            left: 15%;
+        }
+
+        40% {
+            bottom: 60%;
+            left: 25%;
+
+        }
+
+        50% {
+            bottom: 90%;
+            left: 50%;
+        }
+
+        70% {
+            bottom:75%;
+            left: 65%;
+        }
+        90% {
+            bottom: 30%;
+            left: 75%;
+        }
+        100% {
+            bottom: 0%;
+            left: 95%;
+        }
+
+    }
+
+    // &--second-ball{
+    //     background-color: green;
+    //     animation-name: ball;
+    //     animation-duration:3s;
+    //     animation-iteration-count: infinite;
+    // position: absolute;
+
+
+    // }
+
+
+}
+
+@keyframes ball {
+
+    0% {
+        top: 0px;
+        left: 0;
+
+    }
+
+    25% {
+        top: 60%;
+        left: 25%;
+
+    }
+
+    50% {
+        top: 90%;
+        left: 50%;
+    }
+
+    75% {
+        top: 60%;
+        left: 75%;
+    }
+
+    100% {
+        top: 0%;
+        left: 95%;
+    }
+
+}
