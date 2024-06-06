@@ -1,6 +1,6 @@
 .wrapper-info {
-  width: 45vw;
-  height: 90vh;
+  width: 700px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -9,7 +9,7 @@
 }
 .wrapper-info .element-info {
   width: 100%;
-  height: 45%;
+  height: 50%;
   display: block;
   position: absolute;
   top: 10px;
@@ -29,7 +29,7 @@
   flex-direction: column;
   text-align: center;
   position: absolute;
-  top: 44%;
+  top: 50%;
 }
 .wrapper-info .title-info .text-info p {
   font-size: 12px;
@@ -78,4 +78,70 @@
   color: red;
   list-style-type: square;
   font-size: 1.5em;
+}
+
+.container-left {
+  width: 700px;
+  height: 1350px;
+  display: inline;
+}
+.container-left .articles {
+  width: 700px;
+  height: 110px;
+  position: relative;
+  bottom: 10px;
+  font-size: 13px;
+}
+.container-left .articles__large {
+  width: 700px;
+  height: 240px;
+  position: relative;
+  bottom: 10px;
+  padding-top: 20px;
+}
+.container-left .articles__large .article {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+}
+.container-left .articles__large .article p,
+.container-left .articles__large .article h2 {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+  padding-bottom: 10px;
+  float: left;
+  justify-content: left;
+  padding-left: 10px;
+}
+.container-left .articles__large .image {
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+}
+.container-left .articles__large .image img {
+  float: right;
+  width: 50%;
+  height: 100%;
+}
+.container-left .articles .article {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.container-left .articles .article p,
+.container-left .articles .article h2 {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+  padding-bottom: 10px;
+  float: left;
+  justify-content: left;
+  padding-left: 10px;
+}
+.container-left .articles .image img {
+  padding: 5px;
+  float: right;
+  width: 20%;
+  height: 60%;
 }
