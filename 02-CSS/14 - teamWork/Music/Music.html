@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <link rel="stylesheet" href="./dist/Music.css">
+    <link rel="stylesheet" href="../components/dist/header.css" />
+    <link rel="stylesheet" href="../styles.scss" />
+    <link rel="stylesheet" href="../components/dist/footer.css" />
+    <link rel="stylesheet" href="../components/dist/cards.css" />
+    <link rel="stylesheet" href="../Class project- Roni/dist/lists.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+     <!-- Header -->
+<header id="header">
+    <div class="header__logo">
+        <div class="header__logo__left">
+            <button id="menuButton"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div class="header__logo__middle">
+            <!-- Insert link -->
+            <a href="#"><h2>billboard</h2></a>
+        </div>
+        <div class="header__logo__right">
+            <button type="button" class="login">LOGIN</button>
+            <button type="button" class="subscribe">SUBSCRIBE</button>
+        </div>
+    </div>
+    <div class="header__nav" id="navbar">
+        <div class="header__nav__left">
+            <span class="brand1">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <span class="brand2" style="display: none;">
+                <!-- Insert index page link -->
+                <a href="#"><h2>billboard</h2></a>
+            </span>
+        </div>
+        <div class="header__nav__middle">
+            <ul>
+                <!-- insert links -->
+                <li><a href="">CHARTS</a></li>
+                <li><a href="">MUSIC</a></li>
+                <li><a href="../billboard.video/video.html">VIDEO</a></li>
+                <li><a href="">AWARDS</a></li>
+                <li><a href="">BUSINESS</a></li>
+            </ul>
+        </div>
+        <div class="header__nav__right">
+            <span class="brand1"></span>
+            <span class="brand2">
+                <button type="button" class="subscribe">SUBSCRIBE</button>
+                <button type="button" class="login2">LOGIN</button>
+            </span>
+        </div>
+    </div>
+    <div class="header__secondary">
+        <ul>
+            <!-- Insert links -->
+            <li><a href="#">Billboard Hot 100</a></li>
+            <li><a href="#">Global 200</a></li>
+            <li><a href="#">Chart Beat</a></li>
+            <li><a href="#">Get Up Anthems by Tres</a></li>
+            <li><a href="#">TikTok Billboard Top 50</a></li>
+            <li><a href="#">Global News</a></li>
+            <li><a href="#" id="spanish">Español</a></li>
+        </ul>
+    </div>
+</header>
+<!-- Header end -->
+
+<!-- Sliding Menu -->
+<div class="sliding-menu" id="slidingMenu">
+    <div class="page">
+        <div class="header">
+            <h2>billboard</h2>
+            <div class="header__search">
+                <input type="text" placeholder="Search">
+            </div>
+            <button type="button" id="closeMenuButton"><i class="fa-solid fa-x"></i></button>
+        </div>
+        <div class="charts">
+            <h3>Charts</h3>
+            <dl>
+                <dt>All Charts</dt>
+                <dt>Billboard Hot 100</dt>
+                <dt>Billboard 200</dt>
+                <dt>Global 200</dt>
+                <dt>Hits Of The World</dt>
+                <dt>Chart Beat</dt>
+                <dt>TikTok Billboard Top 50</dt>
+                <dt>Song Breaker</dt>
+                <dt>Year-End Charts</dt>
+                <dt>Decade-End Charts</dt>
+            </dl>
+        </div>
+        <div class="music">
+            <h3>Music</h3>
+            <dl>
+                <dt>Music News</dt>
+                <dt>Pop</dt>
+                <dt>R&B/Hip-Hop</dt>
+                <dt>Latin</dt>
+                <dt>Rock</dt>
+                <dt>Awards</dt>
+                <dt>Chart Beat</dt>
+                <dt>Concerts</dt>
+                <dt>Features</dt>
+                <dt>Reviews</dt>
+            </dl>
+        </div>
+        <div class="videos">
+            <h3>Videos</h3>
+        </div>
+        <div class="culture">
+            <h3>Culture</h3>
+            <dl>
+                <dt>Events</dt>
+                <dt>Lifestyle</dt>
+                <dt>Politics</dt>
+                <dt>TV/Film</dt>
+            </dl>
+        </div>
+        <div class="media">
+            <h3>Media</h3>
+            <dl>
+                <dt>Lists</dt>
+                <dt>Photos</dt>
+                <dt>Podcasts</dt>
+                <dt>Videos</dt>
+            </dl>
+        </div>
+        <div class="business">
+            <h3>Business</h3>
+            <dl>
+                <dt>Business News</dt>
+                <dt>Legal</dt>
+                <dt>Touring</dt>
+                <dt>Publishing</dt>
+                <dt>Radio</dt>
+                <dt>Record Labels</dt>
+                <dt>View All Pro</dt>
+            </dl>
+        </div>
+        <div class="tools">
+            <h3>Pro Tools</h3>
+            <dl>
+                <dt>Songwriters & Producers</dt>
+                <dt>Song Index</dt>
+                <dt>Artist Index</dt>
+                <dt>Royalty Calculator</dt>
+                <dt>Market Watch</dt>
+                <dt>Industry Events Calendar</dt>
+            </dl>
+        </div>
+        <div class="espanol">
+            <h3>Billboard Espanol</h3>
+            <dl>
+                <dt>Noticias</dt>
+                <dt>Musica</dt>
+                <dt>Negocios</dt>
+                <dt>Cultura y Entretenimiento</dt>
+            </dl>
+        </div>
+        <div class="anthems">
+            <h3>Get Up Anthems by Tres</h3>
+        </div>
+        <div class="honda">
+            <h3>Honda Music</h3>
+        </div>
+        <div class="blank"></div>
+        <!-- adjust link -->
+        <div class="subscribe"><img src="../Class project- Roni/images/subscribe.png" alt="Ad"></div>
+        <div class="newsletter">
+            <div class="newsletter__icons">
+                <!-- adjust links -->
+                <img src="../Class project- Roni/images/Facebook.png" alt="facebook">
+                <img src="../Class project- Roni/images/Instegram.png" alt="Instagram">
+                <img src="../Class project- Roni/images/X.png" alt="X">
+                <img src="../Class project- Roni/images/tiktok.png" alt="tiktok">
+                <img src="../Class project- Roni/images/youtube.png" alt="youtube">
+            </div>
+            <div class="newsletter__email">
+                <input type="text" placeholder="Enter Your Email">
+            </div>
+        </div>
+    </div>
+</div>
+<!--Body-->
+<div class="main">
+<div class="music-bar">
+    <div class="bar-header">
+        <h1>MUSIC</h1>
+    </div>
+    <div class="bar-options">
+        <ul>
+            <!-- Insert links -->
+            <li><a href="#">ALL</a></li>
+            <li><a href="#">LATIN</a></li>
+            <li><a href="#">POP</a></li>
+            <li><a href="#">R&B/HIP-HOP</a></li>
+            <li><a href="#">ROCK</a></li>
+            <li><a href="#">DANCE</a></li>
+            <li><a href="#">MORE V</a></li>
+        </ul>
+    </div>
+</div>
+<div class="left">
+    <div class="home-page-card">
+    <div>
+            <img src="https://www.billboard.com/wp-content/uploads/2023/12/do-not-reuse-nicki-minaj-tour-billboard-1548.png?w=942&h=623&crop=1" alt="">
+       </div>
+       <div><h3>r&b/hip-hop</h3></div>
+       <div><h4>Nicki Minaj Adds More U.S. Dates for Pink Friday 2 World Tour</h4></div>
+    </div>
+    <div class="home-page-card">
+        <div>
+                <img src="https://www.billboard.com/wp-content/uploads/2023/12/do-not-reuse-nicki-minaj-tour-billboard-1548.png?w=942&h=623&crop=1" alt="">
+           </div>
+           <div><h3>r&b/hip-hop</h3></div>
+           <div><h4>Nicki Minaj Adds More U.S. Dates for Pink Friday 2 World Tour</h4></div>
+        </div>
+</div>
+
+</div>
+<!--Body ends-->
+<footer>
+    <div class="footer__container">
+      <div class="footer__image">
+        <img
+          src="https://www.billboard.com/wp-content/uploads/2024/05/cover-camila-cabello-billboard-bb08-06012024-1500.jpg?w=788"
+          alt=""
+        />
+      </div>
+      <div class="footer__contact">
+        <div class="footer__contact__follow">
+          <div class="footer__contact__follow__upper">
+            <h3>Follow Us</h3>
+            <ul>
+              <li><i class="fa-brands fa-facebook-f"></i></li>
+              <li><i class="fa-brands fa-instagram"></i></li>
+              <li><i class="fa-brands fa-pinterest-p"></i></li>
+              <li><i class="fa-brands fa-x-twitter"></i></li>
+              <li><i class="fa-brands fa-youtube"></i></li>
+            </ul>
+          </div>
+          <div class="footer__contact__follow__lower">
+            <div class="footer__contact__follow__lower__1">
+              <h3>
+                The Daily &nbsp;<span>
+                  A daily briefing on what matters in the music industry</span
+                >
+              </h3>
+            </div>
+            <div class="footer__contact__follow__lower__2">
+              <form class="email-form">
+                <div class="input-group">
+                  <label for="email">Your email</label>
+                  <input type="email" id="email" name="email" required />
+                  <button type="submit" class="submit-btn">&gt;</button>
+                </div>
+              </form>
+            </div>
+            <div class="footer__contact__follow__lower__3">
+              <p>
+                By providing your information, you agree to our
+                <b>Terms of Use </b>and our <b>Privacy Policy</b>. We use
+                vendors that may also process your information to help provide
+                our services. // This site is protected by reCAPTCHA
+                Enterprise and the Google <b>Privacy Policy</b> and
+                <b>Terms of Service</b> apply.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="footer__contact__tip">
+          <h3>Have a Tip?</h3>
+          <h5>Send us a tip using our anonymous form.</h5>
+          <button type="button" class="tipBtn">SEND US A TIP ></button>
+        </div>
+      </div>
+      <div class="footer__menu">
+        <div class="footer__menu__1">
+          <a href="./index.html"><h3>Billboard</h3></a>
+          <ul>
+            <li>Subscribe</li>
+            <li>About Us</li>
+            <li>Accessibility</li>
+            <li>Advertise</li>
+            <li>Shop</li>
+            <li>Events</li>
+            <li>Careers</li>
+            <li>Contact Us</li>
+          </ul>
+        </div>
+        <div class="footer__menu__2">
+          <h3>Legal</h3>
+          <ul>
+            <li>Privacy Policy</li>
+            <li>Terms of Use</li>
+            <li>Ad Choices</li>
+            <li>Reprints & Permissions</li>
+          </ul>
+        </div>
+        <div class="footer__menu__3">
+          <h3>Sitemap</h3>
+          <ul>
+            <li>Charts</li>
+            <li>Music</li>
+            <li>Culture</li>
+            <li>Media</li>
+            <li>Pro</li>
+          </ul>
+        </div>
+        <div class="footer__menu__4">
+          <h3>Subscriptions</h3>
+          <ul>
+            <button type="button" class="subscribeFooter">Subscribe</button>
+            <button type="button" class="customerService">
+              CUSTOMER SERVICE
+            </button>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__bottom__left">
+        <img src="./components/images/PMC.png" alt="" />
+        <p>
+          Billboard is a part of Penske Media Corporation. © 2024 Billboard
+          Media, LLC. All Rights Reserved. Powered by WordPress.com VIP
+        </p>
+      </div>
+      <div class="footer__bottom__right">
+        <div class="menu-container">
+          <div class="menu-header">
+            <span>OUR SITES</span>
+            <span id="menu-icon">V</span>
+          </div>
+          <div class="menu-content">
+            <ul>
+              <li>ARTNEWS</li>
+              <li>BGR</li>
+              <li>BILLBOARD</li>
+              <li>DEADLINE</li>
+              <li>FAIRCHILD MEDIA</li>
+              <li>FOOTWEAR NEWS</li>
+              <li>GOLD DERBY</li>
+              <li>OUR SITES</li>
+              <li>ROBB REPORT</li>
+              <li>ROLLING STONE</li>
+              <li>SHEKNOWS</li>
+              <li>SHE MEDIA</li>
+              <li>SOURCING JOURNAL</li>
+              <li>SPORTICO</li>
+              <li>SPY</li>
+              <li>STYLECASTER</li>
+              <li>TVLINE</li>
+              <li>VARIETY</li>
+              <li>VIBE</li>
+              <li>WWD</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./app.js"></script>
+  <!-- end footer -->
+</body>
+</html>

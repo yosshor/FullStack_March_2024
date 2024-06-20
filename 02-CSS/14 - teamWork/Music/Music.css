@@ -1,0 +1,24 @@
+.home-page-card {
+  margin-left: 10rem;
+  margin-top: 5rem;
+  margin-bottom: -15rem;
+}
+.home-page-card img {
+  width: 10rem;
+  height: 6rem;
+}
+
+.music-bar {
+  text-align: center;
+}
+.music-bar .bar-header {
+  margin: 1rem;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border-bottom: black solid 0.1rem;
+}
+.music-bar .bar-options ul {
+  display: flex;
+  text-align: center;
+  gap: 2rem;
+}/*# sourceMappingURL=Music.css.map */

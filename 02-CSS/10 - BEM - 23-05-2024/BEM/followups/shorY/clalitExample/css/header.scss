@@ -1,0 +1,130 @@
+$blue-color-logo:#096f9f;
+$green-color-logo:#008000;
+$font-family:"Open Sans Hebrew", Arial;
+
+body,html{
+    font-size: 1rem;
+}
+
+.btn {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: gray;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+    p {
+        font-size: 1.3rem;
+        top: -10px;
+        padding: 0;
+        margin: 0;
+        font-family:$font-family;
+    }
+    
+    p:hover {
+        cursor: pointer;
+    }
+
+    // modfier
+    &--success {
+        background-color: $green-color-logo;
+    }
+
+    &--info {
+        background-color: $blue-color-logo;
+    }
+}
+
+.header {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.125rem;
+    justify-content: space-around;
+    background-color: white;
+
+    .logo {
+        display: inline;
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px;
+
+        img {
+            float: right;
+            width: 100%;
+        }
+    }
+
+    .btn-logo {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 450px;
+        align-items: center;
+
+        .search-logo {
+            width: 40px;
+            height: 40px;
+            background-color: $blue-color-logo;
+            border: 2px solid black;
+            border-radius: 30px;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+    }
+
+    .languages {
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+
+        p {
+            padding-left: 20px;
+        }
+
+        p:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+
+
+.navbar {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(162, 231, 240);
+
+    .item-list {
+        text-decoration: none;
+        justify-content:center;
+
+        ul {
+            margin: 0;
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            width: 1000px;
+            flex-wrap: wrap;
+
+            li {
+                display: flex;
+                max-width: max-content;
+                font-family: $font-family;
+                padding: 10px;
+                color: rgb(22, 22, 85);
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.wrapper {
+  background-color: teal;
+  width: 600px;
+}
+.wrapper img {
+  width: 100%;
+}
+.wrapper p {
+  color: red;
+}
+
+p {
+  color: blue;
+}/*# sourceMappingURL=index.css.map */

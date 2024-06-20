@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 25px;
+       column-gap: 25px;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.article {
+  font-family: Helvetica, sans-serif;
+}
+.article--Name {
+  font-size: 35px;
+}
+.article--Designation {
+  font-size: 20px;
+}
+.article--Company {
+  font-size: 20px;
+  box-sizing: border-box;
+  background-color: rgb(223, 223, 69);
+}
+.article--information {
+  font-size: 20px;
+}
+.article--quote {
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+}
+.article--Company2 {
+  font-size: 20px;
+  box-sizing: border-box;
+  color: black;
+  background-color: Blue;
+}
+.article--quote2 {
+  box-sizing: border-box;
+  background-color: white;
+  color: black;
+  font-size: 20px;
+}/*# sourceMappingURL=article.css.map */

@@ -1,0 +1,35 @@
+body,
+html {
+    margin: 0;
+   
+
+    //on mobile
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
+
+    font-size: 25px;
+}
+
+p {
+
+    font-size: 1rem;
+    width: 100%;
+
+
+
+    z-index: 3;
+}
+
+.box {
+    position: absolute;
+    height: 97vh;
+    background-color: pink;
+
+}
+
+.wrapper {
+    max-width: 75ch;
+
+    margin: 0 auto;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        display: grid;
+        justify-content: space-around;
+        grid-template-columns: repeat(6, 1fr);
+        gap:10px;
+
+        @media screen and (max-width: 1200px) {
+            grid-template-columns: repeat(4, 1fr);
+            
+        }
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+            
+        }
+
+        @media screen and (max-width: 576px) {
+            grid-template-columns: repeat(1, 1fr);
+            
+        }
+    }
+
+    .container__article {
+        
+      
+        border: 1px solid #000;
+        border-radius: 10px;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    h2 {
+        margin: 10px 0;
+    }
+
+    p {
+        margin: 10px 0;
+    }
+
+    @media (max-width: 768px) {
+        .container__article {
+            width: 45%;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .container__article {
+            width: 100%;
+        }
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="container__article">
+            <img src="https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg" alt="Flower">
+            <h2>A title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+    </div>
+</body>
+</html>

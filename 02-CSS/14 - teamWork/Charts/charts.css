@@ -1,0 +1,276 @@
+.billboard-charts {
+  background-image: url("https://www.billboard.com/wp-content/themes/vip/pmc-billboard-2021/assets/src/images/Charts-background-landing-artist.png");
+  width: 100vw;
+  padding-bottom: 50px;
+}
+.billboard-charts h1 {
+  font-size: 90px;
+  font-weight: 900;
+  text-align: center;
+}
+.billboard-charts .hot100 {
+  background-color: white;
+  width: 75%;
+  margin: auto;
+  position: relative;
+}
+.billboard-charts .hot100 .koteret {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.billboard-charts .hot100 .koteret h2 {
+  text-align: center;
+  font-weight: 800;
+  font-size: 36px;
+  color: #006eff;
+}
+.billboard-charts .hot100 .koteret .blue {
+  width: 25%;
+  background-color: #006eff;
+  border: none;
+  height: 15px;
+}
+.billboard-charts .hot100 .playlist3 {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+.billboard-charts .hot100 .playlist3 .playlist {
+  display: grid;
+  width: 30%;
+  border: 2px solid lightgray;
+  box-shadow: 5px 5px 5px #a3a3a3;
+}
+.billboard-charts .hot100 .playlist3 .playlist .photo-container {
+  grid-column: 1/4;
+  background-color: white;
+  padding: 15px;
+}
+.billboard-charts .hot100 .playlist3 .playlist .photo-container img {
+  float: left;
+}
+.billboard-charts .hot100 .playlist3 .playlist .photo-container .text {
+  position: relative;
+  left: 10px;
+}
+.billboard-charts .hot100 .playlist3 .playlist .photo-container .text h2 {
+  font-size: 28px;
+  font-weight: 800;
+}
+.billboard-charts .hot100 .playlist3 .playlist .photo-container .text .fa-solid {
+  display: inline;
+  color: gray;
+}
+.billboard-charts .hot100 .playlist3 .playlist .photo-container .text h3 {
+  font-size: 16px;
+}
+.billboard-charts .hot100 .playlist3 .playlist .places {
+  text-align: center;
+  padding: 1rem;
+  background-color: lightgrey;
+}
+.billboard-charts .hot100 .playlist3 .playlist .places p {
+  color: #006eff;
+  font-size: small;
+}
+.billboard-charts .hot100 .playlist3 .playlist .places h3 {
+  font-size: 24px;
+  font-weight: 800;
+}
+.billboard-charts .hot100 .mini-footer {
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: black;
+  padding: 10px;
+  margin-top: 30px;
+}
+.billboard-charts .billboards200 {
+  margin: auto;
+  margin-top: 5%;
+  width: 75%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.billboard-charts .billboards200 .local-global {
+  width: 45%;
+  height: 370px;
+  position: relative;
+}
+.billboard-charts .billboards200 .local-global .koteret {
+  background-color: #006eff;
+  padding: 5px;
+}
+.billboard-charts .billboards200 .local-global .koteret h2 {
+  text-align: center;
+  font-size: 40;
+  font-weight: 800;
+  color: white;
+}
+.billboard-charts .billboards200 .local-global .tochen {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+}
+.billboard-charts .billboards200 .local-global .tochen .list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.billboard-charts .billboards200 .local-global .tochen .list .number {
+  flex: 1;
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  border-right: 1px solid lightgray;
+}
+.billboard-charts .billboards200 .local-global .tochen .list .text {
+  flex: 2;
+  position: relative;
+  left: 10px;
+}
+.billboard-charts .billboards200 .local-global .tochen .list .image {
+  flex: 1;
+}
+.billboard-charts .billboards200 .local-global .tochen .list .image img {
+  width: 100%;
+}
+.billboard-charts .billboards200 .local-global .tochen .lowerline {
+  border-bottom: 1px solid lightgray;
+}
+.billboard-charts .billboards200 .local-global .mini-footer {
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: black;
+  padding: 10px;
+}
+.billboard-charts .artist100 {
+  background-color: white;
+  width: 75%;
+  margin: auto;
+  margin-top: 8%;
+  border-top: 15px solid #006eff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.billboard-charts .artist100 .text {
+  flex: 2;
+  text-align: center;
+  padding: 20px;
+}
+.billboard-charts .artist100 .text h2 {
+  color: #006eff;
+  font-size: 36px;
+}
+.billboard-charts .artist100 .text button {
+  color: white;
+  background-color: black;
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px;
+}
+.billboard-charts .artist100 .text button i {
+  color: red;
+}
+.billboard-charts .artist100 .artist-img {
+  text-align: center;
+  border-right: 1px solid lightgray;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.billboard-charts .artist100 .artist-img .image-number {
+  position: relative;
+}
+.billboard-charts .artist100 .artist-img .image-number img {
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 3px 3px 5px lightgray;
+}
+.billboard-charts .artist100 .artist-img .image-number .number {
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+  left: 35%;
+  padding: 3px 10px;
+  font-weight: 800;
+}
+.billboard-charts .artist100 .artist-img a {
+  text-decoration: none;
+  color: #006eff;
+}
+
+.title {
+  align-items: center;
+  display: flex;
+}
+.title .billboard-title {
+  margin-left: 40%;
+  font-size: 20px;
+  font-weight: 700;
+}
+.title .circle-title {
+  border-radius: 50%;
+  background-color: rgb(203, 0, 27);
+  color: white;
+  width: 42.85px;
+  height: 42.85px;
+  text-align: center;
+  align-content: center;
+}
+.title .circle-title label {
+  font-weight: bolder;
+}
+.title .text-title {
+  text-align: center;
+}
+.title .text-title label {
+  font-weight: bold;
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+.billboardpro-cards {
+  display: grid;
+  grid-template-columns: 310px 310px 310px;
+  grid-template-rows: 300px 300px 300px;
+  gap: 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-left: 15vw;
+}
+.billboardpro-cards .top-left-card {
+  box-shadow: #a3a3a3;
+}
+.billboardpro-cards .top-left-card .card-title {
+  color: white;
+  background-color: rgb(203, 0, 27);
+}
+.billboardpro-cards .top-left-card .card-title img {
+  width: 100%;
+}
+.billboardpro-cards .top-left-card .card-title h1 {
+  width: 100%;
+  text-align: center;
+}
+.billboardpro-cards .top-left-card .card-title .top {
+  padding-top: 20px;
+}
+.billboardpro-cards .top-left-card .card-title .bottom {
+  padding-bottom: 20px;
+}/*# sourceMappingURL=charts.css.map */

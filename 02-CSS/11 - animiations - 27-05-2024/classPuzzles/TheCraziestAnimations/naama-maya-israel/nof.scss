@@ -1,0 +1,36 @@
+body{
+    background-color: skyblue;
+    .green{
+        background-color: green;
+        position: absolute;
+        top: 50vw;
+        width: 100%;
+        height: 50%;
+        display: flex;
+        
+        .bushes1{
+            img{
+                height: 100%;
+                flex
+            }
+            transform: rotate(-90deg);
+            
+        }
+        .road{
+            background-color: gray;
+            margin: auto;
+            top: 50vw;
+            width: 50%;
+            height: 100%;
+            }
+        .bushes2{
+            img{
+                height: 100%;
+                width: 30%;
+            }
+            transform: rotate(90deg);
+        }
+
+        
+    }
+}

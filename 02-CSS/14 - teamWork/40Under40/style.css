@@ -1,0 +1,47 @@
+.wrapper2 {
+  background: linear-gradient(rgb(195, 223, 195), rgb(231, 231, 172));
+}
+
+.wrapper3 {
+  background: #1a48c4;
+}
+
+.wrapper4 {
+  background: linear-gradient(rgb(41, 34, 34), rgb(131, 123, 123));
+  color: white;
+}
+
+.wrapper5 {
+  background: linear-gradient(rgb(195, 223, 195), rgb(231, 231, 172));
+  color: black;
+}
+
+.wrapper6 {
+  align-items: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.wrapper6 p {
+  font-size: 20px;
+}
+
+.wrapper7 {
+  color: black;
+  background-color: white;
+}
+.wrapper7 h4 {
+  margin-left: 30%;
+  padding-top: 45px;
+  font-size: 30px;
+}
+.wrapper7 .column {
+  cursor: pointer;
+}
+.wrapper7 .column:hover {
+  text-decoration: underline;
+}
+.wrapper7 .column:hover .img:hover {
+  opacity: 0.5;
+}/*# sourceMappingURL=style.css.map */

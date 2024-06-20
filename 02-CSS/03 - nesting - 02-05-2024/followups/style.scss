@@ -1,0 +1,28 @@
+
+$blueWrapper: blue;
+$redColor:red;
+
+body{
+align-items: center;
+display: flex;
+flex-direction: column;
+}
+
+.wrapper{
+    width: 350px;
+    height: 350px;
+    img{
+        width: 100%;
+    }
+    p{
+        color: $blueWrapper;
+    }
+}
+.container{
+    width: 300px;
+    height: 300pt;
+}
+
+p{
+ color: $redColor;
+}

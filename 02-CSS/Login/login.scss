@@ -1,0 +1,144 @@
+body {
+  background-color: gray;
+}
+.wrapper {
+  padding: 1%;
+  background-color: white;
+  width: 13vw;
+  text-align: center;
+  margin-left: 40%;
+  margin-top: 6%;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 5px;
+
+  img {
+    margin-left: -5%;
+  }
+
+  h5 {
+    margin-top: 0%;
+    margin-bottom: -1%;
+    font-weight: 600;
+    font-size: 14px;
+  }
+    
+  .login__field {
+    padding: 10px 0px;	
+    position: relative;	
+  }
+    
+  .login__icon {
+    position: absolute;
+    top: 25px;
+    margin-left: 4%;
+  }
+    
+  .login__input {
+    border-radius: 5px;
+    border: none;
+    border: 1px solid black;
+    background: none;
+    padding: 15px;
+    padding-left: 38px;
+    font-size: 16px;
+    width: 80%;
+  }
+  
+  .checkbox {
+    margin-right: 59%;
+    font-size: 14px;
+  }
+
+  h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: -5%;
+    margin-bottom: -1%;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: -2%;
+    margin-bottom: 0%;
+  }
+   
+  button {
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    img {
+      margin-bottom: -5%;
+      margin-right: 5%;
+    }
+  }
+
+  .button-red {
+    background-color: rgb(199, 27, 27);
+    color: white;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 14px 18px;
+  }
+
+  .button-white {
+    background-color: white;
+    color: rgb(66, 65, 65);
+    border: 1px lightgray solid;
+    padding: 12px 12px 14px;
+    font-size: 16px;
+    font-weight: 550;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+
+  h6 {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-size: 18px;
+  }
+  
+  h6:before {
+    content: "";
+    display: block;
+    width: 135px;
+    height: 1px;
+    background: lightgray;
+    left: 48%;
+    top: 50%;
+    position: absolute;
+  }
+  
+  h6:after {
+    content: "";
+    display: block;
+    width: 133px;
+    height: 1px;
+    background: lightgray;
+    right: 52.9%;
+    top: 50%;
+    position: absolute;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  p {
+    margin-top: -1%;
+    font-size: 12px;
+  }
+
+  a {
+    color: rgb(199, 27, 27);
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: blue;
+  }
+}

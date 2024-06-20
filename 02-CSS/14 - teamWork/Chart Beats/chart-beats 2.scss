@@ -1,0 +1,79 @@
+body{
+    background-color:  rgb(237, 235, 235);
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.chart-beat{
+    width:68vw;
+    margin: auto;
+    // background-color: red;
+    display: flex;
+    gap: 2%;
+}
+.main{
+    width:65% ;
+}
+h1{
+    font-weight: 800;
+    margin-top: 0;
+
+}
+.article{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    height: 13rem;
+
+    h3{
+        text-decoration: underline;
+        text-decoration-color: blue;
+        font-size: 1rem;
+    }
+    img{
+        height: 100%;
+    }
+    .article-text{
+        padding:1vw;
+        margin: 0px;
+        font-size: 1.1rem;
+    }
+    .author, .time{
+        font-size: 0.7rem;
+        margin: 0px;
+        color: rgb(76, 81, 103);
+        font-weight: 600;
+    }
+
+}
+
+.secondary{
+    width: 30%;
+}
+
+.trending{
+    background-color: white;
+    border-top: rgb(26, 72, 196) solid 0.5rem;
+    width: 30ch;
+h2{
+    margin-bottom: 0px;
+    margin-top: 0.7rem;
+}
+h2,h3{
+    margin-left: 1.5rem;
+}
+h3{
+    font-size: 2rem;
+}
+.rank{
+    display: flex;
+    gap: 1rem;
+    // justify-content: center;
+    align-items: center;
+}
+p{
+    color: rgb(26, 72, 196);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+}

@@ -1,0 +1,17 @@
+
+.box {
+    border: solid 1px black;
+    margin: 20px;
+    .A {
+        position: sticky;
+        background-color: red;
+        width: 400px;
+        height: 20px;
+    }
+    .B {
+        background-color: antiquewhite;
+        img {
+            width: 800px;
+        } 
+    }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Component</title>
+    <!-- copy links and adjust paths -->
+    <script src="https://kit.fontawesome.com/0dc66bd6c2.js" crossorigin="anonymous"></script>
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="./dist/header.css">
+    <link rel="stylesheet" href="../Class project- Roni/dist/lists.css">
+    <!-- end links -->
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header__logo">
+            <div class="header__logo__left">
+                <button id="menuButton"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="header__logo__middle">
+                <!-- Insert link -->
+                <a href="#"><h2>billboard</h2></a>
+            </div>
+            <div class="header__logo__right">
+                <button type="button" class="login">LOGIN</button>
+                <button type="button" class="subscribe">SUBSCRIBE</button>
+            </div>
+        </div>
+        <div class="header__nav" id="navbar">
+            <div class="header__nav__left">
+                <span class="brand1">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <span class="brand2" style="display: none;">
+                    <!-- Insert index page link -->
+                    <a href="#"><h2>billboard</h2></a>
+                </span>
+            </div>
+            <div class="header__nav__middle">
+                <ul>
+                    <!-- insert links -->
+                    <li><a href="">CHARTS</a></li>
+                    <li><a href="">MUSIC</a></li>
+                    <li><a href="../billboard.video/video.html">VIDEO</a></li>
+                    <li><a href="">AWARDS</a></li>
+                    <li><a href="">BUSINESS</a></li>
+                </ul>
+            </div>
+            <div class="header__nav__right">
+                <span class="brand1"></span>
+                <span class="brand2">
+                    <button type="button" class="subscribe">SUBSCRIBE</button>
+                    <button type="button" class="login2">LOGIN</button>
+                </span>
+            </div>
+        </div>
+        <div class="header__secondary">
+            <ul>
+                <!-- Insert links -->
+                <li><a href="#">Billboard Hot 100</a></li>
+                <li><a href="#">Global 200</a></li>
+                <li><a href="#">Chart Beat</a></li>
+                <li><a href="#">Get Up Anthems by Tres</a></li>
+                <li><a href="#">TikTok Billboard Top 50</a></li>
+                <li><a href="#">Global News</a></li>
+                <li><a href="#" id="spanish">Español</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- Header end -->
+
+    <!-- Sliding Menu -->
+    <div class="sliding-menu" id="slidingMenu">
+        <div class="page">
+            <div class="header">
+                <h2>billboard</h2>
+                <div class="header__search">
+                    <input type="text" placeholder="Search">
+                </div>
+                <button type="button" id="closeMenuButton"><i class="fa-solid fa-x"></i></button>
+            </div>
+            <div class="charts">
+                <h3>Charts</h3>
+                <dl>
+                    <dt>All Charts</dt>
+                    <dt>Billboard Hot 100</dt>
+                    <dt>Billboard 200</dt>
+                    <dt>Global 200</dt>
+                    <dt>Hits Of The World</dt>
+                    <dt>Chart Beat</dt>
+                    <dt>TikTok Billboard Top 50</dt>
+                    <dt>Song Breaker</dt>
+                    <dt>Year-End Charts</dt>
+                    <dt>Decade-End Charts</dt>
+                </dl>
+            </div>
+            <div class="music">
+                <h3>Music</h3>
+                <dl>
+                    <dt>Music News</dt>
+                    <dt>Pop</dt>
+                    <dt>R&B/Hip-Hop</dt>
+                    <dt>Latin</dt>
+                    <dt>Rock</dt>
+                    <dt>Awards</dt>
+                    <dt>Chart Beat</dt>
+                    <dt>Concerts</dt>
+                    <dt>Features</dt>
+                    <dt>Reviews</dt>
+                </dl>
+            </div>
+            <div class="videos">
+                <h3>Videos</h3>
+            </div>
+            <div class="culture">
+                <h3>Culture</h3>
+                <dl>
+                    <dt>Events</dt>
+                    <dt>Lifestyle</dt>
+                    <dt>Politics</dt>
+                    <dt>TV/Film</dt>
+                </dl>
+            </div>
+            <div class="media">
+                <h3>Media</h3>
+                <dl>
+                    <dt>Lists</dt>
+                    <dt>Photos</dt>
+                    <dt>Podcasts</dt>
+                    <dt>Videos</dt>
+                </dl>
+            </div>
+            <div class="business">
+                <h3>Business</h3>
+                <dl>
+                    <dt>Business News</dt>
+                    <dt>Legal</dt>
+                    <dt>Touring</dt>
+                    <dt>Publishing</dt>
+                    <dt>Radio</dt>
+                    <dt>Record Labels</dt>
+                    <dt>View All Pro</dt>
+                </dl>
+            </div>
+            <div class="tools">
+                <h3>Pro Tools</h3>
+                <dl>
+                    <dt>Songwriters & Producers</dt>
+                    <dt>Song Index</dt>
+                    <dt>Artist Index</dt>
+                    <dt>Royalty Calculator</dt>
+                    <dt>Market Watch</dt>
+                    <dt>Industry Events Calendar</dt>
+                </dl>
+            </div>
+            <div class="espanol">
+                <h3>Billboard Espanol</h3>
+                <dl>
+                    <dt>Noticias</dt>
+                    <dt>Musica</dt>
+                    <dt>Negocios</dt>
+                    <dt>Cultura y Entretenimiento</dt>
+                </dl>
+            </div>
+            <div class="anthems">
+                <h3>Get Up Anthems by Tres</h3>
+            </div>
+            <div class="honda">
+                <h3>Honda Music</h3>
+            </div>
+            <div class="blank"></div>
+            <!-- adjust link -->
+            <div class="subscribe"><img src="../Class project- Roni/images/subscribe.png" alt="Ad"></div>
+            <div class="newsletter">
+                <div class="newsletter__icons">
+                    <!-- adjust links -->
+                    <img src="../Class project- Roni/images/Facebook.png" alt="facebook">
+                    <img src="../Class project- Roni/images/Instegram.png" alt="Instagram">
+                    <img src="../Class project- Roni/images/X.png" alt="X">
+                    <img src="../Class project- Roni/images/tiktok.png" alt="tiktok">
+                    <img src="../Class project- Roni/images/youtube.png" alt="youtube">
+                </div>
+                <div class="newsletter__email">
+                    <input type="text" placeholder="Enter Your Email">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- copy up to here -->
+</body>
+</html>

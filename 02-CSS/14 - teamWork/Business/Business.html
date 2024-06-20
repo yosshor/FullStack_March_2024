@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header component</title>
+    <!-- copy this line to page: -->
+    <script
+      src="https://kit.fontawesome.com/0dc66bd6c2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./app.js"></script>
+    <link rel="stylesheet" href="../components/dist/header.css" />
+    <link rel="stylesheet" href="./dist/Business.css" />
+    <!-- <link rel="stylesheet" href="../components/dist/footer.css" /> -->
+    <title>Business</title>
+  </head>
+  <body>
+    <header>
+      <div class="header__logo">
+        <div class="header__logo__left">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="header__logo__middle">
+          <!-- insert link -->
+          <a href=""><h2>billboard</h2></a>
+        </div>
+        <div class="header__logo__right">
+          <button type="button" class="login">LOGIN</button>
+          <button type="button" class="subscribe subscribe_second">
+            SUBSCRIBE
+          </button>
+        </div>
+      </div>
+      <div class="header__nav" id="navbar">
+        <div class="header__nav__left">
+          <span class="brand1">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <span class="brand2" style="display: none">
+            <!-- insert index page link -->
+            <a href=""><h2>billboard</h2></a>
+          </span>
+        </div>
+        <div class="header__nav__middle">
+          <ul>
+            <!-- insert links -->
+            <li>
+              <a class="header__nav__middle--link" href="">Market Watch</a>
+            </li>
+            <li>
+              <a class="header__nav__middle--link" href=""
+                >Music Industry Events Calendar</a
+              >
+            </li>
+            <li><a class="header__nav__middle--link" href="">Pro Charts</a></li>
+          </ul>
+        </div>
+
+        <div class="header__nav__right">
+          <span class="brand1"> </span>
+          <span class="brand2">
+            <button type="button" class="subscribe">SUBSCRIBE</button>
+            <button type="button" class="login2">LOGIN</button>
+          </span>
+        </div>
+      </div>
+      <div class="header__secondary">
+        <ul class="header_business">
+          <!-- insert links -->
+          <li><a class="trending" href="#">Trending Topics ►</a></li>
+          <li><a class="pipe" href="#">Bundle Battle</a></li>
+          <li><a class="pipe" href="#">Legal and Trial News</a></li>
+          <li><a class="pipe" href="#">Artificial Intelligence</a></li>
+        </ul>
+      </div>
+      <div class="header__secondary inner_header">
+        <ul class="inner_header_info">
+          <!-- insert links -->
+          <li class="pipe">
+            <a href="#"
+              >Ticketmaster Hack: No Evidence That User Data Was Stolen as
+              ...</a
+            >
+          </li>
+          <li class="pipe">
+            <a href="#"
+              >Live Nation Stock Holds After Initial Post-Lawsuit Slump</a
+            >
+          </li>
+          <li>
+            <a class="" href="#"
+              >As Subscription Streaming Dominates Revenues, Free Music Is
+              ...</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <section class="main-cont-wrapper">
+      <div class="main-article">
+        <div class="main-article__img">
+          <img src="./images/phone-credit-card.webp" alt="credit card" />
+        </div>
+        <div class="main-article__tag">
+          <div class="main-article__strm-tag">
+              <div><a href="#">Streaming</a></div>
+              <span></span>
+              
+            </div>
+            <div class="content-tag">
+              As Subscription Streaming Dominates Revenues, Free Music Is Coming
+              Under Pressure
+            </div>
+        <!-- <div class="title"><h3>As Subscription Streaming Dominates Revenues, Free Music Is Coming Under Pressure</h3></div> -->
+        <div class="creator"></div>
+        <div class="published-date"></div>
+      </div>
+
+      <div class="news-wrapper">
+        <div class="news-header">PRO ANALYSIS</div>
+        <div class="news-card">
+          <div class="card-imag">
+            <img
+              src="./images/Ticketmaster-logo-billboard.webp"
+              alt="Ticketmaster-log"
+            />
+          </div>
+          <div class="card-title">Touring</div>
+          <div class="card-content">
+            No Evidence That Ticketmaster User Data Was Stolen as Live Nation
+            Acknowledges Breach
+          </div>
+          <div class="creator"></div>
+          <div class="published-date"></div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

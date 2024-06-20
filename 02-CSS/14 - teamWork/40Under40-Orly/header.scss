@@ -1,0 +1,220 @@
+@import url('https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro');
+
+:root {
+    --font-family-primary-fancy: 'Neue Haas Grotesk Display Pro', sans-serif;
+    --font-family-primary: "Times New Roman", serif;
+    --font-family-secondary-fancy: Arial, sans-serif;
+    --sticky-nav-height: 5.25rem;
+    --login-bar-height: 0rem;
+    --sticky-header-height: 4.25rem;
+    --primary-color: white;
+    --secondary-color: black;
+    --highlight-color: #1a48c4;
+    --login-hover: rgb(118, 186, 223);
+    --border-color: #2f323f;
+    --shadow-color: rgba(0, 0, 0, 0.16);
+}
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-primary-fancy);
+
+
+
+header {
+    z-index: 1000;
+    letter-spacing: 3px;
+    transition: 0.5s;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+h2 {
+    letter-spacing: -2px;
+}
+
+/* Header Logo */
+.header__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+
+    &__middle {
+        text-align: center;
+        margin-left: 15rem;
+    }
+
+    &__right {
+        display: flex;
+        gap: 10px;
+    }
+}
+
+/* Buttons */
+.login, .subscribe, .login2 {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border: 1px solid white;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+.login2 {
+    border: none;
+    &:hover {
+        color: var(--login-hover);
+    }
+}
+.login:hover {
+    border-color: var(--login-hover);
+    color: var(--login-hover);
+}
+
+.subscribe {
+    background-color: var(--highlight-color);
+    border: none;
+
+    &:hover {
+        background-color: white;
+        color: var(--highlight-color);
+    }
+}
+
+/* Navbar */
+.header__nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    padding: 0.5rem 2rem;
+    background-color: var(--secondary-color);
+    transition: all 0.5s ease;
+
+    &__left {
+        .fa-magnifying-glass {
+            font-size: 1.5rem;
+            &:hover {
+                color: var(--highlight-color);
+            }
+        }
+    }
+
+    &__middle {
+        ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+            li {
+                padding: 0.5rem 3rem;
+
+                a {
+                    &:hover {
+                        color: var(--highlight-color);
+                    }
+                }
+            }
+        }
+    }
+
+    .brand {
+        transition: opacity 0.5s ease;
+    }
+
+    .brand1 {
+        display: inline;
+    }
+
+    .brand2 {
+        display: none;
+        h2 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+    }
+
+    &.scrolled .brand1 {
+        display: none;
+    }
+
+    &.scrolled .brand2 {
+        display: inline;
+    }
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--secondary-color);
+}
+
+/* Secondary Header */
+.header__secondary {
+    background-color: white;
+    height: 2.8125rem;
+    box-shadow: 0px 3px 6px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 0;
+
+    ul {
+        display: flex;
+        justify-content:space-between;
+        padding: 0 2rem;
+        width: 100%;
+        li {
+            list-style: none;
+            text-align: center;
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+
+            a {
+                color: #63677a;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: var(--highlight-color);
+                }
+            }
+
+            #spanish {
+                color: white;
+                background-color: var(--highlight-color);
+                padding: 0.3rem;
+                transition: background-color 0.3s ease, color 0.3s ease;
+
+                &:hover {
+                    color: var(--highlight-color);
+                    background-color: white;
+                }
+            }
+        }
+    }
+}
+}

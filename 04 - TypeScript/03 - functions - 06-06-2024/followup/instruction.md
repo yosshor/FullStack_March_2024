@@ -1,0 +1,1 @@
+create a function that takes two numbers and return divie the first number by the second number and return the result

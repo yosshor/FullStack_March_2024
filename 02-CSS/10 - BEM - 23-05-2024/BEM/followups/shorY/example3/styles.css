@@ -1,0 +1,48 @@
+.card {
+  width: 240px;
+  height: 300px;
+  padding: 0;
+  margin: 0;
+  font-style: italic;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+.card .image {
+  width: 240px;
+  height: 150px;
+  margin-bottom: 15px;
+}
+.card .image img {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+.card .title {
+  font-size: larger;
+  font-weight: bolder;
+  padding-bottom: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.card .text {
+  font-size: 1.2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.card--warning {
+  background-color: yellow;
+}
+.card--success {
+  background-color: green;
+}
+.card--danger {
+  background-color: rgb(243, 67, 67);
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+}/*# sourceMappingURL=styles.css.map */

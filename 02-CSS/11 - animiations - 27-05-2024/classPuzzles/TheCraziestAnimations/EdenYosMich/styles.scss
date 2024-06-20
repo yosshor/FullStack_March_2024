@@ -1,0 +1,118 @@
+body {
+    background-color: rgb(163, 228, 222);
+}
+
+.animation-example {
+    background-color: yellow;
+    // border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 0;
+    animation-iteration-count: infinite;
+    animation-name: sun;
+    animation-duration: 10s;
+    // animation-timing-function: cubic-bezier(.18, .68, .08, .87);
+    // animation-timing-function: cubic-bezier(0, .84, .08, .87);
+    animation-timing-function: linear;
+
+
+
+    @keyframes sun {
+
+        0% {
+            top:500px;
+            left: 10%;
+            transform: rotate(0deg) translateY(0px) rotate(90deg);
+        }
+
+        100% {
+            top:100px;
+            left: 30%;
+            transform: rotate(360deg) translateY(500px) rotate(-360deg);
+        }
+
+
+        //     10% {
+        //         bottom: 10%;
+        //         left: 5%;
+        //     }
+        //    20% {
+        //         bottom: 20%;
+        //         left: 20%;
+        //     }
+        //     30% {
+        //         bottom: 30%;
+        //         left: 30%;
+        //     }
+
+        //     40% {
+        //         bottom: 40%;
+        //         left: 40%;
+
+        //     }
+
+        //     50% {
+        //         bottom: 90%;
+        //         left: 50%;
+        //     }
+
+        //     70% {
+        //         bottom:75%;
+        //         left: 65%;
+        //     }
+        //     90% {
+        //         bottom: 30%;
+        //         left: 80%;
+        //     }
+        //     100% {
+        //         bottom: 0%;
+        //         left: 95%;
+        //     }
+
+    }
+
+    // &--second-ball{
+    //     background-color: green;
+    //     animation-name: ball;
+    //     animation-duration:3s;
+    //     animation-iteration-count: infinite;
+    // position: absolute;
+
+
+    // }
+
+
+}
+
+@keyframes ball {
+
+    0% {
+        top: 0px;
+        left: 0;
+
+    }
+
+    25% {
+        top: 60%;
+        left: 25%;
+
+    }
+
+    50% {
+        top: 90%;
+        left: 50%;
+    }
+
+    75% {
+        top: 60%;
+        left: 75%;
+    }
+
+    100% {
+        top: 0%;
+        left: 95%;
+    }
+
+}

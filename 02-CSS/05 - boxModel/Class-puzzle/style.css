@@ -1,0 +1,16 @@
+.box {
+  border: solid 1px black;
+  margin: 20px;
+}
+.box .A {
+  position: sticky;
+  background-color: red;
+  width: 400px;
+  height: 20px;
+}
+.box .B {
+  background-color: antiquewhite;
+}
+.box .B img {
+  width: 800px;
+}/*# sourceMappingURL=style.css.map */

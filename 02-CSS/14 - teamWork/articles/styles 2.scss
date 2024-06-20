@@ -1,0 +1,325 @@
+@media screen and (max-width:780px) {
+    body {
+        font-size: 0.8rem;
+        img{
+            width: fit-content!;
+            height: fit-content!;
+        }
+    }
+
+}
+
+:root {
+    --font-family-article: "open-sans", Helvetica, sans-serif;
+    --font-family-basic: Helvetica, sans-serif;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 300;
+    line-height: 40px;
+    max-lines: 20;
+    --font-family-title: Arial, Helvetica, sans-serif;
+
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+    background-color: var(--background-color-grey-lightest);
+}
+
+.container {
+    display: block;
+    justify-content: center;
+    width: 80vw;
+    padding-left: 15%;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+
+    &__left {
+        display: flex;
+        padding-left: 20px;
+        left: 0px;
+        width: 80vw;
+    }
+
+    &__right {
+        display: flex;
+        float: right;
+        width: 40vw;
+    }
+}
+
+.main-article {
+    width: 80vw;
+    height: 90%;
+    font-family: '"neue-haas-grotesk-display",Times New Roman,sans-serif';
+    line-height: 1.5rem;
+    padding-right: 50px;
+
+    .category {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 9vh;
+
+        ul {
+            width: 100%;
+            justify-content: space-between;
+            display: flex;
+            padding: 10px;
+            margin: 0;
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                margin: 20px;
+
+                a {
+                    font-size: large;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .title {
+        width: 100%;
+        height: 45%;
+        width: fit-content;
+        max-lines: 3;
+
+        h1 {
+            font-weight: 1000;
+            line-height: 2.437rem;
+            letter-spacing: 0.03rem;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-family: var(--font-family-article);
+        }
+
+        p {
+            font-size: 1.875rem;
+            line-height: 1.625rem;
+            letter-spacing: 0.0125rem;
+            font-weight: lighter;
+        }
+
+        .author {
+            margin-bottom: 10px;
+
+            span {
+                border-bottom: 1px solid rgb(233, 130, 130);
+                width: 100%;
+                color: blue;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+    }
+
+
+
+
+
+    .article-info {
+        // width: 100%;
+        height: 20%;
+        width: fit-content;
+
+        p {
+            margin: 16px;
+            line-height: 1.625rem;
+            letter-spacing: 0.0125rem;
+            font-family: Arial, sans-serif;
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+            // opacity: 0.8;
+            color: gray;
+            // font-family: var(--font-family-article);
+        }
+
+    }
+
+
+    .top100-items {
+
+        .item {
+            font-family: "Times New Roman", serif;
+            line-height: 2.5rem;
+
+            .item-num {
+                width: 95%;
+                height: 20%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding-bottom: 20px;
+
+                h1 {
+                    margin: 0;
+                    padding: 0;
+                    margin-left: 10px;
+                }
+
+                .num {
+
+                    width: 80px;
+                    height: 50px;
+                    background-color: rgb(45, 45, 224);
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    h1 {
+                        margin: 0;
+                        padding: 0;
+                        font-weight: bolder;
+                        font-size: 2rem;
+                    }
+                }
+            }
+
+            .type {
+                strong {
+                    color: black;
+                    font-weight: bolder;
+                }
+            }
+
+        }
+    }
+}
+
+.underline {
+    width: 93%;
+    margin: 10px 0px 30px 0px;
+    border-bottom: 1px solid rgb(206, 201, 201);
+
+    &.__between_article {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    &__blue {
+        width: 90%;
+        margin-top: 30px;
+        border-bottom: 12px solid rgb(24, 85, 229);
+    }
+
+    &__middle {
+        height: 80%;
+        padding: 10px;
+        border-right: 3px solid rgb(206, 201, 201);
+        align-items: center;
+    }
+
+    &__between_trading {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 10px;
+        border-bottom: 2px solid rgb(206, 201, 201);
+    }
+
+    &__title {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid rgb(24, 85, 229);
+        bottom: -22px;
+        max-lines: 0.2;
+        text-align: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.img-desc {
+    width: 95%;
+    height: 70%;
+
+    img {
+        width: 90%;
+        height: 70%;
+    }
+
+    .desc {
+        width: 75%;
+        height: 15%;
+        margin-bottom: 13px;
+
+        p {
+            max-width: 420px;
+            max-lines: 2;
+            width: fit-content;
+            padding: 0px 0px 15px 0px;
+        }
+
+        strong {
+            color: black;
+        }
+    }
+}
+
+
+.side-trending {
+    width: 20vw;
+    font-family: var(--font-family-article);
+    height: 80vh;
+    padding-top: 50vh;
+
+    .side-trending-desk {
+        height: 100%;
+        width: 80%;
+
+        .side-blok {
+            font-size: larger;
+            font-family: var(--font-family-article);
+        }
+
+        .side-trending-desk-card {
+
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100px;
+            line-height: 1;
+
+            p {
+                padding-left: 20px;
+                width: fit-content;
+                font-weight: 700;
+                color: blue;
+                max-lines: 3;
+
+
+                &:hover {
+                    color: black;
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+}

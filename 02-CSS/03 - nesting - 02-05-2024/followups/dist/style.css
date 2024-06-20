@@ -1,0 +1,25 @@
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  width: 350px;
+  height: 350px;
+}
+.wrapper img {
+  width: 100%;
+}
+.wrapper p {
+  color: blue;
+}
+
+.container {
+  width: 300px;
+  height: 300pt;
+}
+
+p {
+  color: red;
+}

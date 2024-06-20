@@ -1,0 +1,1 @@
+the function takes two words, and returns the longer string

@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(231, 230, 228);
+}
+
+.home-page-card{
+    display: flex;
+    flex-direction: column;
+    height: 407px;
+    width: 185px;
+    img{
+       width: 100%;
+    }
+
+    h3{
+        border-bottom: 3px blue solid ;
+        width: fit-content;
+    }
+}

@@ -1,0 +1,22 @@
+.smily {
+  font-size: xx-large;
+  position: absolute;
+  offset-path: path("M 460.81 299.957 L 361.583 294.456 C 365.696 247.577 273.946 252.076 271.513 292.847 C 260.598 209.052 196.208 250.966 195.284 290.396 C 203.682 190.563 171.877 52.896 27.725 121.415");
+  animation-name: coolAnimation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+  animation-timing-function: ease-in;
+}
+
+@keyframes coolAnimation {
+  from {
+    left: 0;
+    offset-distance: 0%;
+    transform: rotate(180deg);
+  }
+  to {
+    offset-distance: 100%;
+    left: 100vw;
+  }
+}/*# sourceMappingURL=styles.css.map */

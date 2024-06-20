@@ -1,0 +1,26 @@
+.wrapper {
+  background-color: teal;
+}
+.wrapper .box {
+  background-color: tomato;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+}
+.wrapper .box-fixed {
+  background-color: tomato;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  text-align: center;
+}
+.wrapper .box-fixed div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 30px;
+}/*# sourceMappingURL=style.css.map */

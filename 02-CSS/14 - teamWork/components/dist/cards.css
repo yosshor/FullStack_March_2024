@@ -1,0 +1,13 @@
+.home-page-card {
+  display: flex;
+  flex-direction: column;
+  height: 407px;
+  width: 185px;
+}
+.home-page-card img {
+  width: 100%;
+}
+.home-page-card h3 {
+  border-bottom: 3px blue solid;
+  width: fit-content;
+}

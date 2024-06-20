@@ -1,0 +1,64 @@
+$wrapperThinkness: 6px;
+$padding: 10px;
+
+body {
+    width: 600px;
+    margin: auto;
+}
+
+.wrapper {
+    border: solid $wrapperThinkness black;
+    /* width: 600px;
+    margin: auto; */
+
+    .main {
+        padding-inline: $padding;
+        border: dashed red 4px;
+        margin-bottom: $padding;
+        height: 150px;
+        text-align: justify;
+    }
+
+    .main-red {
+        background-color: yellow;
+        border-bottom: dotted black 5px;
+    }
+
+    .main-green {
+        background-color: green;
+    }
+
+    .main-blue {
+        background-color: blue;
+    }
+
+    img {
+        width: 135px;
+        height: 135px;
+        margin: 10px;
+        float: right;
+    }
+}
+
+
+.another {
+    background-color: aqua;
+
+    .main {
+        padding-inline: $padding;
+        border: dashed red 10px;
+        margin-bottom: $padding;
+        height: 150px;
+        text-align: justify;
+    }
+
+    .main-red {
+        background-color: orange;
+        border-bottom: dotted black 5px;
+    }
+}
+
+.main-red {
+    background-color: gray;
+    border-bottom: dotted black 5px;
+}
