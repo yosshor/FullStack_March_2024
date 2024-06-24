@@ -1,4 +1,4 @@
-interface Student{
+interface Student {
     name: string;
     yearOfBirth: number;
     getAge: () => number;
@@ -7,7 +7,7 @@ interface Student{
 const lior: Student = {
     name: 'Lior',
     yearOfBirth: 1998,
-    getAge:getAge
+    getAge: getAge
 }
 
 const israel: Student = {
@@ -20,6 +20,6 @@ function getAge(): number {
     return new Date().getFullYear() - this.yearOfBirth;
 }
 
-console.log(getAge(lior));
+console.log(lior!.getAge());
 console.log(lior.getAge());
 console.log(israel.getAge());
