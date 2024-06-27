@@ -1,0 +1,25 @@
+.book{
+  
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    width: fit-content;
+    display: flex;
+
+
+    &__cover{
+        width: 8rem;
+        background-position: center;
+        background-size: cover;
+        height: auto;
+
+    }
+
+    &__info{
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 1rem;
+    }
+}
