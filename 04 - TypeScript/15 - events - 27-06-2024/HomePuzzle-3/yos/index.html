@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Example</title>
+    <link rel="stylesheet" href="./dist/styles.css">
+</head>
+
+<body>
+    <div class="info">
+        <h2 >Select Your Pet:</h2>
+        <select id="petSelect">
+            <option value="all">All</option>
+            <option value="cat">Cat</option>
+            <option value="hippo">Hippo</option>
+            <option value="dog">Dog</option>
+            <option value="dragon">Dragon</option>
+            <option value="parrot">Parrot</option>
+        </select>
+        <button onclick="handlePetClick()">Show Me</button>
+    </div>
+    <div class="wrapper">
+        <div id="animals" class="animals" style="background-image: url('./img/How-to-mind-map.jpg')">
+        </div>
+    </div>
+
+
+    <script src="./dist/app.js"></script>
+</body>
+
+</html>

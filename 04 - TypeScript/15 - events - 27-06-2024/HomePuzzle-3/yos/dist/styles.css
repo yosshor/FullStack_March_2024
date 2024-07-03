@@ -1,0 +1,76 @@
+@media screen and (max-width: 1600px) {
+  html {
+    font-size: 5px;
+  }
+}
+@media screen and (max-width: 2000px) {
+  html {
+    font-size: 5px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 16px;
+  }
+}
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+.wrapper .animals {
+  width: 90vw;
+  height: 90vh;
+  background-repeat: no-repeat;
+}
+.wrapper .animals__animal {
+  width: 15vw;
+  height: 10vh;
+  position: absolute;
+  display: inline-block;
+  border: 1px solid black;
+  background-color: #f7f4f4;
+}
+.wrapper .animals__animal .animal-img {
+  width: 30%;
+  height: 100%;
+  float: left;
+  display: flex;
+}
+.wrapper .animals__animal .animal-img img {
+  width: 30%;
+  height: 100%;
+  position: absolute;
+}
+.wrapper .animals__animal .animal-img img:hover {
+  opacity: 0.8;
+  rotate: 3deg;
+  cursor: pointer;
+}
+.wrapper .animals__animal .animal-info {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 35%;
+  width: 100%;
+  height: 100%;
+  width: fit-content;
+}
+.wrapper .animals__animal .animal-info p {
+  font-weight: 900;
+  padding: 0;
+  margin: 0;
+  font-size: 0.6rem;
+  line-height: normal;
+  max-block-size: 20px;
+  max-height: fit-content;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  justify-content: space-between;
+  height: 4vh;
+  align-items: center;
+  position: relative;
+}

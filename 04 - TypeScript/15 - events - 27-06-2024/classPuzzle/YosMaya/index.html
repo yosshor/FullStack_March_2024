@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/style.css">
+</head>
+
+<body id="#body" onclick="handleClicked(event)" style="width: 100vw; height:100vh;position: relative;">
+
+    <div style="display: flex;justify-content: center;align-items: center;color: aqua;">
+        <h1>Add Red Box Every Click</h1>
+    </div>
+    <div>
+        <button style="width: 100px;" id="buttonId" onclick="handleClicked(event)"
+            onmouseover="handleClickMakeBigger(event)">Click Me</button>
+        <input type="text" onkeyup=handleChange(event) onchange="handleChange(event)"></input>
+        <p id="#upper"> new pa </p>
+    </div>
+    <div id="#clicked" style="width: 100vw; height:100vh;position: relative;">
+    </div>
+    <div onclick="disappear()" id="catch" class="click_disappear">
+    </div>
+    <script src="./dist/app.js"></script>
+</body>
+
+</html>

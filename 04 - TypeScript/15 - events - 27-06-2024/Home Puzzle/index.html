@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event </title>
+    <link rel="stylesheet" href="./dist/styles.css">
+    <script type="module" src="./dist/app.js"></script>
+
+</head>
+
+<body>
+    <div id='score' class="score">
+        <h1 id="level">Level:1</h1>
+        <h1 id="scoreId">Score:</h1>
+    </div>
+    <div id='fantasyId' class="fantasy-map"
+        style="background-image: url('./img/fantasy/Fantasy-map-landscape-1-A.webp')">
+
+    </div>
+
+    <script src="./dist/app.js"></script>
+    <script>
+        initialLoading();
+
+        setInterval(() => {
+            initialLoading();
+        }, 5000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+.click_disappear {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  position: fixed;
+  animation: move-box 10s linear 1s 4;
+  border: 2px solid black;
+}
+
+@keyframes move-box {
+  from {
+    top: 50px;
+    left: 50px;
+  }
+  to {
+    top: 50px;
+    left: 1200px;
+  }
+}
