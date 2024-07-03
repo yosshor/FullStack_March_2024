@@ -81,11 +81,37 @@
 }
 
 .info {
+
     display: flex;
     flex-direction: row;
-    width: 350px;
+    width: 550px;
     justify-content: space-between;
     height: 4vh;
     align-items: center;
-    position: relative;
+    position: inherit;
+
+    h2 {
+        font-size: 20px;
+    }
+
+    select {
+        width: 150px;
+        height: 30px;
+        border-radius: 15px;
+        font-weight: bolder;
+        text-align: center;
+        background-color: #b2e0f5;
+        option {
+            font-size: larger;
+        }
+
+    }
+
+    button {
+        border-radius: 20px;
+        width: 150px;
+        height: 30px;
+        background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+        font-weight: bolder;
+    }
 }
