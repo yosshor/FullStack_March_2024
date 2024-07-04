@@ -108,15 +108,15 @@ var animalsArray = getAnimalsArray();
 //     return [dragon, parrot, dog, cat, hippo, dragon1, parrot1, dog1, cat1, hippo1];
 // }
 //handleImgClick
-function getDomElementAsStr(animal) {
+function getDomElementAsStr(animal, removeAnimation) {
     var _a, _b;
-    return "<div class='animals__animal' id='" + animal.id + "' style='top:" + ((_a = animal.position) === null || _a === void 0 ? void 0 : _a.top) + ";\n                left:" + ((_b = animal.position) === null || _b === void 0 ? void 0 : _b.left) + "';\n                 onclick=handlePetClick('" + animal.id + "')>\n                <div class='animal-img'><img src='" + animal.src + "' alt='" + animal.description + "'></img>\n            </div> \n            <div class='animal-info'>\n                <p><strong>Name:</strong>" + animal.name + "</p>\n                <p><strong>Description:</strong>" + animal.description + "</p>\n                <p><strong>Price:</strong>" + animal.price + "</p>\n            </div></div>";
+    var remove = removeAnimation === null || removeAnimation === undefined ? null : removeAnimation;
+    return "<div class='animals__animal' id='" + animal.id + "' style='top:" + ((_a = animal.position) === null || _a === void 0 ? void 0 : _a.top) + ";\n                left:" + ((_b = animal.position) === null || _b === void 0 ? void 0 : _b.left) + ";" + remove + "';\n                 onclick=handlePetClick('" + animal.id + "')>\n                <div class='animal-img'><img src='" + animal.src + "' alt='" + animal.description + "'></img>\n            </div> \n            <div class='animal-info'>\n                <p><strong>Name:</strong>" + animal.name + "</p>\n                <p><strong>Description:</strong>" + animal.description + "</p>\n                <p><strong>Price:</strong>" + animal.price + "</p>\n            </div></div>";
 }
 function writeAnimalsToDom(arr) {
     try {
         var html = '';
         var animals = document.getElementById('animals');
-        // console.log('sdf', arr)
         if (arr !== undefined) {
             arr.forEach(function (animal) {
                 html += getDomElementAsStr(animal);
@@ -210,6 +210,17 @@ function sortPetByPrice() {
     try {
         var sort = __spreadArrays(animalsArray).sort(function (a, b) { return a.price - b.price; }).reverse();
         console.log(sort);
+        var animals = document.getElementById('animals');
+        var html = '';
+        var top = 6;
+        sort.forEach(function (animal) {
+            var _a, _b;
+            (_a = animal.position) === null || _a === void 0 ? void 0 : _a.top = top + "vh";
+            (_b = animal.position) === null || _b === void 0 ? void 0 : _b.left = '50%';
+            top += 10;
+            html += getDomElementAsStr(animal, 'animation:none;');
+        });
+        animals.innerHTML = html;
         return sort;
     }
     catch (error) {

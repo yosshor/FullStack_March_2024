@@ -130,9 +130,11 @@ const animalsArray = getAnimalsArray();
 // }
 
 //handleImgClick
-function getDomElementAsStr(animal: Animals) {
+function getDomElementAsStr(animal: Animals, removeAnimation?:string) {
+    const remove = removeAnimation === null || removeAnimation === undefined ? null : removeAnimation;
+
     return `<div class='animals__animal' id='${animal.id}' style='top:${animal.position?.top};
-                left:${animal.position?.left}';
+                left:${animal.position?.left};${remove}';
                  onclick=handlePetClick('${animal.id}')>
                 <div class='animal-img'><img src='${animal.src}' alt='${animal.description}'></img>
             </div> 
@@ -147,7 +149,6 @@ function writeAnimalsToDom(arr?: Animals[]): void | undefined {
     try {
         var html = '';
         const animals = document.getElementById('animals') as HTMLDivElement;
-        // console.log('sdf', arr)
         if (arr !== undefined) {
             arr!.forEach(animal => {
                 html += getDomElementAsStr(animal)
@@ -208,7 +209,7 @@ function handleImgClick(id: string, arr: Animals[]): void | undefined {
         }, 1000)
 
         const findDivElement = findElementByIdOrName(id);
-        findDivElement!.src = './img/boom.gif'
+        findDivElement.src = './img/boom.gif'
         writeAnimalsToDom(arr !== undefined ? arr : undefined)
 
     } catch (error) {
@@ -247,6 +248,17 @@ function sortPetByPrice(): Animals[] | undefined {
     try {
         const sort = [...animalsArray].sort((a, b) => a.price - b.price).reverse()
         console.log(sort)
+        const animals = document.getElementById('animals') as HTMLDivElement;
+
+        var html = '';
+        var top = 6;
+        sort.forEach(animal => {
+            animal.position?.top = `${top}vh`;
+            animal.position?.left = '50%';
+            top += 10
+            html += getDomElementAsStr(animal,'animation:none;')
+        })
+        animals.innerHTML = html;
         return sort;
     } catch (error) {
         console.error(error);
