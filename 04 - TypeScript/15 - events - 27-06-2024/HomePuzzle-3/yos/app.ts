@@ -1,5 +1,5 @@
-const random = () => Math.round(Math.random() * 60)
-const randomPosition = (): Position => { return { top: `${random()}vh`, left: `${random()}vw` } }
+const random = () => Math.round(Math.random() * 70)
+const randomPosition = (): Position => { return { top: `${random() + 4}vh`, left: `${random()}vw` } }
 
 
 
@@ -208,7 +208,7 @@ function handleImgClick(id: string, arr: Animals[]): void | undefined {
         }, 1000)
 
         const findDivElement = findElementByIdOrName(id);
-        findDivElement.src = './img/boom.gif'
+        findDivElement!.src = './img/boom.gif'
         writeAnimalsToDom(arr !== undefined ? arr : undefined)
 
     } catch (error) {
@@ -243,3 +243,13 @@ function handlePetClick(id?: string): undefined {
     }
 }
 
+function sortPetByPrice(): Animals[] | undefined {
+    try {
+        const sort = [...animalsArray].sort((a, b) => a.price - b.price).reverse()
+        console.log(sort)
+        return sort;
+    } catch (error) {
+        console.error(error);
+        return undefined;
+    }
+}

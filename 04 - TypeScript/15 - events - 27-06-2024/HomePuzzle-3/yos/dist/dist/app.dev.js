@@ -1,12 +1,26 @@
 "use strict";
 
+var __spreadArrays = void 0 && (void 0).__spreadArrays || function () {
+  for (var s = 0, i = 0, il = arguments.length; i < il; i++) {
+    s += arguments[i].length;
+  }
+
+  for (var r = Array(s), k = 0, i = 0; i < il; i++) {
+    for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {
+      r[k] = a[j];
+    }
+  }
+
+  return r;
+};
+
 var random = function random() {
-  return Math.round(Math.random() * 60);
+  return Math.round(Math.random() * 70);
 };
 
 var randomPosition = function randomPosition() {
   return {
-    top: random() + "vh",
+    top: random() + 4 + "vh",
     left: random() + "vw"
   };
 };
@@ -217,6 +231,20 @@ function handlePetClick(id) {
       console.log(pets, petsArray);
       writeAnimalsToDom(petsArray);
     }
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}
+
+function sortPetByPrice() {
+  try {
+    var sort = __spreadArrays(animalsArray).sort(function (a, b) {
+      return a.price - b.price;
+    }).reverse();
+
+    console.log(sort);
+    return sort;
   } catch (error) {
     console.error(error);
     return undefined;
