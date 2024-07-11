@@ -1,7 +1,7 @@
 class User {
     name: string;
     id: string;
-    cart:string[];
+    cart: string[];
     img: string;
 
     constructor(name: string, img: string) {
@@ -11,8 +11,25 @@ class User {
         this.img = img;
     }
 
-    signIn(){
+    signIn() {
         console.log(this.name)
+    }
+
+    addToCart(id: string) {
+        this.cart.push(id)
+        console.log('item added');
+    }
+
+    removeFromCart(id: string):boolean {
+        const idIndex = this.cart.indexOf(id)
+        if (idIndex >= 0) {
+            this.cart.splice(idIndex, 1);
+            console.log('item removed');
+            return true;
+        }
+        return false
+    }
+    showItemsPerID(){
     }
 }
 

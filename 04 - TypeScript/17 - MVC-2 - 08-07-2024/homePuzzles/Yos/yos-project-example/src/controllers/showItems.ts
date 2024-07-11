@@ -6,11 +6,14 @@ export var currentUser: User;
 
 function showSelectedItems(): string | null {
     try {
-        const itemsSelected = currentUser.cart.map(id => items.find(i => i.id === id)!.name)
+        const itemsSelected = currentUser.cart.map(id => items.find(i => i.id === id)!.name);
+        // const itemSelected1 = currentUser.cart.filter(id =>  )
+        const itemSelected1 = currentUser.cart.filter(id => items.find(item => item.id === id)!.name)
+        console.log(itemSelected1)
         console.log(itemsSelected)
         let select = `<select class="show-selected-items" name="show-items" id="show-item-select"> 
                     ${itemsSelected.length > 0 ?
-                         itemsSelected.map(item => `<option value=${item}>${item}</option>`).join('')  :
+                          itemsSelected.map(item => `<option value=${item}>${item}</option>`).join('')  :
                          "<option value=''>No Data Found</option>"}
                     </select>`
         console.log(select)
@@ -46,8 +49,7 @@ export function showItems(user: User): string {
 
 function handleAddItem(id: string): void {
     try {
-        currentUser.cart.push(id)
-        console.log(currentUser);
+        currentUser.addToCart(id);
         showItems(currentUser);
     } catch (error) {
         console.error(error);
@@ -56,11 +58,7 @@ function handleAddItem(id: string): void {
 
 function handleRemoveItem(id: string): void {
     try {
-        console.log(id)
-        const item = currentUser.cart.indexOf(id);
-        console.log(item)
-        if (item >= 0) {
-            currentUser.cart.splice(item, 1);
+        if (currentUser.removeFromCart(id)) {
             showItems(currentUser);
         }
     } catch (error) {

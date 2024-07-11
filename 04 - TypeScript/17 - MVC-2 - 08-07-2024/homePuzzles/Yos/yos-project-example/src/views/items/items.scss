@@ -8,13 +8,12 @@
 }
 
 
-
 .wrapper {
     width: 100vw;
     height: 100vh;
 
     .show-user {
-        width: 80vw;
+        width: 100%;
         height: 50px;
         display: flex;
         flex-direction: row;
@@ -73,7 +72,7 @@
             height: 90%;
             display: flex;
             justify-content: center;
-            border: 2px solid black;
+            border: 2px solid white;
             border-radius: 10px;
             flex-direction: column;
             padding: 15px;
