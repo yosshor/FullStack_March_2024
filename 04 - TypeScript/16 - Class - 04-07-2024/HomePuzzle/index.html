@@ -9,12 +9,76 @@
 </head>
 
 <body>
+    <style>
+        .custom-select-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        #custom-select-button {
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .custom-select-options {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .custom-select-options div {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .custom-select-options div:hover {
+            background-color: #ddd;
+        }
+    </style>
     <div id="players" class="players">
 
 
 
     </div>
+
+
+
+    <div class="custom-select-container">
+        <button id="custom-select-button">Select an item</button>
+        <div id="custom-select-options" class="custom-select-options">
+            <div data-value="i">i</div>
+            <div data-value="show-items">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyFH-5_P3FEF5xKoBSFRyN-HuKAZZhkgfGug&s"
+                    alt="" style="width: 20px; height: 20px;"> Show items
+            </div>
+            <div data-value="b">b</div>
+        </div>
+    </div>
+
     <script src=" ./dist/app.js"></script>
+    <script>
+        document.getElementById('custom-select-button').addEventListener('click', function () {
+            document.getElementById('custom-select-options').style.display = 'block';
+        });
+
+        document.querySelectorAll('.custom-select-options div').forEach(function (option) {
+            option.addEventListener('click', function () {
+                document.getElementById('custom-select-button').textContent = this.textContent.trim();
+                document.getElementById('custom-select-options').style.display = 'none';
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.custom-select-container')) {
+                document.getElementById('custom-select-options').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
