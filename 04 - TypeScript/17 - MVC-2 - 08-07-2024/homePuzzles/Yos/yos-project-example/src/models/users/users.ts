@@ -1,7 +1,7 @@
 class User {
     name: string;
     id: string;
-    cart: [];
+    cart:string[];
     img: string;
 
     constructor(name: string, img: string) {

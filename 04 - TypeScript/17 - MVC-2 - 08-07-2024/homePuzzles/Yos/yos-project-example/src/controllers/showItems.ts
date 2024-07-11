@@ -1,10 +1,13 @@
 import { items } from "../models/items/items";
-import User from "../models/users/users";
+import User, { users } from "../models/users/users";
 import renderItem from "../views/items/items";
+
+export var currentUser: User;
 
 export function showItems(user: User): string {
     try {
-        console.log('the user is', user)
+        currentUser = user;
+        // console.log('the user is', user)
         let container = document.getElementById('app') as HTMLDivElement;
         const allItems = `<div class='wrapper'>
                             <div class='show-user'>
@@ -14,7 +17,7 @@ export function showItems(user: User): string {
                         </div><div class=container>
                         ${items.map(i => renderItem(i)).join('')}
                         ${items.map(i => renderItem(i)).join('')}</div></div>`
-        console.log(container);
+        // console.log(container);
         container.innerHTML = allItems;
         return allItems;
     } catch (error) {
@@ -23,13 +26,30 @@ export function showItems(user: User): string {
     }
 }
 
-function handleAddItem(action: string, id: string): void {
-    console.log(action, id);
 
+
+function handleAddItem(id: string): void {
+    try {
+        currentUser.cart.push(id)
+        console.log(currentUser);
+        showItems(currentUser);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-function handleRemoveItem(action: string, id: string): void {
-    console.log(action, id);
+function handleRemoveItem(id: string): void {
+    try {
+        console.log(id)
+        const item = currentUser.cart.indexOf(id);
+        console.log(item)
+        if(item >= 0){
+                currentUser.cart.splice(item, 1);
+                showItems(currentUser);
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 export function showItems2(): HTMLDivElement | undefined {
@@ -48,7 +68,7 @@ export function showItems2(): HTMLDivElement | undefined {
                     const action = target.getAttribute('data-action');
                     const id = target.getAttribute('data-id');
                     if (action && id) {
-                        handleRemoveItem(action, id);
+                        handleRemoveItem(id);
                     }
                 });
             });
@@ -76,10 +96,10 @@ function handleClickEvent(event: Event) {
         if (action && id) {
             // console.log('event')
             if (action === 'remove') {
-                handleRemoveItem(action, id);
+                handleRemoveItem(id);
             }
             else {
-                handleAddItem(action, id);
+                handleAddItem(id);
             }
         }
     }
