@@ -1,0 +1,30 @@
+#root{
+    background-image: url('../soccer.jpg'  );
+    width: 90vw;
+    height: 57vw;
+    background-size: cover;
+}
+
+.player{
+    position:absolute;
+    width: 17vw;
+    height: 20vw;background-size: cover;
+    transition: all 0.5s;
+    transform: translateX(-150%);
+    
+    button{
+        position: absolute;
+       top:-40px;
+       left:50%;
+        background-color: #f00;
+        color: #fff;
+        border: none;
+        padding: 0.5vw;
+        border-radius: 0.5vw;
+        cursor: pointer;
+        font-size: 1.5vw;
+        right: 0;
+        width: fit-content;
+    }
+
+}

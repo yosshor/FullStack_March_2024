@@ -1,0 +1,77 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.players {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://t3.ftcdn.net/jpg/02/14/23/42/360_F_214234265_cw9c9yW4X04SNhoRyel1Kf9ZTEiqfKz7.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+
+    .player {
+        position: absolute;
+        width: 7vw;
+        height: 10vh;
+        display: flex;
+        // transition: all 0.5s;
+        // transition: top 22s ease, left 5s ease;
+        transition: top 2s ease, left 2s ease, transform 2s ease;
+
+
+        .directional-button {
+            position: absolute;
+            background-color: rgb(7, 7, 7);
+            color: #fff;
+            border: none;
+            padding: 0.1vw;
+            border-radius: 0.5vw;
+            cursor: pointer;
+            font-size: 1.2vw;
+            width: fit-content;
+            transition: background-color 0.3s;
+            // transition: all 0.5s;
+
+            &:hover {
+                background-color: rgb(51, 158, 69);
+            }
+        }
+
+        .up {
+            @extend .directional-button;
+            top: -4vh;
+            left: 40%;
+
+        }
+
+        .down {
+            @extend .directional-button;
+            bottom: -4vh;
+            left: 30%;
+        }
+
+        .left {
+            @extend .directional-button;
+            top: 30%;
+            left: -2.5vw;
+        }
+
+        .right {
+            @extend .directional-button;
+            top: 30%;
+            right: -3vw;
+        }
+
+        img {
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    }
+
+}
