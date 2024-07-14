@@ -26,17 +26,6 @@ function handleClickEvent(event: Event) {
         const id = event.target!.id;
         console.log(id,event)
         const user = users.find(u => u.id === id);
-        showItems(user);
-        // const action = target.getAttribute('data-action');
-        // const id = target.getAttribute('data-id');
-        // if (action && id) {
-        //     // console.log('event')
-        //     if (action === 'remove') {
-        //         handleRemoveItem(action, id);
-        //     }
-        //     else {
-        //         handleAddItem(action, id);
-        //     }
-        // }
+        showItems(user!);
     }
 }

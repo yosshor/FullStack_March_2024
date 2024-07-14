@@ -7,14 +7,13 @@ export var currentUser: User;
 function showSelectedItems(): string | null {
     try {
         const itemsSelected = currentUser.cart.map(id => items.find(i => i.id === id)!.name);
-        // const itemSelected1 = currentUser.cart.filter(id =>  )
         const itemSelected1 = currentUser.cart.filter(id => items.find(item => item.id === id)!.name)
         console.log(itemSelected1)
-        console.log(itemsSelected)
+        // console.log(itemsSelected)
         let select = `<select class="show-selected-items" name="show-items" id="show-item-select"> 
                     ${itemsSelected.length > 0 ?
-                          itemsSelected.map(item => `<option value=${item}>${item}</option>`).join('')  :
-                         "<option value=''>No Data Found</option>"}
+                itemsSelected.map(item => `<option value=${item}>${item}</option>`).join('') :
+                "<option value=''>No Data Found</option>"}
                     </select>`
         console.log(select)
         return select
@@ -46,10 +45,18 @@ export function showItems(user: User): string {
 }
 
 
+const findItem = (id: string) => items.filter(item => item.id === id)[0];
 
 function handleAddItem(id: string): void {
     try {
+        const item = findItem(id);
+        if (item.inStock <= 0) {
+            alert('This Item Out Of Range');
+            return;
+        }
         currentUser.addToCart(id);
+        item.descFromCart();
+        console.log('removed one from inStock ', item)
         showItems(currentUser);
     } catch (error) {
         console.error(error);
@@ -58,6 +65,8 @@ function handleAddItem(id: string): void {
 
 function handleRemoveItem(id: string): void {
     try {
+        const item = findItem(id);
+        item.incrFromCart();
         if (currentUser.removeFromCart(id)) {
             showItems(currentUser);
         }
