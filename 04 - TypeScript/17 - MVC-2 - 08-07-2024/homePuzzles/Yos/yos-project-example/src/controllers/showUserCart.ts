@@ -28,8 +28,7 @@ export function showUserCart(user: User): string {
                             <p>User Name : ${user.name}</p>
                             <p>Items In Cart : ${user.cart.length}</p>
                             <p>Total Cost : ${showTotalCost(user)}</p>
-                            ${showTotalCost(user) !== null ? showTotalCost(user) : ''}
-                            <button class="get-to-shop">Get Back To Shop</button>
+                            <button class="get-to-shop">Back To Shop</button>
                         </div><div class=container>
                         ${userItems.map(i => renderCartItems(i)).join('')}
                         </div></div>`

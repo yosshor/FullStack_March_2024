@@ -49,7 +49,7 @@ export function showItems(user: User): string {
 
 const findItem = (id: string) => items.filter(item => item.id === id)[0];
 
-function handleAddItem(id: string): void {
+function handleAddItem(id: string, inCart:string): void {
     try {
         const item = findItem(id);
         if (item.inStock <= 0) {
@@ -59,18 +59,28 @@ function handleAddItem(id: string): void {
         currentUser.addToCart(id);
         item.descFromCart();
         console.log('removed one from inStock ', item)
-        showItems(currentUser);
+        if(inCart){
+            showUserCart(currentUser)
+        }
+        else{
+            showItems(currentUser);
+        }
     } catch (error) {
         console.error(error);
     }
 }
 
-function handleRemoveItem(id: string): void {
+function handleRemoveItem(id: string, inCart?: string): void {
     try {
         const item = findItem(id);
         item.incrFromCart();
         if (currentUser.removeFromCart(id)) {
-            showItems(currentUser);
+            if (inCart) {
+                showUserCart(currentUser);
+            }
+            else {
+                showItems(currentUser);
+            }
         }
     } catch (error) {
         console.error(error);
@@ -113,25 +123,25 @@ document.addEventListener('click', handleClickEvent)
 function handleClickEvent(event: Event) {
     // console.log(event)
     const target = event.target as HTMLElement;
-    console.log(target)
+    console.log(event, target)
     if (target.tagName === 'SPAN') {
         const action = target.getAttribute('data-action');
         const id = target.getAttribute('data-id');
         if (action && id) {
             // console.log('event')
-            if (action === 'remove') {
-                handleRemoveItem(id);
+            if (action.includes('remove')) {
+                action.includes('remove-in-cart') ? handleRemoveItem(id, 'cart') : handleRemoveItem(id)
             }
             else {
-                handleAddItem(id);
+                action.includes('add-in-cart') ? handleAddItem(id, 'cart') : handleAddItem(id)
             }
         }
     }
-    else if(target.tagName === 'BUTTON' && target.className == 'get-user-cart'){
+    else if (target.tagName === 'BUTTON' && target.className == 'get-user-cart') {
         showUserCart(currentUser);
         console.log('clicked outside')
     }
-    else if(target.tagName === 'BUTTON' && target.className == 'get-to-shop'){
+    else if (target.tagName === 'BUTTON' && target.className == 'get-to-shop') {
         console.log('clicked get-to-shop')
         showItems(currentUser);
     }
