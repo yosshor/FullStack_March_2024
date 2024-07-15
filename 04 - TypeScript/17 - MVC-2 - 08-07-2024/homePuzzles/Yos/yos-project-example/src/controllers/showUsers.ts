@@ -22,9 +22,9 @@ document.addEventListener('click', handleClickEvent)
 function handleClickEvent(event: Event) {
     // console.log(event)
     const target = event.target as HTMLElement;
-    if (target.tagName === 'BUTTON') {
+    if (target.tagName === 'BUTTON' && target.className !== 'get-user-cart' && target.className !== 'get-to-shop') {
         const id = event.target!.id;
-        console.log(id,event)
+        // console.log(id,event)
         const user = users.find(u => u.id === id);
         showItems(user!);
     }

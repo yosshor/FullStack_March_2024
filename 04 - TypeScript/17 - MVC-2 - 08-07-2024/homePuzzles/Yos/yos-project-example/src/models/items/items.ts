@@ -1,12 +1,14 @@
 export default class Item {
+    static find(arg0: (i: any) => boolean) {
+        throw new Error("Method not implemented.");
+    }
     name: string;
     id: string;
     price: number;
     src: string;
     desc: string;
     inStock: number;
-    numOfItems: number;
-
+    quantity:number
     constructor(name: string, price: number, src: string, desc: string, inStock: number) {
         this.name = name;
         this.id = crypto.randomUUID();
@@ -14,7 +16,7 @@ export default class Item {
         this.src = src;
         this.desc = desc;
         this.inStock = inStock;
-        this.numOfItems = inStock;
+        this.quantity = inStock;
     }
 
     descFromCart(): boolean | void {
@@ -24,12 +26,12 @@ export default class Item {
 
 
     incrFromCart() {
-        if (this.inStock < this.numOfItems) {
+        if (this.inStock < this.quantity) {
             this.inStock += 1;
-            console.log(`Items in stock are ${this.inStock} and numofitems = ${this.numOfItems}`)
+            console.log(`Items in stock are ${this.inStock} and quantity = ${this.quantity}`)
         }
         else{
-            console.log(`${this.numOfItems} its the max num per item`);
+            console.log(`${this.quantity} its the max num per item`);
         }
     }
 

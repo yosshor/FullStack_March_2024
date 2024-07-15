@@ -8,6 +8,7 @@ export default function renderItem(item:Item){
             <img src="${item.src}" alt="${item.desc}"></img>
             <p>Title : ${item.desc}</p>
             <p>Price : ${item.price}</p>
+            <p>Quantity : ${item.inStock}</p>
             <div class='items-sign' id='items-sign'>
                 <span class='red' data-action='remove' data-id='${item.id}'>-</span>
                 <span class='green' data-action='add' data-id='${item.id}'>+</span>
@@ -23,3 +24,25 @@ export default function renderItem(item:Item){
     }
 }
 
+
+export function renderCartItems(item:Item){
+    try {
+        const html = `
+        <div class='item' id="${item.id}"> 
+            <img src="${item.src}" alt="${item.desc}"></img>
+            <p>Title : ${item.desc}</p>
+            <p>Price : ${item.price}</p>
+            <div class='items-sign' id='items-sign'>
+                <span class='red' data-action='remove' data-id='${item.id}'>-</span>
+                <span class='green' data-action='add' data-id='${item.id}'>+</span>
+            </div>
+        </div>
+        `;
+
+        return html;
+
+    } catch (error) {
+        console.error(error);
+        return ''
+    }
+}

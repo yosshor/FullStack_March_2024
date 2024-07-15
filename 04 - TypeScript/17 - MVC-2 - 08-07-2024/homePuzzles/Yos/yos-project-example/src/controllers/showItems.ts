@@ -1,6 +1,7 @@
 import { items } from "../models/items/items";
 import User, { users } from "../models/users/users";
 import renderItem from "../views/items/items";
+import { showUserCart } from "./showUserCart";
 
 export var currentUser: User;
 
@@ -33,6 +34,7 @@ export function showItems(user: User): string {
                             <p>User Name Is : ${user.name}</p>
                             <p>Items In Cart : ${user.cart.length}</p>
                             ${showSelectedItems() !== null ? showSelectedItems() : ''}
+                            <button class="get-user-cart">Get User Cart</button>
                         </div><div class=container>
                         ${items.map(i => renderItem(i)).join('')}
                         ${items.map(i => renderItem(i)).join('')}</div></div>`
@@ -104,8 +106,6 @@ export function showItems2(): HTMLDivElement | undefined {
         return undefined;
     }
 }
-// document.addEventListener('DOMContentLoaded', showItems);
-
 
 // Attach event listeners after rendering
 document.addEventListener('click', handleClickEvent)
@@ -113,6 +113,7 @@ document.addEventListener('click', handleClickEvent)
 function handleClickEvent(event: Event) {
     // console.log(event)
     const target = event.target as HTMLElement;
+    console.log(target)
     if (target.tagName === 'SPAN') {
         const action = target.getAttribute('data-action');
         const id = target.getAttribute('data-id');
@@ -125,6 +126,14 @@ function handleClickEvent(event: Event) {
                 handleAddItem(id);
             }
         }
+    }
+    else if(target.tagName === 'BUTTON' && target.className == 'get-user-cart'){
+        showUserCart(currentUser);
+        console.log('clicked outside')
+    }
+    else if(target.tagName === 'BUTTON' && target.className == 'get-to-shop'){
+        console.log('clicked get-to-shop')
+        showItems(currentUser);
     }
 }
 
