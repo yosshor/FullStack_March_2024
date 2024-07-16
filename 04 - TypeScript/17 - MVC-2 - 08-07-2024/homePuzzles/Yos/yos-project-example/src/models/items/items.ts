@@ -8,15 +8,16 @@ export default class Item {
     src: string;
     desc: string;
     inStock: number;
-    quantity:number
-    constructor(name: string, price: number, src: string, desc: string, inStock: number) {
+    quantity: number
+
+    constructor(name: string, price: number, src: string, desc: string, inStock: number, id?: string, quantity?: number) {
         this.name = name;
-        this.id = crypto.randomUUID();
+        this.id = id == null ? crypto.randomUUID() : id;
         this.price = price;
         this.src = src;
         this.desc = desc;
         this.inStock = inStock;
-        this.quantity = inStock;
+        this.quantity = quantity == null ? inStock : quantity;
     }
 
     descFromCart(): boolean | void {
@@ -30,7 +31,7 @@ export default class Item {
             this.inStock += 1;
             console.log(`Items in stock are ${this.inStock} and quantity = ${this.quantity}`)
         }
-        else{
+        else {
             console.log(`${this.quantity} its the max num per item`);
         }
     }
