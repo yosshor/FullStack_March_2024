@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/style.css">
+    <title>Coffee</title>
+</head>
+<body>
+    <a href="admin.html">Admin Page</a>
+    <div class="container">
+        <h2 class="form-title">Order Your Coffee</h2>
+        <form id="coffeeForm" onsubmit="handleCoffeeOrder(event)">
+            <div class="form-group">
+                <label for="coffeeType">Coffee Type:</label>
+                <select name="coffeeType" id="coffeeType">
+                    <option value="" disabled selected>Choose Coffee Type</option>
+                    <option value="espresso">Espresso</option>
+                    <option value="cappuccino">Cappuccino</option>
+                    <option value="americano">Americano</option>
+                    <option value="latte">Latte</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="milk">Milk:</label>
+                <div class="radio-group">
+                    <input type="radio" id="noMilk" value="noMilk" name="milk">
+                    <label for="noMilk">No Milk</label>
+                    <input type="radio" id="wholeMilk" value="wholeMilk" name="milk">
+                    <label for="wholeMilk">Whole Milk</label>
+                    <input type="radio" id="soyMilk" value="soyMilk" name="milk">
+                    <label for="soyMilk">Soy Milk</label>
+                    <input type="radio" id="oatMilk" value="oatMilk" name="milk">
+                    <label for="oatMilk">Oat Milk</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Features:</label><br>
+                <input type="checkbox" id="strong" name="features" value="strong">
+                <label for="strong">Strong</label><br>
+                <input type="checkbox" id="addSweetener" name="features" value="addSweetener">
+                <label for="addSweetener">Add Sweetener</label><br>
+            </div>
+            <div class="form-group">
+                <label>Coffee Type Image:</label><br>
+                <div class="radio-group">
+                    <input type="radio" id="latte" name="coffeeTypeImage" value="latte" checked onchange="updateCoffeeType('Latte', './images/Latte.webp')">
+                    <label for="latte"><img src="./images/Latte.webp" alt="Latte" height="50"></label>
+                    <input type="radio" id="cappuccino" name="coffeeTypeImage" value="cappuccino" onchange="updateCoffeeType('Cappuccino', './images/Cappuccino.jpg')">
+                    <label for="cappuccino"><img src="./images/Cappuccino.jpg" alt="Cappuccino" height="50"></label>
+                    <input type="radio" id="espresso" name="coffeeTypeImage" value="espresso" onchange="updateCoffeeType('Espresso', './images/espresso.jpg')">
+                    <label for="espresso"><img src="./images/espresso.jpg" alt="Espresso" height="50"></label>
+                    <input type="radio" id="macchiato" name="coffeeTypeImage" value="macchiato" onchange="updateCoffeeType('Macchiato', './images/macchiato.jpg')">
+                    <label for="macchiato"><img src="./images/macchiato.jpg" alt="Macchiato" height="50"></label>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Order Now</button>
+        </form>
+    </div>
+    <script src="./dist/index.js"></script>
+</body>
+</html>

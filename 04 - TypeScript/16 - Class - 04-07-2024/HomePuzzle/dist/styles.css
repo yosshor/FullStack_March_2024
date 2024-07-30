@@ -1,0 +1,59 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.players {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://t3.ftcdn.net/jpg/02/14/23/42/360_F_214234265_cw9c9yW4X04SNhoRyel1Kf9ZTEiqfKz7.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+}
+.players .player {
+  position: absolute;
+  width: 7vw;
+  height: 10vh;
+  display: flex;
+  transition: top 2s ease, left 2s ease, transform 2s ease;
+}
+.players .player .directional-button, .players .player .right, .players .player .left, .players .player .down, .players .player .up {
+  position: absolute;
+  background-color: #070707;
+  color: #fff;
+  border: none;
+  padding: 0.1vw;
+  border-radius: 0.5vw;
+  cursor: pointer;
+  font-size: 1.2vw;
+  width: fit-content;
+  transition: background-color 0.3s;
+}
+.players .player .directional-button:hover, .players .player .right:hover, .players .player .left:hover, .players .player .down:hover, .players .player .up:hover {
+  background-color: #339e45;
+}
+.players .player .up {
+  top: -4vh;
+  left: 40%;
+}
+.players .player .down {
+  bottom: -4vh;
+  left: 30%;
+}
+.players .player .left {
+  top: 30%;
+  left: -2.5vw;
+}
+.players .player .right {
+  top: 30%;
+  right: -3vw;
+}
+.players .player img {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}

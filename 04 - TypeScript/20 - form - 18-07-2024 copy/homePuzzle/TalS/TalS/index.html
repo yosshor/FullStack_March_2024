@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="order-Coffee-Wrapper">
+    <form onsubmit="handleAddCoffeeOrder(event)">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <select name="coffeeType" id="coffeeType">
+        <option value="espresso">Espresso</option>
+        <option value="latte">Latte</option>
+        <option value="cappuccino">Cappuccino</option>
+        <option value="macchiato">Macchiato</option>
+      </select>
+      <fieldset>
+        <legend>Size:</legend>
+        <input type="radio" id="small" name="size" value="small"><label for="small">small</label>
+        <input type="radio" id="medium" name="size" value="medium"><label for="medium">medium</label>
+        <input type="radio" id="large" name="size" value="large"><label for="large">large</label>
+      </fieldset>
+      <legend>Add:</legend>
+      <input type="checkbox" name="extra" id="milk" value="milk"><label for="milk">milk</label>
+      <input type="checkbox" name="extra" id="soyMilk" value="soyMilk"><label for="soyMilk">Soy milk</label>
+      <input type="checkbox" name="extra" id="sugar" value="sugar"><label for="sugar">Sugar</label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <!-- <button onclick="handleAdminClick(event)">Admin's page</button> -->
+  <div class="order-Sandwich-Wrapper">
+    <form onsubmit="handleSandwichOrder(event)">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <select name="sandwichType" id="sandwichType">
+        <option value="none">Choose a sandwich</option>
+        <option value="tunaSandwich">Tuna sandwich</option>
+        <option value="hallumiSandwich">Hallumi sandwich</option>
+        <option value="grilledCheeseSandwich">Grilled Cheese sandwich</option>
+        <option value="salamiSandwich">Salami sandwich</option>
+      </select>
+      <legend>Size:</legend>
+      <input type="radio" name="size" id="half"><label for="half">half</label>
+      <input type="radio" name="size" id="regular"><label for="regular">regular</label>
+      <input type="radio" name="size" id="double"><label for="double">double</label>
+      <legend>Remove:</legend>
+      <input type="checkbox" name="remove" id="pickles" value="pickles"><label for="pickles">pickles</label>
+      <input type="checkbox" name="remove" id="Tomatoes" value="Tomatoes"><label for="Tomatoes">Tomatoes</label>
+      <input type="checkbox" name="remove" id="lettuce" value="lettuce"><label for="lettuce">lettuce</label>
+      <input type="checkbox" name="remove" id="Onion" value="Onion"><label for="Onion">Onion</label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script src="./src/dist/main.js"></script>
+</body>
+
+</html>

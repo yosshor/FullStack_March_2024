@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="handleReservation(event)">
+
+        <div class="title">Cafe Break</div>
+
+        <div class="place">
+            <input type="radio" value="toGo" name="place" id="toGo"> <label for="toGo">To Go</label>
+            <input type="radio" value="toSit" name="place" id="toSit"><label for="toSit"> To Sit</label>
+        </div>
+
+        <div class="menu">
+            <div class="espresso"> <input type="checkbox" name="espresso" id="espresso"> <label for="espresso"> <p>espresso</p> </label></div>
+            <div class="cappuccino"><input type="checkbox" name="cappuccino" id="cappuccino"> <label  for="cappuccino"><p>cappuccino</p> </label></div>
+            <div class="tea"> <input type="checkbox" name="tea" id="tea"> <label for="tea"><p>tea</p> </label></div>
+            <div class="iceTea"><input type="checkbox" name="iceTea" id="iceTea"> <label for="iceTea"><p>iceTea</p> </label>
+            </div>
+        </div>
+
+        <button type="submit">order</button>
+
+
+
+    </form>
+    <script src="./dist/index.js"></script>
+</body>
+
+</html>

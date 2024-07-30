@@ -1,0 +1,13 @@
+.menu {
+    display: flex;
+    .item{
+        display: flex;
+        flex-direction: column;
+    }
+
+    img {
+        height: 6rem;
+        width: auto;
+    }
+
+}

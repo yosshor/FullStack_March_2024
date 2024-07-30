@@ -1,0 +1,11 @@
+.menu {
+  display: flex;
+}
+.menu .item {
+  display: flex;
+  flex-direction: column;
+}
+.menu img {
+  height: 6rem;
+  width: auto;
+}

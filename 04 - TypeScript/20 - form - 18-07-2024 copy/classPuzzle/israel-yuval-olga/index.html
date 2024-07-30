@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="handleReservation(event)">
+
+        <div>
+            <input type="radio" value="toGo" name="place" id="toGo"> <label for="toGo">To Go</label>
+            <input type="radio" value="toSit" name="place" id="toSit"><label for="toSit">To Sit</label>
+        </div>
+
+        <div class="menu">
+           <div > <input type="checkbox" name="espresso" id="espresso"> <label for="espresso"><div class="item"><p>espresso</p>  <img src="https://www.dailygrind.com/wp-content/uploads/2018/11/espresso-1.jpg" alt="espresso"></div></label></div>
+            <div><input type="checkbox" name="cappuccino" id="cappuccino"> <label for="cappuccino">cappuccino <img src="https://insanelygoodrecipes.com/wp-content/uploads/2023/06/Cup-of-Cappuccino-1024x1024.jpg" alt="cappuccino"></label></div>
+            <div><input type="checkbox" name="tea" id="tea"> <label for="tea">tea <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSldk2gLfmtPBqUV7L5Ov9_phMJwO02cHSsiQ&s" alt="tea"></label></div>
+            <div><input type="checkbox" name="iceTea" id="iceTea">  <label for="iceTea">iceTea <img src="https://natashaskitchen.com/wp-content/uploads/2021/07/Iced-Tea-3-1.jpg" alt="iceTea"></label>   </div>
+        </div>
+
+        <button type="submit">order</button>
+
+
+
+    </form>
+    <script src="./dist/index.js"></script>
+</body>
+</html>

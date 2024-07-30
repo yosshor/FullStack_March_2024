@@ -1,0 +1,40 @@
+header {
+    width: 100%;
+    background: #000;
+    color: #fff;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    i {
+        font-size: 1.5rem;
+    }
+
+    button {
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.menu {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.topMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 20px;
+    img {
+        width: 256px;
+    }
+}

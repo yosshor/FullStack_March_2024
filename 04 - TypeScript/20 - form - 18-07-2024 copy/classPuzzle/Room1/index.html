@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/app.js" defer></script>
+</head>
+<body>
+    <div class="order-container">
+        <form onsubmit="handleAddCoffeeOrder(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <select name="coffeeType" id="coffeeType">
+                <option value="espresso">Espresso</option>
+                <option value="latte">Latte</option>
+                <option value="cappuccino">Cappuccino</option>
+                <option value="macchiato">Macchiato</option>
+            </select>
+            <fieldset>
+            <legend>Size:</legend>
+            <input type="radio" id="small" name="size" value="small"><label for="small">small</label>
+            <input type="radio" id="medium" name="size" value="medium"><label for="medium">medium</label>
+            <input type="radio" id="large" name="size" value="large"><label for="large">large</label>
+            </fieldset>
+            <fieldset>
+             <legend>Add:</legend>
+             <input type="checkbox" name="extra" id="milk" value="milk"><label for="milk">milk</label>
+             <input type="checkbox" name="extra" id="soyMilk" value="soyMilk"><label for="soyMilk">Soy milk</label>
+             <input type="checkbox" name="extra" id="sugar" value="sugar"><label for="sugar">Sugar</label>
+            </fieldset>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="./dist/app.js"></script>
+</body>
+</html>

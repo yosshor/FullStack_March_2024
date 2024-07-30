@@ -1,0 +1,80 @@
+body {
+    color: rgb(143, 6, 6);
+    background-image: url('https://png.pngtree.com/background/20230412/original/pngtree-coffee-background-picture-image_2393936.jpg');
+    // opacity: 0.1;
+    background-size: cover;
+}
+
+.title {
+    font-size: 7rem;
+    border: 1rem double;
+    text-align: center;
+}
+
+.place {
+    margin-top: 5rem;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.menu {
+
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.productLabel {
+    background-color: rgb(224, 202, 173);
+    display: inline-block;
+    height: 20rem;
+    width: 20rem;
+
+
+    img {
+        height: 15rem;
+        width: 100%;
+    }
+
+    .details {
+        display: flex;
+        justify-content: space-between;
+
+        #productsName {
+            margin: 0.1rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        #productsPrice {
+            font-size: 1rem;
+        }
+    }
+}
+
+.selected {
+    border: 5px solid green;
+}
+
+#submit {
+    margin-top: 5rem;
+
+}
+
+#management {
+    float: right;
+    margin-top: 5rem;
+}
+
+#newProduct {
+    display: none ;
+    margin: 5rem;
+    
+    float: right;
+    padding: 1rem;
+    background-color: aquamarine;
+
+}

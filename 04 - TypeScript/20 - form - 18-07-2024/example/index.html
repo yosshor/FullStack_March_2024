@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="handleAddCar(event)">
+        <select name="model">
+            <option value="model" disabled>Choose model</option>
+            <option value="i10">i10</option>
+            <option value="i20">i20</option>
+            <option value="i30">i30</option>
+            <option value="i35">i35</option>
+        </select>
+        <div>
+            <input type="radio" value="manual" name="gear"> <label for="option1">Manual</label>
+            <input type="radio" value="automatic" name="gear"> <label for="option2">Automatic</label>
+        </div>
+        <input type="text" name="company" placeholder="Company">
+        <input type="number" name="year" placeholder="Year">
+        <input type="url" name="url" placeholder="Image URL">
+        <div> 
+            <input type="checkbox" id="convertible" name="features" value="convertible">  <label for="convertible">Convertible</label>
+           <input type="checkbox" id="metalWheels" name="features" value="metalWheels"> <label for="metalWheels">Metal Wheels</label>        
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="./dist/index.js"></script>
+</body>
+
+</html>

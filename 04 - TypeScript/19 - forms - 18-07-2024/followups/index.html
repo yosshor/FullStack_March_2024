@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="input-types">
+        <input type="text" id="name" placeholder="Enter your name" onkeyup="handleChange(event)">
+        <input type="text" id="email" placeholder="Enter your email" onchange="handleChange(event)">
+        <input type="text" id="password" placeholder="Enter your password">
+        <input type="color" onmouseout="handleMouseOut(event)">
+        <input type="color" ondblclick="handleChange(event)">
+        <input type="number" onkeyup="handleChangeNumber(event)">
+        <input type="checkbox" onchange="handleClick2(event)">
+        <input type="radio">
+        <input type="file">
+        <input type="hidden">
+        <input type="image">
+        <input type="month">
+        <input type="number">
+        <input type="password">
+        <input type="radio">
+        <input type="range" onchange="handleChange(event)">
+        <input type="reset">
+        <input type="search" onchange="handleChange(event)">
+        <input type="submit">
+        <input type="tel">
+        <input type="text">
+        <input type="time">
+        <input type="url">
+        <input type="week">
+    </div>
+
+    <div class="form-example">
+        <h1>Form Example</h1>
+        <form onsubmit="handleSubmit(event)">
+            <input name="name" type="text" placeholder="name">
+            <input name="email" type="text" placeholder="email">
+            <input type="checkbox" name="checkbox" >
+            <div name="features">
+                <input type="checkbox" name="features" id="sun" value="sun">
+                <label for="sun">Sun</label>
+                <input type="checkbox" name="features" id="mon" value="mon">
+                <label for="mon">Mon</label>
+            </div>
+            <select name="select" id="select">
+                <option value="" disabled>Select model</option>
+                <option value="i10">I 10</option>
+                <option value="i20">I 20</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
+    <script src="./dist/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+.form-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+.form-wrapper .wrapper {
+  display: flex;
+  width: 400px;
+  height: 500px;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightcoral;
+  justify-items: center;
+}
+.form-wrapper .wrapper .form {
+  display: flex;
+  flex-direction: column;
+}
+.form-wrapper .wrapper .form form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+.form-wrapper .wrapper .form form .coffee-images {
+  display: flex;
+  width: 100%;
+  height: 30%;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+.form-wrapper .wrapper .form form .coffee-images .img {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding-right: 10px;
+  justify-content: center;
+}
+.form-wrapper .wrapper .form form .coffee-images .img input[type=checkbox] {
+  height: 20px;
+}
+.form-wrapper .wrapper .form form .coffee-images .img img {
+  width: 100%;
+  height: 80%;
+  border-radius: 20px;
+  justify-content: center;
+}
+.form-wrapper .wrapper .form form .name,
+.form-wrapper .wrapper .form form .coffee-type,
+.form-wrapper .wrapper .form form .features,
+.form-wrapper .wrapper .form form .sugar,
+.form-wrapper .wrapper .form form .size {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: fit-content;
+  padding-bottom: 1rem;
+}
+.form-wrapper .wrapper .form form .name .format, .form-wrapper .wrapper .form form .name input[type=text],
+.form-wrapper .wrapper .form form .name select,
+.form-wrapper .wrapper .form form .name .coffee-type select,
+.form-wrapper .wrapper .form form .coffee-type .name select,
+.form-wrapper .wrapper .form form .name .features select,
+.form-wrapper .wrapper .form form .features .name select,
+.form-wrapper .wrapper .form form .name .sugar select,
+.form-wrapper .wrapper .form form .sugar .name select,
+.form-wrapper .wrapper .form form .name .size select,
+.form-wrapper .wrapper .form form .size .name select,
+.form-wrapper .wrapper .form form .coffee-type .format,
+.form-wrapper .wrapper .form form .coffee-type input[type=text],
+.form-wrapper .wrapper .form form .coffee-type select,
+.form-wrapper .wrapper .form form .coffee-type .features select,
+.form-wrapper .wrapper .form form .features .coffee-type select,
+.form-wrapper .wrapper .form form .coffee-type .sugar select,
+.form-wrapper .wrapper .form form .sugar .coffee-type select,
+.form-wrapper .wrapper .form form .coffee-type .size select,
+.form-wrapper .wrapper .form form .size .coffee-type select,
+.form-wrapper .wrapper .form form .features .format,
+.form-wrapper .wrapper .form form .features input[type=text],
+.form-wrapper .wrapper .form form .features select,
+.form-wrapper .wrapper .form form .features .sugar select,
+.form-wrapper .wrapper .form form .sugar .features select,
+.form-wrapper .wrapper .form form .features .size select,
+.form-wrapper .wrapper .form form .size .features select,
+.form-wrapper .wrapper .form form .sugar .format,
+.form-wrapper .wrapper .form form .sugar input[type=text],
+.form-wrapper .wrapper .form form .sugar select,
+.form-wrapper .wrapper .form form .sugar .size select,
+.form-wrapper .wrapper .form form .size .sugar select,
+.form-wrapper .wrapper .form form .size .format,
+.form-wrapper .wrapper .form form .size input[type=text],
+.form-wrapper .wrapper .form form .size select {
+  width: 150px;
+  height: 25px;
+  border-radius: 10px;
+  border-color: blue;
+}
+.form-wrapper .wrapper .form form .name label,
+.form-wrapper .wrapper .form form .coffee-type label,
+.form-wrapper .wrapper .form form .features label,
+.form-wrapper .wrapper .form form .sugar label,
+.form-wrapper .wrapper .form form .size label {
+  width: 65px;
+}
+.form-wrapper .wrapper .form form .name .no-sugar, .form-wrapper .wrapper .form form .name .strong,
+.form-wrapper .wrapper .form form .name .coffee-type .strong,
+.form-wrapper .wrapper .form form .coffee-type .name .strong,
+.form-wrapper .wrapper .form form .name .features .strong,
+.form-wrapper .wrapper .form form .features .name .strong,
+.form-wrapper .wrapper .form form .name .sugar .strong,
+.form-wrapper .wrapper .form form .sugar .name .strong,
+.form-wrapper .wrapper .form form .name .size .strong,
+.form-wrapper .wrapper .form form .size .name .strong,
+.form-wrapper .wrapper .form form .coffee-type .no-sugar,
+.form-wrapper .wrapper .form form .coffee-type .strong,
+.form-wrapper .wrapper .form form .coffee-type .features .strong,
+.form-wrapper .wrapper .form form .features .coffee-type .strong,
+.form-wrapper .wrapper .form form .coffee-type .sugar .strong,
+.form-wrapper .wrapper .form form .sugar .coffee-type .strong,
+.form-wrapper .wrapper .form form .coffee-type .size .strong,
+.form-wrapper .wrapper .form form .size .coffee-type .strong,
+.form-wrapper .wrapper .form form .features .no-sugar,
+.form-wrapper .wrapper .form form .features .strong,
+.form-wrapper .wrapper .form form .features .sugar .strong,
+.form-wrapper .wrapper .form form .sugar .features .strong,
+.form-wrapper .wrapper .form form .features .size .strong,
+.form-wrapper .wrapper .form form .size .features .strong,
+.form-wrapper .wrapper .form form .sugar .no-sugar,
+.form-wrapper .wrapper .form form .sugar .strong,
+.form-wrapper .wrapper .form form .sugar .size .strong,
+.form-wrapper .wrapper .form form .size .sugar .strong,
+.form-wrapper .wrapper .form form .size .no-sugar,
+.form-wrapper .wrapper .form form .size .strong {
+  padding-right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.form-wrapper .wrapper .form form .name .no-sugar label, .form-wrapper .wrapper .form form .name .strong label,
+.form-wrapper .wrapper .form form .coffee-type .no-sugar label,
+.form-wrapper .wrapper .form form .coffee-type .strong label,
+.form-wrapper .wrapper .form form .features .no-sugar label,
+.form-wrapper .wrapper .form form .features .strong label,
+.form-wrapper .wrapper .form form .sugar .no-sugar label,
+.form-wrapper .wrapper .form form .sugar .strong label,
+.form-wrapper .wrapper .form form .size .no-sugar label,
+.form-wrapper .wrapper .form form .size .strong label {
+  width: 65px;
+}
+.form-wrapper .wrapper .form form .name .strong,
+.form-wrapper .wrapper .form form .coffee-type .strong,
+.form-wrapper .wrapper .form form .features .strong,
+.form-wrapper .wrapper .form form .sugar .strong,
+.form-wrapper .wrapper .form form .size .strong {
+  width: 45px;
+}
+.form-wrapper .wrapper .form form .size fieldset {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.form-wrapper .wrapper .form form .size fieldset input[type=radio] {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  margin-right: 5px;
+}
+.form-wrapper .wrapper .form form .size .size-label {
+  display: flex;
+}
+.form-wrapper .wrapper .form form .size .size-label label {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+.form-wrapper .wrapper .form form .submit {
+  display: flex;
+  justify-content: center;
+}
+.form-wrapper .wrapper .form form .submit button {
+  width: 130px;
+  height: 30px;
+  border-radius: 10px;
+  border-color: blue;
+  background-color: blue;
+  color: white;
+  font-weight: 500;
+}

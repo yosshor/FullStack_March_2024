@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="title">Cafe Break</div>
+
+    <form onsubmit="handleReservation(event)">
+
+
+        <div class="place">
+            <input type="radio" value="toGo" name="place" id="toGo"> <label for="toGo">To Go</label>
+            <input type="radio" value="toSit" name="place" id="toSit"><label for="toSit"> To Sit</label>
+        </div>
+
+<div class="menu">
+
+    <input type="checkbox" name="espresso" id="espresso" onchange="handleBorder(this)" style="display: none;" >
+    <label class="productLabel" for="espresso">
+            <img src="https://www.dailygrind.com/wp-content/uploads/2018/11/espresso-1.jpg" alt="">
+            <div class="details">                
+                <p id="productsName" >espresso</p>
+                <p id="productsPrice">10.00</p>
+            </div>
+        </label>
+        
+        
+        <input type="checkbox" name="cappuccino" id="cappuccino" onchange="handleBorder(this)" style="display: none;" >
+        <label class="productLabel" for="cappuccino">
+            <img src="https://insanelygoodrecipes.com/wp-content/uploads/2023/06/Cup-of-Cappuccino-1024x1024.jpg" alt="">
+            <div class="details">                
+                <p id="productsName" >cappuccino</p>
+                <p id="productsPrice">10.00</p>
+            </div>
+        </label>
+        
+        
+        <input type="checkbox" name="tea" id="tea"  onchange="handleBorder(this)" style="display: none;" >
+        <label class="productLabel" for="tea">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSldk2gLfmtPBqUV7L5Ov9_phMJwO02cHSsiQ&s" alt="">
+            <div class="details">                
+                <p id="productsName" >tea</p>
+                <p id="productsPrice">10.00</p>
+            </div>
+        </label>
+        
+        
+        <input type="checkbox" name="iceTea" id="iceTea" onchange="handleBorder(this)" style="display: none;" >
+        <label class="productLabel" for="iceTea">
+            <img src="https://natashaskitchen.com/wp-content/uploads/2021/07/Iced-Tea-3-1.jpg" alt="">
+            <div class="details">                
+                <p id="productsName" >iceTea</p>
+                <p id="productsPrice">10.00</p>
+            </div>
+        </label> 
+        
+    </div>
+
+    </form>
+    <button id="submit" type="submit">order</button>
+
+    <button id="management" onclick="handleManagement(event)">management</button>
+
+
+    <form id="newProduct" onsubmit="handleAddProduct(event)">
+        <input type="text" placeholder="name" name="name" required><br><br>
+        <input type="url" placeholder="img" name="img" required><br><br>
+        <input type="number" placeholder="price" name="price" ><br><br>
+        <button type="submit" id="addNewProduct">submit</button>
+    </form>
+
+
+
+
+
+    <script src="./dist/management.js"></script>
+    <script src="./dist/order.js"></script>
+</body>
+
+</html>

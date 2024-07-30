@@ -1,0 +1,60 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Order Form</title>
+  <link rel="stylesheet" href="dist/style.css">
+  <a href="index2.html"></a>
+</head>
+
+
+<body>
+  <script src="dist/insex.js"></script>
+  <h1>Order Your Coffee</h1>
+  <!-- <form id="coffeeOrderForm"> -->
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" required><br><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br><br>
+
+  <label for="phone">Phone Number:</label><br>
+  <input type="tel" id="phone" name="phone" required><br><br>
+
+  <label for="coffeeType">Coffee Type:</label><br>
+  <select id="coffeeType" name="coffeeType" required>
+    <option value="espresso">Espresso</option>
+    <option value="latte">Latte</option>
+    <option value="cappuccino">Cappuccino</option>
+    <option value="americano">Americano</option>
+  </select><br><br>
+
+  <label for="size">Size:</label><br>
+  <select id="size" name="size" required>
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+  </select><br><br>
+
+  <label for="milkOptions">Milk Options:</label><br>
+  <select id="milkOptions" name="milkOptions">
+    <option value="whole">Whole Milk</option>
+    <option value="skim">Skim Milk</option>
+    <option value="soy">Soy Milk</option>
+    <option value="almond">Almond Milk</option>
+  </select><br><br>
+
+  <label for="sugar">Sugar:</label><br>
+  <select id="sugar" name="sugar">
+    <option value="no-sugar">No Sugar</option>
+    <option value="1-tsp">1 tsp</option>
+    <option value="2-tsp">2 tsp</option>
+    <option value="3-tsp">3 tsp</option>
+  </select><br><br>
+
+  <label for="notes">Additional Notes:</label><br>
+  <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br><br>
+
+  <input type="submit" value="Submit Order">
+
+  <!DOCTYPE html>
+  <html lang="en">

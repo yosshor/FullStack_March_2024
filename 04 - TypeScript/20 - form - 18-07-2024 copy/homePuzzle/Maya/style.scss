@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://assets.bonappetit.com/photos/5c366551f212512d0e6cefd0/16:9/w_1920,c_limit/Basically-Coffee-0219-03.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+
+    a {
+        align-self: start;
+        color: white;
+    }
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    border-radius: 2%;
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"], input[type="radio"], input[type="checkbox"], select {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+
+        img {
+            margin-left: 10px;
+        }
+    }
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
