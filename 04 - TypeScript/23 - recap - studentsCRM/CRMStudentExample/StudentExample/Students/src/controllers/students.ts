@@ -150,6 +150,7 @@ function updateSubject(event: any): void {
 
 function showSubject(studentId: string, subjectId: string): void {
     try {
+ 
         const subjectInfoDiv = document.querySelector(`div.subject#subject-${subjectId}`) as HTMLDivElement;
         const subject = students.find(student => student.id === studentId);
         const subjectObject: Subject = subject?.grades.find(sub => sub.id === subjectId) as Subject;
@@ -157,13 +158,9 @@ function showSubject(studentId: string, subjectId: string): void {
         if (subjectInfoDiv) {
             console.log('subjectInfoDiv', subjectInfoDiv);
             subjectInfoDiv.innerHTML = renderSubject(subjectObject, subjectId);
-            // const subjectsDiv = showSubjectsWithGrades(id);
-            // subjectInfoDiv.innerHTML = subjectsDiv;
             listenerUpdateSubject();
-            // renderStudents();
         }
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error);
     }
 }

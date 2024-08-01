@@ -1,0 +1,67 @@
+
+.buttons {
+    height: 45px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    button {
+        height: 45px;
+        width: 100px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    &__add {
+        button {
+            background-color: yellow;
+            color: black;
+        }
+    }
+
+    &__delete {
+        button {
+            background-color: red;
+            color: white;
+            margin-right: 10px;
+        }
+    }
+
+    &__edit {
+        button {
+            background-color: blue;
+            color: white;
+            width: 70%;
+            height: 70%;
+        }
+    }
+    &__update {
+        button {
+            background-color: lightblue;
+            color: black;
+            width: 70%;
+            height: 70%;
+        }
+    }
+    &__delete_subject {
+        button {
+            background-color: lightcoral;
+            color: black;
+            width: 70%;
+            height: 70%;
+        }
+    }
+
+    &__add_subject {
+        button {
+            background-color: lightgreen;
+            color: black;
+            width: 70%;
+            height: 70%;
+        }
+    }
+
+
+}
