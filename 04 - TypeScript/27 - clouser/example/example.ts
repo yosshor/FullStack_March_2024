@@ -107,9 +107,18 @@ class User{
 function setUser(){
     const users:User[] = [];
     return function addUser(name:string, age:number, title:string, married:boolean){
-        const user = new User(name, age, title, married);
-        users.push(user);
-        return users.sort((a,b) => (a.age - b.age));
+        const user = users.find(user => user.name === name);
+        if(user){
+            user.changeTitle(title);
+            console.log('user title changed')
+            return;
+        }
+        else{
+            const user = new User(name, age, title, married);
+            users.push(user);
+            console.log('user added successfully')
+            return users.sort((a,b) => (a.age - b.age));
+        }
     }
 }
 
@@ -118,6 +127,10 @@ const addUser = setUser();
 addUser('david', 25, 'manager', true);
 addUser('shalom', 30, 'manager', true);
 addUser('yossi',12,'developer',true)
+
+addUser('yossi',12,'haircut',true)
+
+
 
 const addUsers = addUser('yakov', 32, 'developer', false);
 console.log(addUsers);

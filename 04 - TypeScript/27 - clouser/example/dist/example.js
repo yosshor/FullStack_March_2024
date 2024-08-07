@@ -81,14 +81,24 @@ var User = /** @class */ (function () {
 function setUser() {
     var users = [];
     return function addUser(name, age, title, married) {
-        var user = new User(name, age, title, married);
-        users.push(user);
-        return users.sort(function (a, b) { return (a.age - b.age); });
+        var user = users.find(function (user) { return user.name === name; });
+        if (user) {
+            user.changeTitle(title);
+            console.log('user title changed');
+            return;
+        }
+        else {
+            var user_1 = new User(name, age, title, married);
+            users.push(user_1);
+            console.log('user added successfully');
+            return users.sort(function (a, b) { return (a.age - b.age); });
+        }
     };
 }
 var addUser = setUser();
 addUser('david', 25, 'manager', true);
 addUser('shalom', 30, 'manager', true);
 addUser('yossi', 12, 'developer', true);
+addUser('yossi', 12, 'haircut', true);
 var addUsers = addUser('yakov', 32, 'developer', false);
 console.log(addUsers);
