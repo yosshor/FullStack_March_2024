@@ -7,11 +7,3 @@ export function setupCounter(element: HTMLButtonElement) {
   element.addEventListener('click', () => setCounter(counter + 1))
   setCounter(0)
 }
-
-export function sum(a:number, b:number):number {
-  return a + b;
-}
-
-export function divide(a:number, b:number):number {
-  return a / b;
-}
