@@ -1,3 +1,10 @@
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 var Student = /** @class */ (function () {
     function Student(name, totalMarks) {
         this.totalMarks = 0;
@@ -102,3 +109,15 @@ addUser('yossi', 12, 'developer', true);
 addUser('yossi', 12, 'haircut', true);
 var addUsers = addUser('yakov', 32, 'developer', false);
 console.log(addUsers);
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var newArray = array;
+array.push(11);
+newArray.push(13); // by reference
+// console.log(array, newArray)
+var array2 = __spreadArrays(array); //by reference
+array.push(23);
+//second way
+var array3 = new (Array.bind.apply(Array, __spreadArrays([void 0], array)))();
+array3.push(34);
+console.log(array, array3);
+console.log(array, array2);

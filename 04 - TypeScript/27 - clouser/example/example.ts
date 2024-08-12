@@ -134,3 +134,23 @@ addUser('yossi',12,'haircut',true)
 
 const addUsers = addUser('yakov', 32, 'developer', false);
 console.log(addUsers);
+
+
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const newArray = array;
+
+array.push(11);
+newArray.push(13); // by reference
+// console.log(array, newArray)
+
+const array2 = [...array]; //by reference
+array.push(23);
+
+//second way
+const array3 = new Array(...array);
+array3.push(34);
+console.log(array, array3)
+
+console.log(array, array2)
+
