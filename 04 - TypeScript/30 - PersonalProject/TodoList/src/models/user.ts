@@ -1,3 +1,4 @@
+import { getAllUsers } from '../controllers/getUsersFromLS.ts';
 import { Task } from './task.ts'
 
 export class User {
@@ -9,8 +10,8 @@ export class User {
     list: Task[];
 
 
-    constructor(firstName: string, lastName: string, email: string, password: string) {
-        this.id = crypto.randomUUID().toString();
+    constructor(firstName: string, lastName: string, email: string, password: string, id?: string) {
+        this.id = id ?? crypto.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -21,4 +22,5 @@ export class User {
         this.list.push(item);
     }
 }
-export let users: User[] = [];
+
+export let users: User[] = getAllUsers();

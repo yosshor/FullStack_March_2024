@@ -24,16 +24,17 @@ export function handleClickSignUp(event: any): void {
         const user = new User(firstName, lastName, email, password);
         users.push(user);
         localStorage.setItem('CurrentUser', JSON.stringify(user));
-        const usersList: User[] = getAllUsers();
-        usersList.push(user);
+        const usersList: User[] = users;
+        // const usersList: User[] = getAllUsers();
+        // usersList.forEach(user => usersList.push(user))
+        // usersList.push(user);
         localStorage.setItem('AllUsers', JSON.stringify(usersList));
-        
+
         // localStorage.setItem('users', JSON.stringify(users));
         //localStorage.setItem(email, password);
         event.target.reset();
-        // debugger
-
-        insertUser(email, password)
+        console.log(email, password, user.id)
+        insertUser(email, password, user.id)
             .then(() => console.log("User added successfully"))
             .catch((error) => console.error(error));
 

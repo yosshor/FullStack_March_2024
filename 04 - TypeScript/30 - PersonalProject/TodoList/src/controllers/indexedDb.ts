@@ -1,5 +1,5 @@
-const dbName = "userDatabase";
-const storeName = "userStore";
+const dbName = "usersDB";
+const storeName = "users";
 
 
 
@@ -59,14 +59,14 @@ export function checkEmailAndPassword(email: string, password: string): Promise<
 
 
 // Function to insert email and password
-export function insertUser(email: string, password: string): Promise<void> {
+export function insertUser(email: string, password: string, id: string): Promise<void> {
     return new Promise(async (resolve, reject) => {
         try {
             const db = await openDatabase();
             const transaction = db.transaction(storeName, "readwrite");
             const store = transaction.objectStore(storeName);
 
-            const user = { email, password };
+            const user = { email, password, id };
             const request = store.add(user);
 
             request.onsuccess = () => {
@@ -75,6 +75,32 @@ export function insertUser(email: string, password: string): Promise<void> {
 
             request.onerror = (event) => {
                 reject(`Error inserting user: ${(event.target as IDBRequest).error}`);
+            };
+        } catch (error) {
+            reject(`Error during transaction: ${error}`);
+        }
+    });
+}
+
+
+
+// Function to get all information by email
+export function getAllInfoByEmail(email: string): Promise<any[]> {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const db = await openDatabase();
+            const transaction = db.transaction(storeName, "readonly");
+            const store = transaction.objectStore(storeName);
+
+            const index = store.index("email");
+            const request = index.getAll(email);
+
+            request.onsuccess = () => {
+                resolve(request.result); // Resolves with an array of all matching records
+            };
+
+            request.onerror = (event) => {
+                reject(`Error getting data by email: ${(event.target as IDBRequest).error}`);
             };
         } catch (error) {
             reject(`Error during transaction: ${error}`);

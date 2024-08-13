@@ -36,13 +36,13 @@ function addClickListenerEvent(): void {
     }
 }
 
-function handleDelete(event: Event): void {
-    const id = event.target?.id;
+function handleDelete(event: any): void {
+    const id = event.target.id;
     console.log('delete', id);
     handleDeleteTask(id);
 
 }
-function handleEdit(event: Event): void {
+function handleEdit(event: any): void {
     const id = event.target?.id;
     console.log('edit', event.target?.id);
     handleEditTask(id)
@@ -50,7 +50,7 @@ function handleEdit(event: Event): void {
 
 }
 
-function handleUpdate(event: Event): void {
+function handleUpdate(event: any): void {
     const id = event.target?.id;
 
 

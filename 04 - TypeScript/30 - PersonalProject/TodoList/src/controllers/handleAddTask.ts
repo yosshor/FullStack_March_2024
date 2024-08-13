@@ -1,13 +1,18 @@
 import { tasksList, Task } from "../models/task";
+import { User } from "../models/user";
 import { handleEditHtmlTag, renderTasksList } from "../views/tasksList";
 
 
 
-export function handleAddTask(title: string, desc: string, author: string, expectToBeDone: Date): void | undefined {
+export function handleAddTask(currentUser: User | undefined, title: string, desc: string, author: string, expectToBeDone: Date): void | undefined {
     try {
+        if (currentUser === undefined) throw new Error("user is undefined")
+        if (!(currentUser instanceof User)) console.error("instance not typeof user")
         const task = new Task(title, desc, author, expectToBeDone);
         tasksList.push(task);
-        console.log(tasksList, task)
+        currentUser!.addToList(task);
+        // tasksList.push(task);
+        console.log(currentUser!.list, task)
         renderListOfTasks();
 
     } catch (error) {
@@ -19,15 +24,8 @@ export function handleAddTask(title: string, desc: string, author: string, expec
 function renderListOfTasks() {
     //render tasks list
     debugger
-    const body = document.querySelector('body')!;
-    body.innerHTML = '';
-//     <div class="wrapper">
 
-//     <div class='form' id="form"></div>
-//     <div class='tasksList' id="tasksList"></div>
-
-//   </div>
-    const list = document.querySelector<HTMLDivElement>('#tasksList')!;
+    const list = document.querySelector<HTMLDivElement>('#tasks-list')!;
     if (list) {
         console.log('list', list);
         renderTasksList(list);

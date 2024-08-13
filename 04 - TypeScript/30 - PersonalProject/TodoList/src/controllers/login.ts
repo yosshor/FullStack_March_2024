@@ -1,6 +1,8 @@
+import { Email } from "../models/email";
 import { User, users } from "../models/user";
 import { renderLoginPage } from "../views/login";
 import { renderRegisterForm } from "../views/register";
+import { getCurrentUser } from "./getUsersFromLS";
 import { checkEmailAndPassword } from "./indexedDb";
 import { moveToTaskListPage } from "./signup";
 
@@ -29,25 +31,22 @@ function handleLogin(event: any): void {
     const email = form.email.value as string;
     const password = form.password.value as string;
     console.log('Email:', email, 'Password:', password);
-    //users.push(new User());
+    localStorage.setItem('CurrentUser', null!);
 
-    //localStorage.setItem(email, password);
-    // localStorage.setItem('CurrentUser', JSON.stringify(user));
-
-
+    const mail: Email | null | undefined = getCurrentUser(email);
+    if(mail === null) return emailOrPassIncorrect();
+    if (mail) console.log(mail.email, mail.id, mail.password)
 
 
     checkEmailAndPassword(email, password)
         .then((isValid) => {
             if (isValid) {
                 console.log("Email and password are correct.");
-                localStorage.setItem('CurrentUser', email)
+                localStorage.setItem('CurrentUser', JSON.stringify(mail))
                 moveToTaskListPage();
 
             } else {
-                const loginError = document.querySelector('#loginError') as HTMLFormElement;
-                loginError.innerHTML = 'Email or password is incorrect.';
-                console.log("Email or password is incorrect.");
+                emailOrPassIncorrect();
             }
         })
         .catch((error) => console.error(error));
@@ -56,6 +55,12 @@ function handleLogin(event: any): void {
 
     event.target.reset();
 }
+function emailOrPassIncorrect(){
+    const loginError = document.querySelector('#loginError') as HTMLFormElement;
+    loginError.innerHTML = 'Email or password is incorrect.';
+    console.log("Email or password is incorrect.");
+}
+
 
 function handleRegister(event: any): void {
     try {

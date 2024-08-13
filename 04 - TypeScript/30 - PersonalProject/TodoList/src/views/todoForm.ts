@@ -1,6 +1,6 @@
 import { handleAddTask } from "../controllers/handleAddTask";
 import { Task } from "../models/task";
-import { User } from "../models/user";
+import { User, users } from "../models/user";
 import './styles/dist/form.css'
 
 
@@ -27,32 +27,27 @@ export function renderTaskForm(divElement: HTMLElement): string | undefined {
     }
 }
 
-export function handleSubmit(event: Event) {
+export function handleSubmit(event: any) {
     try {
-        const users : User[] = [];
-        
         const form = event.target as HTMLFormElement;
         if (!form) throw new Error("Form not found");
         event.preventDefault();
-        const name = form.name.value!;
+        const title = form.name.value;
         const desc = form.description.value;
         const expectToBeDone = form.timeToBeDone.value;
-        const currentUser = localStorage.getItem('CurrentUser') as string;
-        const usersStr = JSON.parse(localStorage.getItem('AllUsers') as string);
-        usersStr.forEach(user => {
-                users.push(new User(user.firstName, user.lastName, user.email, user.password))
-        });
-        console.log(users)
-        const author1 = users.find(user => user.email == currentUser);
-        console.log('found',author1)
-        const author = currentUser;
-        console.log(author)
-        console.log(name, desc);
-        if (name === undefined || name === '' || desc === undefined || desc === '') {
+        const currentUserData: User = JSON.parse(localStorage.getItem('CurrentUser') as string);
+        const author: string = currentUserData.firstName + " " + currentUserData.lastName;
+        const currentUser: User | undefined = users.find(user => user.email === currentUserData.email);
+        const user = new User(currentUser!.firstName, currentUser!.lastName, currentUser!.email, 
+                    currentUser!.password, currentUser!.id);
+
+        console.log('found', author, user)
+        console.log(title, desc);
+        if (title === undefined || title === '' || desc === undefined || desc === '') {
             form.reset();
             throw new Error("Please fill all fields");
         }
-        //handleAddTask(name, desc, author, expectToBeDone);
+        handleAddTask(user, title, desc, author, expectToBeDone);
         form.reset();
 
     } catch (error) {
