@@ -12,7 +12,7 @@ export class Task {
         this.id = crypto.randomUUID().toString();
         this.title = title;
         this.desc = desc;
-        this.date = new Date();
+        this.date = new Date(expectToBeDone);
         this.author = author;
         this.expectToBeDone = expectToBeDone;
     }

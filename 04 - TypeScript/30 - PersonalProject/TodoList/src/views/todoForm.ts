@@ -37,17 +37,17 @@ export function handleSubmit(event: any) {
         const expectToBeDone = form.timeToBeDone.value;
         const currentUserData: User = JSON.parse(localStorage.getItem('CurrentUser') as string);
         const author: string = currentUserData.firstName + " " + currentUserData.lastName;
-        const currentUser: User | undefined = users.find(user => user.email === currentUserData.email);
-        const user = new User(currentUser!.firstName, currentUser!.lastName, currentUser!.email, 
-                    currentUser!.password, currentUser!.id);
-
-        console.log('found', author, user)
+        // const currentUser: User | undefined = users.find(user => user.email === currentUserData.email);
+        // const user = new User(currentUser!.firstName, currentUser!.lastName, currentUser!.email, 
+        //             currentUser!.password, currentUser!.id);
+        debugger    
+        console.log('found', author)
         console.log(title, desc);
         if (title === undefined || title === '' || desc === undefined || desc === '') {
             form.reset();
             throw new Error("Please fill all fields");
         }
-        handleAddTask(user, title, desc, author, expectToBeDone);
+        handleAddTask(currentUserData.email, title, desc, author, expectToBeDone);
         form.reset();
 
     } catch (error) {
