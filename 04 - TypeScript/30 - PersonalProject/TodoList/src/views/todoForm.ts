@@ -13,14 +13,15 @@ export function renderTaskForm(divElement: HTMLElement): string | undefined {
                             <label>Task Name:</label><input type='text' name='name'>
                             <label>Task Description:</label><input type='text' name='description'>
                             <label>Time To Be Done:</label><input type='datetime-local' name='timeToBeDone'>
-
                             <button type='submit'>Add Task</button>
                       </form>`;
         divElement.innerHTML = form;
         const formElement = document.getElementById('form') as HTMLDivElement;
-        if (formElement) formElement.addEventListener('submit', handleSubmit);
-
-        const userTasks:Task[] | undefined = getAllUserTasks();
+        if (formElement) {
+            formElement.addEventListener('submit', handleSubmit);
+            putDateInInputDateForm();
+        }
+        const userTasks: Task[] | undefined = getAllUserTasks();
         renderListOfTasks(userTasks!);
         return form;
 
@@ -39,17 +40,27 @@ export function handleSubmit(event: any) {
         const desc = form.description.value;
         const expectToBeDone = form.timeToBeDone.value;
         const currentUserData: User = JSON.parse(localStorage.getItem('CurrentUser') as string);
-        const author: string = currentUserData.firstName + " " + currentUserData.lastName; 
+        const author: string = currentUserData.firstName + " " + currentUserData.lastName;
         console.log('found', author)
         console.log(title, desc);
         if (title === undefined || title === '' || desc === undefined || desc === '') {
-            form.reset();
             throw new Error("Please fill all fields");
         }
         handleAddTask(currentUserData.email, title, desc, author, expectToBeDone);
         form.reset();
-
+        putDateInInputDateForm();
+        
     } catch (error) {
         console.error(error);
+    }
+}
+
+function putDateInInputDateForm(): void {
+
+    const timeInput = document!.getElementsByName('timeToBeDone')[0] as HTMLInputElement;
+    if (timeInput) {
+        const now = new Date();
+        const formattedDateTime = now.toISOString().slice(0, 16);
+        timeInput.value = formattedDateTime;
     }
 }

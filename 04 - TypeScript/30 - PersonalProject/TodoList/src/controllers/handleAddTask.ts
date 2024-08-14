@@ -1,7 +1,7 @@
 import { tasksList, Task } from "../models/task";
 import { User } from "../models/user";
 import { handleEditHtmlTag, renderTasksList } from "../views/tasksList";
-import { addTaskToUser, deleteTaskFromUser, getCurrentUserDetails } from "./addTaskToUser";
+import { addTaskToUser, deleteOrUpdateTaskFromUser, getCurrentUserDetails, getTaskToEdit } from "./addTaskToUser";
 
 
 
@@ -28,7 +28,7 @@ export function renderListOfTasks(userTasks: Task[]): void {
 
 export function handleDeleteTask(id: string) {
     try {
-        const userList: Task[] | undefined = deleteTaskFromUser(id);
+        const userList: Task[] | undefined = deleteOrUpdateTaskFromUser(id, "delete");
         if (userList) renderListOfTasks(userList);
     } catch (error) {
         console.error(error);
@@ -37,7 +37,8 @@ export function handleDeleteTask(id: string) {
 
 export function handleEditTask(id: string): void {
     try {
-        const task = tasksList.find(task => task.id === id);
+        const task = getTaskToEdit(id);
+        //const task = tasksList.find(task => task.id === id);
         const taskDiv = document.getElementById(`a${id}`) as HTMLDivElement;
         handleEditHtmlTag(taskDiv, task!);
     } catch (error) {
@@ -46,21 +47,13 @@ export function handleEditTask(id: string): void {
 }
 
 
-export function handleUpdateTask(id: string, event: any): void {
+export function handleUpdateTask(id: string, title: string, desc: string, timeToBeDone: Date, event: any): void {
     try {
-        const task = tasksList.find(task => task.id === id);
-        // console.log(task)
-        const taskDiv = document.querySelector(`#a${id}`) as HTMLDivElement;
-        console.dir('taskDiv', taskDiv);
-        console.log('name', event);
-        event.preventDefault();
-        // console.log('task', task);
-        // console.log('event', event.target);
-        // task.name = event.name;
-        // task.description = event.desc;
-        // task.done = event.done;
-        // renderListOfTasks();
-        return;
+        const splitId = id.split('form-')[1];
+        const newTask = new Task(title, desc, "", new Date(timeToBeDone), splitId)
+        const userList: Task[] | undefined = deleteOrUpdateTaskFromUser(splitId, "update", newTask)
+        if (userList) renderListOfTasks(userList);
+
     } catch (error) {
         console.error(error);
     }

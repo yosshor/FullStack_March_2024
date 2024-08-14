@@ -12,14 +12,19 @@
         align-items: center;
         width: 100%;
         .name {
-            width: 15vw;
+            width: 12vw;
         }
 
         .desc,.be-done {
             width: 20vw;
             
         }
-
+        .buttons{
+            width: 10%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
         .done {
             width: 50px;
         }

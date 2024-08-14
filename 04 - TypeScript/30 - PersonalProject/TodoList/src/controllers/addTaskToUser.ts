@@ -21,27 +21,48 @@ export function addTaskToUser(email: string, title: string, desc: string, author
     return user?.list
 }
 
-export function deleteTaskFromUser(id: string): Task[] | undefined {
+export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, task?: Task): Task[] | undefined {
+    const currentUser: User | undefined = getCurrentUserDetails();
+    //update all users also
+    const allUsers: User[] = getAllUsers();
+    const user = allUsers.find(user => user.email === currentUser!.email)
+    const taskGlobal = user!.list!.findIndex(task => task.id === id);
+    const currentTaskFromAllUsers = user!.list.find(task => task.id === id);
+
+    if (!currentUser!) throw new Error("User Not Found")
+    const userTasks = currentUser?.list;
+
+    if (deleteOrUpdate === "delete") {
+        //delete from currentUser task and allUsers
+        const taskCurrent = userTasks!.findIndex(task => task.id === id);
+        userTasks.splice(taskCurrent, 1);
+        user!.list.splice(taskGlobal, 1);
+        console.log('deleted from all users and currentUser')
+    }
+    else {
+        //update currentUser task and allUsers
+        const currentTask = userTasks!.find(task => task.id === id);
+        currentTask!.expectToBeDone! = new Date(task!.expectToBeDone);
+        currentTask!.title = task!.title;
+        currentTask!.desc = task!.desc;
+
+        currentTaskFromAllUsers!.expectToBeDone! = new Date(task!.expectToBeDone);
+        currentTaskFromAllUsers!.title = task!.title;
+        currentTaskFromAllUsers!.desc = task!.desc;
+
+        console.log('updated all users and currentUser')
+    }
+    localStorage.setItem("CurrentUser", JSON.stringify(currentUser))
+    localStorage.setItem('AllUsers', JSON.stringify(allUsers));
+    return user?.list
+}
+
+export function getTaskToEdit(id: string): Task | undefined {
     const currentUser: User | undefined = getCurrentUserDetails();
     if (!currentUser!) throw new Error("User Not Found")
     const userTasks = currentUser?.list;
-    const taskCurrent = userTasks!.findIndex(task => task.id === id);
-    console.log('task num', taskCurrent);
-    userTasks.splice(taskCurrent, 1);
-    console.log('deleted')
-
-    localStorage.setItem("CurrentUser", JSON.stringify(currentUser))
-    // debugger
-    //update all users also
-    const allUsers: User[] = getAllUsers();
-    const user = allUsers.find(user => user.email === currentUser.email)
-    const taskGlobal = user!.list!.findIndex(task => task.id === id);
-    console.log('task num', taskGlobal);
-    user!.list.splice(taskGlobal, 1);
-    console.log('deleted from all users')
-
-    localStorage.setItem('AllUsers', JSON.stringify(allUsers));
-    return user?.list
+    const taskCurrent = userTasks!.find(task => task.id === id);
+    return taskCurrent;
 }
 
 

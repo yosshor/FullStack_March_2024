@@ -51,21 +51,12 @@ function handleEdit(event: any): void {
 }
 
 function handleUpdate(event: any): void {
-    const id = event.target?.id;
-
-
-
-    // if (!form) throw new Error("Form not found");
-    // // event.preventDefault();
-    // const name = form.name.value!;
-    // const desc = form.description.value;
-    // console.log(name, desc);
-
-    // const id = event.target.id;
-    // const eventData = event.target;
-    // console.log('update', id);
-    handleUpdateTask(id, event);
-
+    const form = event.target.form;
+    const id = form?.id;
+    const title = form.name.value;
+    const desc = form.desc.value;
+    const timeToBeDone = new Date(form.timeToBeDone.value);
+    handleUpdateTask(id, title, desc, timeToBeDone, form);
 }
 
 function renderTask(task: Task): string | undefined {
@@ -95,14 +86,22 @@ function renderTask(task: Task): string | undefined {
 export function handleEditHtmlTag(ele: HTMLDivElement, task: Task) {
     try {
 
-        let div = `
-                    <input class='name' for='name' value=${task.title}>
-                   <input class='desc' value=${task.desc}> 
-                   <input class='done' value=${task.author} > 
+        let div = `<form id="form-${task.id}">
+                    <input class='name' for='name' name='name' value=${task.title}>
+                   <input class='desc' name='desc' value=${task.desc}> 
+                   <input type='datetime-local' name='timeToBeDone' class='be-done' value="${task.expectToBeDone}"> 
                    <button class="delete" id="${task.id}">Delete</button>
                    <button style="background-color:green; color:white;" class="update" id="${task.id}">Update</button>
-                   `
+                   </form>`
         ele.innerHTML = div;
+        const form = document.getElementById(`form-${task.id}`) as HTMLDivElement;
+        if (form) {
+            form.addEventListener('submit', handleUpdate);
+            const inputTime = form.getElementsByClassName('be-done')[0] as HTMLInputElement;
+            const date = new Date(task.expectToBeDone);
+            const formattedDateTime = date.toISOString().slice(0, 16);
+            inputTime.value = formattedDateTime;
+        }
 
     } catch (error) {
         console.error(error);
