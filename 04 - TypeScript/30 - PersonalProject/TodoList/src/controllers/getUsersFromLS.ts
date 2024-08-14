@@ -1,6 +1,6 @@
 import { Email } from "../models/email";
 import { Task } from "../models/task";
-import { User } from "../models/user";
+import { User, users } from "../models/user";
 import { getEmailInfo } from "../utils/handleUsers";
 
 // export function getAllUsers(): User[] {
@@ -36,9 +36,10 @@ import { getEmailInfo } from "../utils/handleUsers";
 //     }
 // }
 
-export function getCurrentUser(email:string): User | null {
+export function getCurrentUser(email?:string): User | null {
     const currentUserData = localStorage.getItem('CurrentUser');
-    if (!currentUserData) {
+    
+    if (!currentUserData || currentUserData === "null") {
             const users: User[] = getAllUsers();
             const user: User | undefined = users.find(user => user.email === email);
             if (!user) return null;
@@ -48,13 +49,13 @@ export function getCurrentUser(email:string): User | null {
 
     // Parse and rehydrate the current user
     const parsedUser = JSON.parse(currentUserData);
-
+    
     // Reinstantiate as a User
     const currentUser = new User(parsedUser.firstName, parsedUser.lastName, parsedUser.email, parsedUser.password, parsedUser.id);
     
     // Rehydrate the task list
     currentUser.list = parsedUser.list.map((taskData: any) => 
-        new Task(taskData.title, taskData.desc, taskData.author, new Date(taskData.expectToBeDone))
+        new Task(taskData.title, taskData.desc, taskData.author, new Date(taskData.expectToBeDone), taskData.id)
     );
 
     return currentUser;
@@ -70,9 +71,9 @@ export function getAllUsers(): User[] {
 
     // Reconstruct the User and Task objects
     return parsedUsers.map((userData: any) => {
-        const user = new User(userData.firstName, userData.lastName, userData.email, userData.password);
+        const user = new User(userData.firstName, userData.lastName, userData.email, userData.password, userData.id);
         user.list = userData.list.map((taskData: any) =>
-            new Task(taskData.title, taskData.desc, taskData.author, new Date(taskData.expectToBeDone))
+            new Task(taskData.title, taskData.desc, taskData.author, new Date(taskData.expectToBeDone), taskData.id)
         );
         return user;
     });

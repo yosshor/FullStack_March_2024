@@ -1,48 +1,35 @@
 import { tasksList, Task } from "../models/task";
 import { User } from "../models/user";
 import { handleEditHtmlTag, renderTasksList } from "../views/tasksList";
-import { addTaskToUser } from "./addTaskToUser";
+import { addTaskToUser, deleteTaskFromUser, getCurrentUserDetails } from "./addTaskToUser";
 
 
 
 export function handleAddTask(email: string, title: string, desc: string, author: string, expectToBeDone: Date): void | undefined {
     try {
         if (email === undefined) throw new Error("user is undefined")
-        debugger
-        addTaskToUser(email, title, desc, author, expectToBeDone)
-        // const task = new Task(title, desc, author, expectToBeDone);
-        // tasksList.push(task);
-        // currentUser!.addToList(task);
-        // tasksList.push(task);
-        // console.log(currentUser!.list, task)
-        renderListOfTasks();
-
+        // debugger
+        const userTasks: Task[] | undefined = addTaskToUser(email, title, desc, author, expectToBeDone)
+        if (userTasks) renderListOfTasks(userTasks!);
     } catch (error) {
         console.error(error);
         return undefined;
     }
 }
 
-function renderListOfTasks() {
+export function renderListOfTasks(userTasks: Task[]): void {
     //render tasks list
-    debugger
-
     const list = document.querySelector<HTMLDivElement>('#tasks-list')!;
     if (list) {
         console.log('list', list);
-        renderTasksList(list);
+        renderTasksList(list, userTasks);
     }
 }
 
 export function handleDeleteTask(id: string) {
     try {
-        const task = tasksList.findIndex(task => task.id === id);
-        console.log('task num', task);
-        tasksList.splice(task, 1);
-        console.log('deleted')
-        renderListOfTasks();
-
-
+        const userList: Task[] | undefined = deleteTaskFromUser(id);
+        if (userList) renderListOfTasks(userList);
     } catch (error) {
         console.error(error);
     }

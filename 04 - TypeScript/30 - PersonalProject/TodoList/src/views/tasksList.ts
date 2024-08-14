@@ -5,11 +5,11 @@ import { handleSubmit } from "./todoForm";
 import './styles/dist/taskList.css'
 
 
-export function renderTasksList(listElement: HTMLDivElement): void | undefined {
+export function renderTasksList(listElement: HTMLDivElement, userTasks: Task[]): void | undefined {
     try {
         //render the tasks into the screen
         let tasksHtml = '';
-        tasksList.forEach(task => tasksHtml += renderTask(task)!);
+        userTasks.forEach(task => tasksHtml += renderTask(task)!);
         listElement.innerHTML = tasksHtml;
         addClickListenerEvent();
 
@@ -64,7 +64,7 @@ function handleUpdate(event: any): void {
     // const id = event.target.id;
     // const eventData = event.target;
     // console.log('update', id);
-     handleUpdateTask(id, event);
+    handleUpdateTask(id, event);
 
 }
 
@@ -75,9 +75,11 @@ function renderTask(task: Task): string | undefined {
             <div class='task' id=a${task.id}>
                 <h3 class='name'>${task.title}</h3>
                 <p class='desc'>${task.desc}</p>
-                <p class='done'>${task.author}</p>
-                <button class='delete' id=${task.id}>Delete</button>
-                <button class='edit' id=${task.id} >Edit</button>
+                <p class='be-done'> Done Until : ${task.expectToBeDone.toDateString() + " " + task.expectToBeDone.toLocaleTimeString()}</p>
+                <div class='buttons'>
+                    <button class='delete' id=${task.id}>Delete</button>
+                    <button class='edit' id=${task.id} >Edit</button>
+            </div>
             </div>
         `;
         return taskElement;

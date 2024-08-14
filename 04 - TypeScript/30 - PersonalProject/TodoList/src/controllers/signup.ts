@@ -25,13 +25,7 @@ export function handleClickSignUp(event: any): void {
         users.push(user);
         localStorage.setItem('CurrentUser', JSON.stringify(user));
         const usersList: User[] = users;
-        // const usersList: User[] = getAllUsers();
-        // usersList.forEach(user => usersList.push(user))
-        // usersList.push(user);
         localStorage.setItem('AllUsers', JSON.stringify(usersList));
-
-        // localStorage.setItem('users', JSON.stringify(users));
-        //localStorage.setItem(email, password);
         event.target.reset();
         console.log(email, password, user.id)
         insertUser(email, password, user.id)

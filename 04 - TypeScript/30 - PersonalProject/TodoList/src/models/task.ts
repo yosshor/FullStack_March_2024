@@ -8,13 +8,13 @@ export class Task {
     author: string;
     expectToBeDone: Date;
 
-    constructor(title: string, desc: string, author: string, expectToBeDone: Date) {
-        this.id = crypto.randomUUID().toString();
+    constructor(title: string, desc: string, author: string, expectToBeDone: Date, id?: string) {
+        this.id = id ?? crypto.randomUUID().toString();
         this.title = title;
         this.desc = desc;
-        this.date = new Date(expectToBeDone);
+        this.date = new Date();
         this.author = author;
-        this.expectToBeDone = expectToBeDone;
+        this.expectToBeDone = new Date(expectToBeDone);
     }
 }
 

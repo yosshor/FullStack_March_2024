@@ -3,20 +3,21 @@
     flex-direction: column;
     gap: 10px;
     justify-content: center;
-
+    
     .task {
         display: flex;
         flex-direction: row;
         gap: 10px;
         justify-content: center;
         align-items: center;
-
+        width: 100%;
         .name {
-            width: 150px;
+            width: 15vw;
         }
 
-        .desc {
-            width: 250px;
+        .desc,.be-done {
+            width: 20vw;
+            
         }
 
         .done {
