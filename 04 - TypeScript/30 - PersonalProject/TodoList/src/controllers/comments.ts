@@ -3,6 +3,7 @@ import { getCurrentUser } from "./getUsersFromLS";
 import { Comment } from "../models/comment";
 import { renderFormComment } from "../views/comments";
 import { addClickListenerEvent } from "../views/tasksList";
+import { moveToTaskListPage } from "./signup";
 
 function showComments(id: string): string {
     let comments = '';
@@ -82,7 +83,7 @@ function handleAddingNewComment(event: any) {
         handleAddCommentToTask(id, content);
         // const comment = new Comment(content, )
         console.log(id, content)
-
+        moveToTaskListPage();
 
 
     } catch (error) {
@@ -99,7 +100,7 @@ function handleAddCommentToTask(taskId: string, commentContent: string) {
         //render it back to the screen
 
 
-        
+
     } catch (error) {
         console.error(error);
     }
