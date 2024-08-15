@@ -52,21 +52,27 @@
         }
     }
 
-    &__delete_subject {
+    &__delete_comment {
         button {
             background-color: lightcoral;
             color: black;
             width: 70%;
-            height: 70%;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center ;
         }
     }
 
-    &__add_subject {
+    &__add_comment {
         button {
             background-color: lightgreen;
             color: black;
             width: 70%;
             height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center ;
         }
     }
 

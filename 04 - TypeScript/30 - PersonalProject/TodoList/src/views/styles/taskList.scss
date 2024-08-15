@@ -1,42 +1,82 @@
-.tasks-list {
+.wrapper {
     display: flex;
+    width: 100vw;
+    height: 100vh;
     flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    
-    .task {
+    text-align: center;
+    align-items: center;
+
+
+
+    .tasks-list {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 10px;
         justify-content: center;
-        align-items: center;
-        width: 100%;
-        .name {
-            width: 12vw;
-        }
+        width: 80%;
 
-        .desc,.be-done {
-            width: 20vw;
-            
-        }
-        .buttons{
-            width: 10%;
+        .task-info {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        .done {
-            width: 50px;
-        }
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-evenly;
 
-        .delete {
-            background-color: red;
+            .task {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
 
-        }
 
-        .edit {
-            background-color: lightgreen;
-            color: black;
+                form {
+                    .name {
+                        width: 12vw;
+                        height: 25px;
+                    }
+
+                    .desc,
+                    .be-done {
+                        width: 20vw;
+                        height: 25px;
+
+                    }
+                }
+
+                .name {
+                    width: 12vw;
+                }
+
+                .desc,
+                .be-done {
+                    width: 20vw;
+
+                }
+
+                .buttons {
+                    width: 15%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+
+                .done {
+                    width: 50px;
+                }
+
+                .delete {
+                    background-color: red;
+
+                }
+
+                .edit {
+                    background-color: lightgreen;
+                    color: black;
+                }
+            }
+
         }
     }
 }

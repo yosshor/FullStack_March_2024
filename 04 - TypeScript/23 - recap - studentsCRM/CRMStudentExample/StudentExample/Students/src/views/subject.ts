@@ -17,8 +17,6 @@ export function renderFormSubject(id: string): string {
     return addSubjectInput;
 }
 
-// <div class="buttons buttons__delete_subject"><button type="submit" name="delete-subject" id="${id}">Delete</button></div>
-// 
 
 export function renderSubject(subjectDetails: Subject, id: string): string {
 

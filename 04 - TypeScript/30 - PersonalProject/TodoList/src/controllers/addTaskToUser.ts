@@ -1,3 +1,4 @@
+import { Comment } from "../models/comment";
 import { Task } from "../models/task";
 import { User, users } from "../models/user";
 import { getAllUsers, getCurrentUser } from "./getUsersFromLS";
@@ -21,14 +22,14 @@ export function addTaskToUser(email: string, title: string, desc: string, author
     return user?.list
 }
 
-export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, task?: Task): Task[] | undefined {
+export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, task?: Task, comment?: string): Task[] | undefined {
     const currentUser: User | undefined = getCurrentUserDetails();
     //update all users also
     const allUsers: User[] = getAllUsers();
     const user = allUsers.find(user => user.email === currentUser!.email)
     const taskGlobal = user!.list!.findIndex(task => task.id === id);
     const currentTaskFromAllUsers = user!.list.find(task => task.id === id);
-
+    const author = currentUser?.firstName + " " + currentUser?.lastName
     if (!currentUser!) throw new Error("User Not Found")
     const userTasks = currentUser?.list;
 
@@ -39,7 +40,7 @@ export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, t
         user!.list.splice(taskGlobal, 1);
         console.log('deleted from all users and currentUser')
     }
-    else {
+    else if (deleteOrUpdate === "update") {
         //update currentUser task and allUsers
         const currentTask = userTasks!.find(task => task.id === id);
         currentTask!.expectToBeDone! = new Date(task!.expectToBeDone);
@@ -51,6 +52,15 @@ export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, t
         currentTaskFromAllUsers!.desc = task!.desc;
 
         console.log('updated all users and currentUser')
+    }
+    else if (deleteOrUpdate === "addComment") {
+        debugger
+        //for current user
+        const currentTask = userTasks!.find(task => task.id === id);
+        currentTask?.addComment(new Comment(comment!, author))
+
+        //for global user
+        currentTaskFromAllUsers?.addComment(new Comment(comment!, author))
     }
     localStorage.setItem("CurrentUser", JSON.stringify(currentUser))
     localStorage.setItem('AllUsers', JSON.stringify(allUsers));

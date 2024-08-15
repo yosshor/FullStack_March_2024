@@ -3,13 +3,19 @@ import { handleDeleteTask, handleEditTask, handleUpdateTask } from "../controlle
 import { handleSubmit } from "./todoForm";
 
 import './styles/dist/taskList.css'
+import { addCommentForm } from "../controllers/comments";
+import { renderAllComments } from "./comments";
 
 
 export function renderTasksList(listElement: HTMLDivElement, userTasks: Task[]): void | undefined {
     try {
         //render the tasks into the screen
         let tasksHtml = '';
-        userTasks.forEach(task => tasksHtml += renderTask(task)!);
+        userTasks.forEach(task => {
+        
+            tasksHtml += renderTask(task)!
+        
+        });
         listElement.innerHTML = tasksHtml;
         addClickListenerEvent();
 
@@ -19,11 +25,12 @@ export function renderTasksList(listElement: HTMLDivElement, userTasks: Task[]):
     }
 }
 
-function addClickListenerEvent(): void {
+export function addClickListenerEvent(): void {
     const deleteList = document.querySelectorAll<HTMLButtonElement>('.delete')
     const editList = document.querySelectorAll<HTMLButtonElement>('.edit')
     const updateTask = document.querySelectorAll<HTMLDivElement>('.update')
-    //const formElement = document.getElementById('form') as HTMLDivElement;
+    //add event listener to the add comment buttons
+    const addCommentButtons = document.querySelectorAll('[name="add-comment"]');
 
     if (deleteList) {
         deleteList.forEach(item => item.addEventListener('click', handleDelete))
@@ -34,6 +41,9 @@ function addClickListenerEvent(): void {
     if (updateTask) {
         updateTask.forEach(item => item.addEventListener('click', handleUpdate))
     }
+    if (addCommentButtons)
+        addCommentButtons.forEach(button => button.addEventListener('click', addCommentForm))
+
 }
 
 function handleDelete(event: any): void {
@@ -63,14 +73,20 @@ function renderTask(task: Task): string | undefined {
     try {
         //task div element
         const taskElement = `
-            <div class='task' id=a${task.id}>
-                <h3 class='name'>${task.title}</h3>
-                <p class='desc'>${task.desc}</p>
-                <p class='be-done'> Done Until : ${task.expectToBeDone.toDateString() + " " + task.expectToBeDone.toLocaleTimeString()}</p>
-                <div class='buttons'>
-                    <button class='delete' id=${task.id}>Delete</button>
-                    <button class='edit' id=${task.id} >Edit</button>
-            </div>
+            <div class= "task-info" id="a${task.id}">
+                <div class='task'>
+                    <h3 class='name'>${task.title}</h3>
+                    <p class='desc'>${task.desc}</p>
+                    <p class='be-done'> Done Until : ${task.expectToBeDone.toDateString() + " " + task.expectToBeDone.toLocaleTimeString()}</p>
+                    <div class='buttons'>
+                        <button class='delete' id=${task.id}>Delete</button>
+                        <button class='edit' id=${task.id} >Edit</button>
+                        <div class="buttons buttons__add">
+                            <button name="add-comment" id="${task.id}">Comment</button>
+                        </div>
+                    </div>
+                </div>
+                ${task.comments.length > 0 ? renderAllComments(task.comments, task.id) : "" }
             </div>
         `;
         return taskElement;

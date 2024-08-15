@@ -28,6 +28,8 @@ function showSubjectsWithGrades(id: string): string {
     const addSubjectInput = renderFormSubject(id);
     return subjects + addSubjectInput;
 }
+
+
 export function addSubjectForm(event: any, idSut?: string): void {
     try {
         const id = idSut ?? event.target.id;

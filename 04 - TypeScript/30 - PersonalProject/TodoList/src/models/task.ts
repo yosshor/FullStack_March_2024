@@ -1,4 +1,5 @@
 
+import { Comment } from "./comment";
 
 export class Task {
     id: string;
@@ -7,6 +8,7 @@ export class Task {
     date: Date;
     author: string;
     expectToBeDone: Date;
+    comments: Comment[];
 
     constructor(title: string, desc: string, author: string, expectToBeDone: Date, id?: string) {
         this.id = id ?? crypto.randomUUID().toString();
@@ -15,7 +17,17 @@ export class Task {
         this.date = new Date();
         this.author = author;
         this.expectToBeDone = new Date(expectToBeDone);
+        this.comments = [];
     }
+
+    addComment(comment: Comment) {
+        this.comments.push(comment);
+    }
+
+    getComments(): Comment[] {
+        return this.comments;
+    }
+
 }
 
 export const tasksList: Task[] = [];

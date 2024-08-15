@@ -21,6 +21,23 @@ export class User {
     addToList(item: Task): void {
         this.list.push(item);
     }
+
+    getAllTasks(): Task[] {
+        return this.list;
+    }
+    
+    addCommentToTask(taskId: string, comment: Comment) {
+        const task = this.list.find(t => t.id === taskId);
+        if (task) {
+            task.addComment(comment);
+        } else {
+            console.log(`Task with id ${taskId} not found.`);
+        }
+    }
+
+    getAllComments(): Comment[] {
+        return this.list.flatMap(task => task.getComments());
+    }
 }
 
 export let users: User[] = getAllUsers();
