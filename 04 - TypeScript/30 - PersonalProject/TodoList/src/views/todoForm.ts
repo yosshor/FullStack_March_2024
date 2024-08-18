@@ -1,7 +1,7 @@
 import { getAllUserTasks } from "../controllers/addTaskToUser";
 import { handleAddTask, renderListOfTasks } from "../controllers/handleAddTask";
 import { Task } from "../models/task";
-import { User, users } from "../models/user";
+import { User } from "../models/user";
 import './styles/dist/form.css'
 
 
@@ -36,20 +36,21 @@ export function handleSubmit(event: any) {
         const form = event.target as HTMLFormElement;
         if (!form) throw new Error("Form not found");
         event.preventDefault();
-        const title = form.name.value;
+        const title = form.name.value as string;
+        const id = form.id;
+        console.log('id', id)
         const desc = form.description.value;
         const expectToBeDone = form.timeToBeDone.value;
         const currentUserData: User = JSON.parse(localStorage.getItem('CurrentUser') as string);
+        const email = currentUserData.email;
         const author: string = currentUserData.firstName + " " + currentUserData.lastName;
-        console.log('found', author)
-        console.log(title, desc);
         if (title === undefined || title === '' || desc === undefined || desc === '') {
             throw new Error("Please fill all fields");
         }
-        handleAddTask(currentUserData.email, title, desc, author, expectToBeDone);
+        handleAddTask(id, title, desc, author, expectToBeDone);
         form.reset();
         putDateInInputDateForm();
-        
+
     } catch (error) {
         console.error(error);
     }

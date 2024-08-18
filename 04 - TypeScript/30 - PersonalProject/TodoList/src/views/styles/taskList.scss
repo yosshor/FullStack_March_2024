@@ -22,15 +22,15 @@
             flex-direction: column;
             justify-content: space-evenly;
 
-            form{
+            form {
                 display: flex;
                 flex-direction: row;
                 width: 95%;
                 height: 6vh;
                 padding-top: 20px;
                 justify-content: center;
-    
-                input[type=text]{
+
+                input[type=text] {
                     width: 250px;
                     height: 35px;
                     margin-right: 30px;
@@ -38,7 +38,7 @@
                     background-color: white;
                     color: black;
                 }
-    
+
                 input[type=datetime-local] {
                     padding-right: 10px;
                     border-radius: 10px;
@@ -46,8 +46,9 @@
                     margin-right: 10px;
                     background: url('data:image/svg+xml;base64,...') no-repeat right;
                     color: white;
-                    border:1px solid white;
+                    border: 1px solid white;
                 }
+
                 button {
                     width: 5vw;
                     height: 4vh;
@@ -58,6 +59,7 @@
                     display: flex;
                 }
             }
+
             .task {
                 display: flex;
                 flex-direction: row;

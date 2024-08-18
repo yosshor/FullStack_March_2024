@@ -30,4 +30,3 @@ export class Task {
 
 }
 
-export const tasksList: Task[] = [];

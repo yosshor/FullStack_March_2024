@@ -1,15 +1,13 @@
-import { tasksList, Task } from "../models/task";
-import { User } from "../models/user";
+import { Task } from "../models/task";
 import { handleEditHtmlTag, renderTasksList } from "../views/tasksList";
-import { addTaskToUser, deleteOrUpdateTaskFromUser, getCurrentUserDetails, getTaskToEdit } from "./addTaskToUser";
+import { deleteOrUpdateTaskFromUser, getTaskToEdit } from "./addTaskToUser";
 
 
 
-export function handleAddTask(email: string, title: string, desc: string, author: string, expectToBeDone: Date): void | undefined {
+export function handleAddTask(id: string, title: string, desc: string, author: string, expectToBeDone: Date): void | undefined {
     try {
-        if (email === undefined) throw new Error("user is undefined")
-        // debugger
-        const userTasks: Task[] | undefined = addTaskToUser(email, title, desc, author, expectToBeDone)
+        const task = new Task(title, desc, author, expectToBeDone);
+        const userTasks: Task[] | undefined = deleteOrUpdateTaskFromUser(id, "addTask", task);
         if (userTasks) renderListOfTasks(userTasks!);
     } catch (error) {
         console.error(error);
@@ -38,7 +36,6 @@ export function handleDeleteTask(id: string) {
 export function handleEditTask(id: string): void {
     try {
         const task = getTaskToEdit(id);
-        //const task = tasksList.find(task => task.id === id);
         const taskDiv = document.getElementById(`a${id}`) as HTMLDivElement;
         handleEditHtmlTag(taskDiv, task!);
     } catch (error) {

@@ -1,5 +1,4 @@
 import { Email } from "../models/email";
-import { User, users } from "../models/user";
 import { renderLoginPage } from "../views/login";
 import { renderRegisterForm } from "../views/register";
 import { getCurrentUser } from "./getUsersFromLS";

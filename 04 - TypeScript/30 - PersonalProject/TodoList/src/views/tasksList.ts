@@ -1,4 +1,4 @@
-import { Task, tasksList } from "../models/task";
+import { Task } from "../models/task";
 import { handleDeleteTask, handleEditTask, handleUpdateTask } from "../controllers/handleAddTask";
 import { handleSubmit } from "./todoForm";
 

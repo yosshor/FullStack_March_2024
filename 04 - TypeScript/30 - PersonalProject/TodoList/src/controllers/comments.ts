@@ -1,13 +1,11 @@
 import { deleteOrUpdateTaskFromUser, getTaskToEdit } from "./addTaskToUser";
-import { getCurrentUser } from "./getUsersFromLS";
-import { Comment } from "../models/comment";
 import { renderFormComment } from "../views/comments";
 import { addClickListenerEvent } from "../views/tasksList";
 import { moveToTaskListPage } from "./signup";
 
 
 //render all comments for this task id
-function showComments(id: string): string {
+function showCommentsForm(id: string): string {
     const addCommentInput = renderFormComment(id);
     return addCommentInput;
 }
@@ -17,8 +15,15 @@ export function addCommentForm(event: any, idUser?: string): void {
     try {
         const id = idUser ?? event.target.id;
         const taskElement = document.getElementById(`a${id}`) as HTMLDivElement;
-        const commentDiv = showComments(id);
-
+        const commentForm = taskElement.querySelectorAll('.comment-form');
+        
+        //check if already have comment-form so not add new one
+        if (commentForm.length > 0)
+        {
+            console.log('have already comment form')
+            return;
+        }
+        const commentDiv = showCommentsForm(id);
         taskElement.innerHTML += commentDiv;
 
         addListenerToNewComment();

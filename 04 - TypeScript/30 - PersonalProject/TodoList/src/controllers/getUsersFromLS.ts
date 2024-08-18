@@ -1,8 +1,6 @@
-import { Email } from "../models/email";
 import { Task } from "../models/task";
 import { Comment } from "../models/comment";
-import { User, users } from "../models/user";
-import { getEmailInfo } from "../utils/handleUsers";
+import { User } from "../models/user";
 
 
 export function getCurrentUser(email?: string): User | null {

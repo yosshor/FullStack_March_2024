@@ -1,5 +1,6 @@
 import { getAllUsers } from '../controllers/getUsersFromLS.ts';
 import { Task } from './task.ts'
+import { Comment } from "./comment";
 
 export class User {
     id: string;

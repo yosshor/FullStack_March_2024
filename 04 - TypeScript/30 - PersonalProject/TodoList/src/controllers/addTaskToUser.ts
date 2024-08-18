@@ -1,105 +1,133 @@
 import { Comment } from "../models/comment";
 import { Task } from "../models/task";
-import { User, users } from "../models/user";
+import { User } from "../models/user";
 import { getAllUsers, getCurrentUser } from "./getUsersFromLS";
 
 
 
-export function addTaskToUser(email: string, title: string, desc: string, author: string, expectToBeDone: Date): Task[] | undefined {
-    const currentUser = getCurrentUserDetails(email);
-    if (!currentUser!) throw new Error("User Not Found")
-    // Add the new task to the user's list and update CurrentUser
-    const task = new Task(title, desc, author, expectToBeDone);
-    currentUser!.list.push(task);
-    localStorage.setItem("CurrentUser", JSON.stringify(currentUser))
+function getCurrentAndAllUsers(): { currentUser: User | undefined, allUsers: User[] | undefined, userGlobal: User | undefined } {
+    const currentUser: User | undefined = getCurrentUserDetails();
+    const allUsers: User[] = getAllUsers();
+    const userGlobal: User | undefined = allUsers.find(user => user.email === currentUser!.email)
 
-    //update all users also
-    const allUsers = getAllUsers();
-    const user = allUsers.find(user => user.email === email)
-    user?.list.push(task);
+    if (!currentUser!) { throw new Error("User Not Found") }
+    if (!allUsers!) { throw new Error("Users Not Found") }
 
-    localStorage.setItem('AllUsers', JSON.stringify(allUsers));
-    return user?.list
+    return { currentUser, allUsers, userGlobal };
+}
+
+function getTasksFromCurrentAndGlobalUsers(id: string, command: string, task?: Task, comment?: string, commentId?: string): { allUsers: User[] | undefined, currentUser: User | undefined } {
+    const { currentUser, allUsers } = getCurrentAndAllUsers();
+
+    const tasksGlobal: Task[] = allUsers!.find(user => user.email === currentUser!.email)!.list;
+    const taskFromGlobalUsers: Task | undefined = tasksGlobal.find(task => task.id === id);
+    const userCurrentTasks: Task[] | undefined = currentUser?.list;
+    const taskFromCurrentUser: Task | undefined = userCurrentTasks!.find(task => task.id === id);
+    const taskIndex: number | undefined = tasksGlobal!.findIndex(task => task.id === id);
+
+    switch (command) {
+
+        case "delete":
+            tasksGlobal.splice(taskIndex, 1);
+            userCurrentTasks!.splice(taskIndex, 1)
+            break;
+
+        case "addTask":
+            tasksGlobal.push(task!);
+            userCurrentTasks!.push(task!)
+            break;
+
+        case "update":
+            taskFromCurrentUser!.expectToBeDone! = new Date(task!.expectToBeDone);
+            taskFromCurrentUser!.title = task!.title;
+            taskFromCurrentUser!.desc = task!.desc;
+
+            taskFromGlobalUsers!.expectToBeDone! = new Date(task!.expectToBeDone);
+            taskFromGlobalUsers!.title = task!.title;
+            taskFromGlobalUsers!.desc = task!.desc;
+            break;
+
+        case "addComment":
+            const commentIdTemp = crypto.randomUUID().toString();
+            const addComment = new Comment(comment!, authorName().toString(), commentIdTemp);
+            taskFromCurrentUser?.addComment(addComment);
+            taskFromGlobalUsers?.addComment(addComment);
+            break;
+
+        case "deleteComment":
+            const comments: Comment[] | undefined = taskFromCurrentUser?.getComments();
+            const commentsGlobal: Comment[] | undefined = taskFromGlobalUsers?.getComments();
+            if (comments) {
+                const commentIndex = comments.findIndex(comment => {
+                    console.log(`Comparing ${comment.id?.toString()} with ${commentId?.toString()}`);
+                    return comment.id?.toString() === commentId?.toString();
+                });
+                if (commentIndex !== -1) {
+                    comments.splice(commentIndex, 1);
+                    commentsGlobal?.splice(commentIndex, 1);
+                } else {
+                    console.log(`Comment with ID ${commentId} not found.`);
+                }
+            }
+            break;
+    }
+    return { allUsers, currentUser }
+}
+
+function deleteTask(id: string): void {
+    const { allUsers, currentUser } = getTasksFromCurrentAndGlobalUsers(id, "delete");
+    saveCurrentAndAllUsers(currentUser!, allUsers!);
+}
+
+function addTask(id: string, task: Task): void {
+    const { allUsers, currentUser } = getTasksFromCurrentAndGlobalUsers(id, "addTask", task);
+    saveCurrentAndAllUsers(currentUser!, allUsers!);
+}
+
+function updateTask(id: string, task: Task): void {
+    const { allUsers, currentUser } = getTasksFromCurrentAndGlobalUsers(id, "update", task);
+    saveCurrentAndAllUsers(currentUser!, allUsers!);
 }
 
 
+function addComment(id: string, comment: string): void {
+    const { allUsers, currentUser } = getTasksFromCurrentAndGlobalUsers(id, "addComment", undefined, comment);
+    saveCurrentAndAllUsers(currentUser!, allUsers!);
+}
 
-export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, task?: Task, comment?: string, commentId?: string): Task[] | undefined {
-    const currentUser: User | undefined = getCurrentUserDetails();
-    //update all users also
-    const allUsers: User[] = getAllUsers();
-    const user: User | undefined = allUsers.find(user => user.email === currentUser!.email)
-    const taskGlobal: number | undefined = user!.list!.findIndex(task => task.id === id);
-    const currentTaskFromAllUsers: Task | undefined = user!.list.find(task => task.id === id);
-    const author: string = currentUser?.firstName + " " + currentUser?.lastName
-    if (!currentUser!) { throw new Error("User Not Found") }
+function deleteComment(id: string, commentId: string): void {
+    const { allUsers, currentUser } = getTasksFromCurrentAndGlobalUsers(id, "deleteComment", undefined, undefined, commentId);
+    saveCurrentAndAllUsers(currentUser!, allUsers!);
+}
 
-    const userTasks: Task[] = currentUser?.list;
-    const currentTaskFromCurrentUSer: Task | undefined = userTasks!.find(task => task.id === id);
+const authorName = (): string => getCurrentAndAllUsers().currentUser?.firstName + " " + getCurrentAndAllUsers().currentUser?.lastName
 
-    if (deleteOrUpdate === "delete") {
-        //delete from currentUser task and allUsers
-        const taskCurrent = userTasks!.findIndex(task => task.id === id);
-        userTasks.splice(taskCurrent, 1);
-        user!.list.splice(taskGlobal, 1);
-        console.log('deleted from all users and currentUser')
-    }
-    else if (deleteOrUpdate === "update") {
-        //update currentUser task and allUsers
-        const currentTask = userTasks!.find(task => task.id === id);
-        currentTask!.expectToBeDone! = new Date(task!.expectToBeDone);
-        currentTask!.title = task!.title;
-        currentTask!.desc = task!.desc;
 
-        currentTaskFromAllUsers!.expectToBeDone! = new Date(task!.expectToBeDone);
-        currentTaskFromAllUsers!.title = task!.title;
-        currentTaskFromAllUsers!.desc = task!.desc;
-
-        console.log('updated all users and currentUser')
-    }
-    else if (deleteOrUpdate === "addComment") {
-        //for current user
-        const currentTask = userTasks!.find(task => task.id === id);
-        const commentIdTemp = crypto.randomUUID().toString();
-        currentTask?.addComment(new Comment(comment!, author, commentIdTemp))
-
-        //for global user
-        currentTaskFromAllUsers?.addComment(new Comment(comment!, author, commentIdTemp))
-    }
-    else if (deleteOrUpdate === "deleteComment") {
-        //for current user
-        const comments: Comment[] | undefined = currentTaskFromCurrentUSer?.getComments();
-        const commentsGlobal: Comment[] | undefined = currentTaskFromAllUsers?.getComments();
-
-        // Ensure that comments exist before proceeding
-        if (comments) {
-            console.log("Comment IDs in Task:", comments.map(comment => comment.id));
-            console.log("Looking for Comment ID:", commentId);
-
-            //current user
-            const commentIndex = comments.findIndex(comment => {
-                console.log(`Comparing ${comment.id?.toString()} with ${commentId?.toString()}`);
-                return comment.id?.toString() === commentId?.toString();
-            });
-
-            //for global user
-            debugger
-
-            if (commentIndex !== -1) {
-                comments.splice(commentIndex, 1);
-                commentsGlobal?.splice(commentIndex, 1);
-                console.log(`Comment with ID ${commentId} removed.`);
-                console.log(currentUser, allUsers)
-            } else {
-                console.log(`Comment with ID ${commentId} not found.`);
-            }
-        } else {
-            console.log("No comments found for the current task.");
-        }
-    }
+function saveCurrentAndAllUsers(currentUser: User, allUsers: User[]): void {
     localStorage.setItem("CurrentUser", JSON.stringify(currentUser))
     localStorage.setItem('AllUsers', JSON.stringify(allUsers));
-    return user?.list
+}
+
+export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, task?: Task, comment?: string, commentId?: string): Task[] | undefined {
+    switch (deleteOrUpdate) {
+        case "delete":
+            deleteTask(id)
+            break;
+        case "update":
+            updateTask(id, task!)
+            break;
+        case "addTask":
+            addTask(id, task!)
+            break;
+        case "addComment":
+            addComment(id, comment!)
+            break;
+        case "deleteComment":
+            deleteComment(id, commentId!)
+            break;
+    }
+    const { currentUser, allUsers, userGlobal } = getCurrentAndAllUsers();
+    return currentUser?.list
 }
 
 export function getTaskToEdit(id: string): Task | undefined {
