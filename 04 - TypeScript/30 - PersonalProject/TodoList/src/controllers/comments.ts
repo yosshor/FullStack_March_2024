@@ -5,46 +5,23 @@ import { renderFormComment } from "../views/comments";
 import { addClickListenerEvent } from "../views/tasksList";
 import { moveToTaskListPage } from "./signup";
 
-function showComments(id: string): string {
-    let comments = '';
 
-    // students.forEach(student => {
-    //     if (student.id === id) {
-    //         comments += renderAllSubjects(student.grades, id);
-    //     }
-    // });
-    // // const subjects = renderAllSubjects();
-    // const addSubjectInput = renderFormSubject(id);
+//render all comments for this task id
+function showComments(id: string): string {
     const addCommentInput = renderFormComment(id);
-    return addCommentInput;//+ addSubjectInput;
+    return addCommentInput;
 }
 
+//render the add comment form 
 export function addCommentForm(event: any, idUser?: string): void {
     try {
         const id = idUser ?? event.target.id;
-
-
-        // const form = event.target;
-        // const content = form.content;
-        // const author = form.author;
-
-        // console.log('addComment', id);
-        // const task = getTaskToEdit(id)
-        // const comment = new Comment(content, author)
-        // // task?.addComment(comment)
-        // deleteOrUpdateTaskFromUser(id, "addComment", task, comment);
-        debugger
         const taskElement = document.getElementById(`a${id}`) as HTMLDivElement;
         const commentDiv = showComments(id);
 
         taskElement.innerHTML += commentDiv;
-        console.dir(taskElement)
-        //get user tasks
 
-        // const subjectsDiv = showSubjectsWithGrades(id);
-        // studentElement.innerHTML += subjectsDiv;
-
-        listenerUpdateSubject();
+        addListenerToNewComment();
 
     } catch (error) {
         console.error(error);
@@ -53,7 +30,7 @@ export function addCommentForm(event: any, idUser?: string): void {
 
 
 
-function listenerUpdateSubject(): void {
+function addListenerToNewComment(): void {
     try {
 
         //add event listener to the add subject buttons
@@ -70,38 +47,52 @@ function listenerUpdateSubject(): void {
 }
 
 
-function handleAddingNewComment(event: any) {
+function handleAddingNewComment(event: any): void {
     try {
         event.preventDefault();
         const form = event.target;
         const id = form.id.id;
         const content = form.comment.value;
+        console.dir(event.target)
         if (content === undefined || content == "") {
             form.reset();
             return;
         }
         handleAddCommentToTask(id, content);
-        // const comment = new Comment(content, )
         console.log(id, content)
         moveToTaskListPage();
-
-
     } catch (error) {
         console.error(error)
     }
 }
 
 
-function handleAddCommentToTask(taskId: string, commentContent: string) {
+function handleAddCommentToTask(taskId: string, commentContent: string): void {
     try {
-        //get current user author name
+        //get current user author name and added new comment
         deleteOrUpdateTaskFromUser(taskId, "addComment", undefined, commentContent);
-
-        //render it back to the screen
-
-
-
     } catch (error) {
         console.error(error);
     }
 }
+
+export function handleDeleteComment(event: any): void {
+    try {
+        // Prevent the default action, if necessary
+        event.preventDefault();
+
+        const form = event.target;
+        const id = form.id;
+        const commentId: string = id.split('@')[0]
+        const taskId: string = id.split('@')[1]
+
+        console.log(id);
+        // delete comment
+        deleteOrUpdateTaskFromUser(taskId, "deleteComment", undefined, undefined, commentId)
+        console.log("try to render page")
+        moveToTaskListPage();
+
+    } catch (error) {
+        console.error(error);
+    }
+} 

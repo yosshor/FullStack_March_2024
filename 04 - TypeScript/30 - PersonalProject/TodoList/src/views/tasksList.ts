@@ -3,7 +3,7 @@ import { handleDeleteTask, handleEditTask, handleUpdateTask } from "../controlle
 import { handleSubmit } from "./todoForm";
 
 import './styles/dist/taskList.css'
-import { addCommentForm } from "../controllers/comments";
+import { addCommentForm, handleDeleteComment } from "../controllers/comments";
 import { renderAllComments } from "./comments";
 
 
@@ -12,9 +12,9 @@ export function renderTasksList(listElement: HTMLDivElement, userTasks: Task[]):
         //render the tasks into the screen
         let tasksHtml = '';
         userTasks.forEach(task => {
-        
+
             tasksHtml += renderTask(task)!
-        
+
         });
         listElement.innerHTML = tasksHtml;
         addClickListenerEvent();
@@ -29,8 +29,8 @@ export function addClickListenerEvent(): void {
     const deleteList = document.querySelectorAll<HTMLButtonElement>('.delete')
     const editList = document.querySelectorAll<HTMLButtonElement>('.edit')
     const updateTask = document.querySelectorAll<HTMLDivElement>('.update')
-    //add event listener to the add comment buttons
     const addCommentButtons = document.querySelectorAll('[name="add-comment"]');
+    const commentsDivEventListener = document.querySelectorAll<HTMLDivElement>('button[name="delete"]')
 
     if (deleteList) {
         deleteList.forEach(item => item.addEventListener('click', handleDelete))
@@ -43,6 +43,10 @@ export function addClickListenerEvent(): void {
     }
     if (addCommentButtons)
         addCommentButtons.forEach(button => button.addEventListener('click', addCommentForm))
+
+    if (commentsDivEventListener) {
+        commentsDivEventListener.forEach(comment => comment.addEventListener('click', handleDeleteComment))
+    }
 
 }
 
@@ -86,7 +90,7 @@ function renderTask(task: Task): string | undefined {
                         </div>
                     </div>
                 </div>
-                ${task.comments.length > 0 ? renderAllComments(task.comments, task.id) : "" }
+                ${task.comments.length > 0 ? renderAllComments(task.comments, task.id) : ""}
             </div>
         `;
         return taskElement;
@@ -103,8 +107,8 @@ export function handleEditHtmlTag(ele: HTMLDivElement, task: Task) {
     try {
 
         let div = `<form id="form-${task.id}">
-                    <input class='name' for='name' name='name' value=${task.title}>
-                   <input class='desc' name='desc' value=${task.desc}> 
+                    <input type='text' class='name' for='name' name='name' value=${task.title}>
+                   <input type='text' class='desc' name='desc' value=${task.desc}> 
                    <input type='datetime-local' name='timeToBeDone' class='be-done' value="${task.expectToBeDone}"> 
                    <button class="delete" id="${task.id}">Delete</button>
                    <button style="background-color:green; color:white;" class="update" id="${task.id}">Update</button>

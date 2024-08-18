@@ -28,7 +28,7 @@ export function getCurrentUser(email?: string): User | null {
 
         // Rehydrate the comments array for each task
         task.comments = taskData.comments.map((commentData: any) =>
-            new Comment(commentData.content, commentData.author, new Date(commentData.date), commentData.id)
+            new Comment(commentData.content, commentData.author, commentData.id, commentData.date)
         );
 
         return task;
@@ -54,7 +54,7 @@ export function getAllUsers(): User[] {
 
             // Rehydrate comments
             task.comments = taskData.comments.map((commentData: any) =>
-                new Comment(commentData.content, commentData.author, commentData.date, commentData.id)
+                new Comment(commentData.content, commentData.author, commentData.id, commentData.date)
             );
 
             return task;

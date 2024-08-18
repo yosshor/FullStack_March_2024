@@ -4,11 +4,11 @@ export class Comment {
     author: string;
     date: Date;
 
-    constructor(content: string, author: string, date?: Date, id?: string) {
+    constructor(content: string, author: string, id: string, date?: Date) {
         this.content = content;
         this.author = author;
+        this.id = id;
         this.date = date ?? new Date()
-        this.id = id ?? crypto.randomUUID().toString();
 
     }
 }

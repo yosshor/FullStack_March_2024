@@ -7,8 +7,8 @@ export function renderFormComment(id: string): string {
     const addSubjectInput = `<div class="add-comment"> 
                                 <div class="comment-form">
                                     <form id="add-comment-form">
-                                        <label for="comment">Enter comment Name</label>
-                                        <input name="comment" type="text" placeholder="Enter Comment Name" required> 
+                                        <label for="comment">Enter comment Description :</label>
+                                        <input name="comment" type="text" placeholder="Enter Comment Description" required> 
                                         <div class="show-buttons">
                                             <div class="buttons buttons__add_comment">
                                                 <button type="submit" name="id" id="${id}">Add</button>
@@ -35,15 +35,15 @@ export function renderComment(comment: Comment, taskId: string): string {
                             <p name="author"> ${comment.author}</p> 
                             <p name="date"> ${date}</p> 
                             <div class="show-buttons">
-                                <div class="buttons__delete_comment"><button name="edit" id="${comment.id}@${taskId}">Delete</button></div>
+                                <div class="buttons__delete_comment"><button name="delete" id="${comment.id}@${taskId}">Delete</button></div>
                             </div>
                         </div>
                     </div>`
     return commentDiv;
+
+
 }
-// <label for="comment">Comment: </label>
-// <label for="author">Author: </label>
-// <label for="date">Date Added: </label>
+
 
 
 
@@ -52,5 +52,7 @@ export function renderAllComments(comments: Comment[], taskId: string): string {
     comments.forEach(comment => {
         commentsDiv += renderComment(comment, taskId);
     })
+
     return commentsDiv;
 }
+
