@@ -7,18 +7,11 @@
 
     .comment-form {
         display: flex;
-        width: 50%;
+        width: 100%;
         flex-direction: row;
         justify-content: center;
         height: 120%;
 
-        label {
-            width: 250px;
-        }
-
-        input[type=text] {
-            width: 250px;
-        }
 
 
         form {
@@ -30,6 +23,14 @@
             justify-items: center;
             align-items: center;
 
+            label {
+                width: 250px;
+            }
+
+            input[type=text] {
+                width: 10px;
+                height: 30px;
+            }
 
         }
     }
@@ -53,7 +54,7 @@
         justify-content: space-between;
         padding: 10px;
         align-items: center;
-  
+
         label {
             width: fit-content;
             align-items: center;
@@ -68,11 +69,13 @@
 
 
         }
-        p[name=date] ,p[name=author]{
+
+        p[name=date],
+        p[name=author] {
             width: 100px;
 
         }
-        
+
         p {
             width: fit-content;
             align-items: center;
@@ -82,7 +85,7 @@
             padding: 0;
             font-weight: 900;
             font-family: Arial, Helvetica, sans-serif;
-         
+
 
         }
 
