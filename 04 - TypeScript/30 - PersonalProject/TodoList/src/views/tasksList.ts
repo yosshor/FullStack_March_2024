@@ -5,6 +5,7 @@ import { handleSubmit } from "./todoForm";
 import './styles/dist/taskList.css'
 import { addCommentForm, handleDeleteComment } from "../controllers/comments";
 import { renderAllComments } from "./comments";
+import { renderLogin } from "../controllers/login";
 
 
 export function renderTasksList(listElement: HTMLDivElement, userTasks: Task[]): void | undefined {
@@ -31,6 +32,7 @@ export function addClickListenerEvent(): void {
     const updateTask = document.querySelectorAll<HTMLDivElement>('.update')
     const addCommentButtons = document.querySelectorAll('[name="add-comment"]');
     const commentsDivEventListener = document.querySelectorAll<HTMLDivElement>('button[name="delete"]')
+    const signout = document.getElementById("sign-out") as HTMLButtonElement;
 
     if (deleteList) {
         deleteList.forEach(item => item.addEventListener('click', handleDelete))
@@ -46,6 +48,9 @@ export function addClickListenerEvent(): void {
 
     if (commentsDivEventListener) {
         commentsDivEventListener.forEach(comment => comment.addEventListener('click', handleDeleteComment))
+    }
+    if (signout) {
+        signout.addEventListener('click', handleSignOutClick)
     }
 
 }
@@ -71,6 +76,14 @@ function handleUpdate(event: any): void {
     const desc = form.desc.value;
     const timeToBeDone = new Date(form.timeToBeDone.value);
     handleUpdateTask(id, title, desc, timeToBeDone, form);
+}
+
+function handleSignOutClick(event: any) {
+    const body = document.querySelector('body') as HTMLBodyElement;
+    body.innerHTML = `<div class="todo-list" id="todo-list"></div>`
+    const app = document.querySelector<HTMLDivElement>('#todo-list')! as HTMLDivElement;
+    if(app) renderLogin(app);
+    console.log('sign out event')
 }
 
 function renderTask(task: Task): string | undefined {

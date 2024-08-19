@@ -1,5 +1,5 @@
 import { getAllUserTasks } from "../controllers/addTaskToUser";
-import { handleAddTask, renderListOfTasks } from "../controllers/handleAddTask";
+import { handleAddTask, renderHeaderDiv, renderListOfTasks } from "../controllers/handleAddTask";
 import { Task } from "../models/task";
 import { User } from "../models/user";
 import './styles/dist/form.css'
@@ -8,7 +8,7 @@ import './styles/dist/form.css'
 
 export function renderTaskForm(divElement: HTMLElement): string | undefined {
     try {
-
+        renderHeaderDiv();
         const form = `<form id='form'> 
                             <label>Task Name:</label><input type='text' name='name'>
                             <label>Task Description:</label><input type='text' name='description'>

@@ -46,11 +46,12 @@ export function moveToTaskListPage(): void {
     if (body) {
         body.innerHTML = `
           <div class="wrapper">
+                <div class='header' id='header'></div>
               <div class='task-form' id="task-form"></div>
               <div class='tasks-list' id="tasks-list"></div>
           </div>`;
     }
-
+   //tasks list 
     const taskPage = document.getElementById('task-form')! as HTMLDivElement;
     if (taskPage) renderTaskForm(taskPage);
 }

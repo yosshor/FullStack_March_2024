@@ -1,6 +1,7 @@
 import { Task } from "../models/task";
+import { renderHeaderUser } from "../views/header";
 import { handleEditHtmlTag, renderTasksList } from "../views/tasksList";
-import { deleteOrUpdateTaskFromUser, getTaskToEdit } from "./addTaskToUser";
+import { deleteOrUpdateTaskFromUser, getCurrentUserDetails, getTaskToEdit } from "./addTaskToUser";
 
 
 
@@ -15,7 +16,19 @@ export function handleAddTask(id: string, title: string, desc: string, author: s
     }
 }
 
+export function renderHeaderDiv(){
+   //header
+   const user = getCurrentUserDetails();
+   const header = document.getElementById('header') as HTMLDivElement;
+   const str : string = renderHeaderUser(user!)!;
+   header.innerHTML = str
+   console.log(str)
+}
+
 export function renderListOfTasks(userTasks: Task[]): void {
+    //render the header
+    renderHeaderDiv();
+
     //render tasks list
     const list = document.querySelector<HTMLDivElement>('#tasks-list')!;
     if (list) {
