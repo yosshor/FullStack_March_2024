@@ -1,6 +1,6 @@
-import { Task } from "../models/task";
-import { User } from "../models/user";
-import './styles/header.scss'
+import { Task } from "../../models/task";
+import { User } from "../../models/user";
+import '../header/header.scss'
 
 
 

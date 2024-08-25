@@ -1,10 +1,10 @@
-import { Task } from "../models/task";
-import { handleDeleteTask, handleDoneClick, handleEditTask, handleUpdateTask } from "../controllers/handleAddTask";
-import { addCommentForm, handleDeleteComment } from "../controllers/comments";
-import { renderAllComments } from "./comments";
-import { renderLogin } from "../controllers/login";
+import { Task } from "../../models/task";
+import { handleDeleteTask, handleDoneClick, handleEditTask, handleUpdateTask } from "../../controllers/handleAddTask";
+import { addCommentForm, handleDeleteComment } from "../../controllers/comments";
+import { renderAllComments } from "../comments/comments";
+import { renderLogin } from "../../controllers/login";
 
-import './styles/taskList.scss'
+import '../render-tasks/taskList.scss'
 
 export function renderTasksList(listElement: HTMLDivElement, userTasks: Task[]): void | undefined {
     try {

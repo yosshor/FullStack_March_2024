@@ -1,6 +1,6 @@
-import './styles/login.scss'
-import './styles/buttons.scss'
-import { handleClickSignUp } from "../controllers/signup";
+import './login.scss'
+import '../../views/styles/buttons.scss'
+import { handleClickSignUp } from "../../controllers/signup";
 
 
 

@@ -1,7 +1,6 @@
-import { checkEmailAndPassword, insertUser } from "../controllers/indexedDb";
+import { insertUser } from "../controllers/indexedDb";
 import { User, users } from "../models/user";
-import { renderTaskForm } from "../views/todoForm";
-import { getAllUsers } from "./getUsersFromLS";
+import { renderTaskForm } from "../views/form/todoForm";
 
 
 

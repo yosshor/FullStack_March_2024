@@ -1,6 +1,6 @@
-import { deleteOrUpdateTaskFromUser, getTaskToEdit } from "./addTaskToUser";
-import { renderFormComment } from "../views/comments";
-import { addClickListenerEvent } from "../views/tasksList";
+import { deleteOrUpdateTaskFromUser } from "./addTaskToUser";
+import { renderFormComment } from "../views/comments/comments";
+import { addClickListenerEvent } from "../views/render-tasks/tasksList";
 import { moveToTaskListPage } from "./signup";
 
 
@@ -16,10 +16,9 @@ export function addCommentForm(event: any, idUser?: string): void {
         const id = idUser ?? event.target.id;
         const taskElement = document.getElementById(`a${id}`) as HTMLDivElement;
         const commentForm = taskElement.querySelectorAll('.comment-form');
-        
+
         //check if already have comment-form so do not add a new one
-        if (commentForm.length > 0)
-        {
+        if (commentForm.length > 0) {
             console.log('have already comment form')
             return;
         }

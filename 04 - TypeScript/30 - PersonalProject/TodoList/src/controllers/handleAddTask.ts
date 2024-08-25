@@ -1,6 +1,6 @@
 import { Task } from "../models/task";
-import { renderHeaderUser } from "../views/header";
-import { handleEditHtmlTag, renderTasksList } from "../views/tasksList";
+import { renderHeaderUser } from "../views/header/header";
+import { handleEditHtmlTag, renderTasksList } from "../views/render-tasks/tasksList";
 import { deleteOrUpdateTaskFromUser, getCurrentUserDetails, getTaskToEdit } from "./addTaskToUser";
 import { showPopUpFinishYourTask } from "./popup";
 

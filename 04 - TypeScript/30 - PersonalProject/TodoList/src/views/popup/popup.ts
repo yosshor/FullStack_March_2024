@@ -1,6 +1,6 @@
-import { Task } from '../models/task';
-import './styles/popup-remainder.scss'
-import './styles/buttons.scss'
+import { Task } from '../../models/task';
+import '../popup/popup-remainder.scss'
+import '../styles/buttons.scss'
 
 export function popup(task: Task) {
     const title = task.title.split(' ').slice(0, 4).join(' ');

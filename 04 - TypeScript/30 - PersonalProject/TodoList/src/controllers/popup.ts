@@ -1,5 +1,5 @@
 import { Task } from "../models/task";
-import { popup } from "../views/popup";
+import { popup } from "../views/popup/popup";
 import { getCurrentAndAllUsers } from "./addTaskToUser";
 import { handleDoneClick } from "./handleAddTask";
 
@@ -39,7 +39,7 @@ export function showPopUpFinishYourTask() {
             }
         }
         else {
-
+            
             //remove popup div
             removePopupReminder();
         }

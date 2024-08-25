@@ -1,6 +1,6 @@
 import { Email } from "../models/email";
-import { renderLoginPage } from "../views/login";
-import { renderRegisterForm } from "../views/register";
+import { renderLoginPage } from "../views/login/login";
+import { renderRegisterForm } from "../views/login/register";
 import { getCurrentUser } from "./getUsersFromLS";
 import { checkEmailAndPassword } from "./indexedDb";
 import { moveToTaskListPage } from "./signup";

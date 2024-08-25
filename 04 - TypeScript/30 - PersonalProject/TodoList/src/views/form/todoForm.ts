@@ -1,8 +1,8 @@
-import { getAllUserTasks } from "../controllers/addTaskToUser";
-import { handleAddTask, renderHeaderDiv, renderListOfTasks } from "../controllers/handleAddTask";
-import { Task } from "../models/task";
-import { User } from "../models/user";
-import './styles/form.scss'
+import { getAllUserTasks } from "../../controllers/addTaskToUser";
+import { handleAddTask, renderHeaderDiv, renderListOfTasks } from "../../controllers/handleAddTask";
+import { Task } from "../../models/task";
+import { User } from "../../models/user";
+import '../form/form.scss'
 
 
 

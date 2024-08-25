@@ -1,7 +1,7 @@
 
-import './styles/comments.scss'
-import './styles/buttons.scss'
-import { Comment } from '../models/comment';
+import '../comments/comments.scss'
+import '../styles/buttons.scss'
+import { Comment } from '../../models/comment';
 
 export function renderFormComment(id: string): string {
     const addSubjectInput = `<div class="add-comment"> 
