@@ -4,8 +4,7 @@ import { User } from "../models/user";
 import { getAllUsers, getCurrentUser } from "./getUsersFromLS";
 
 
-
-function getCurrentAndAllUsers(): { currentUser: User | undefined, allUsers: User[] | undefined, userGlobal: User | undefined } {
+export function getCurrentAndAllUsers(): { currentUser: User | undefined, allUsers: User[] | undefined, userGlobal: User | undefined } {
     const currentUser: User | undefined = getCurrentUserDetails();
     const allUsers: User[] = getAllUsers();
     const userGlobal: User | undefined = allUsers.find(user => user.email === currentUser!.email)
@@ -25,16 +24,24 @@ function getTasksFromCurrentAndGlobalUsers(id: string, command: string, task?: T
     const taskFromCurrentUser: Task | undefined = userCurrentTasks!.find(task => task.id === id);
     const taskIndex: number | undefined = tasksGlobal!.findIndex(task => task.id === id);
 
+    switchCommandOperation(command, tasksGlobal, taskIndex, userCurrentTasks, task, taskFromCurrentUser, taskFromGlobalUsers, comment, commentId);
+    return { allUsers, currentUser }
+}
+
+
+function switchCommandOperation(command: string, tasksGlobal: Task[], taskIndex: number, userCurrentTasks: Task[] | undefined,
+    task: Task | undefined, taskFromCurrentUser: Task | undefined, taskFromGlobalUsers: Task | undefined,
+    comment: string | undefined, commentId: string | undefined) {
     switch (command) {
 
         case "delete":
             tasksGlobal.splice(taskIndex, 1);
-            userCurrentTasks!.splice(taskIndex, 1)
+            userCurrentTasks!.splice(taskIndex, 1);
             break;
 
         case "addTask":
             tasksGlobal.push(task!);
-            userCurrentTasks!.push(task!)
+            userCurrentTasks!.push(task!);
             break;
 
         case "update":
@@ -45,6 +52,11 @@ function getTasksFromCurrentAndGlobalUsers(id: string, command: string, task?: T
             taskFromGlobalUsers!.expectToBeDone! = new Date(task!.expectToBeDone);
             taskFromGlobalUsers!.title = task!.title;
             taskFromGlobalUsers!.desc = task!.desc;
+            break;
+
+        case "doneTask":
+            taskFromCurrentUser!.done = taskFromCurrentUser?.done === false ? true : false;
+            taskFromGlobalUsers!.done = taskFromGlobalUsers?.done === false ? true : false;
             break;
 
         case "addComment":
@@ -71,7 +83,6 @@ function getTasksFromCurrentAndGlobalUsers(id: string, command: string, task?: T
             }
             break;
     }
-    return { allUsers, currentUser }
 }
 
 function deleteTask(id: string): void {
@@ -79,6 +90,10 @@ function deleteTask(id: string): void {
     saveCurrentAndAllUsers(currentUser!, allUsers!);
 }
 
+function doneTask(id: string): void {
+    const { allUsers, currentUser } = getTasksFromCurrentAndGlobalUsers(id, "doneTask");
+    saveCurrentAndAllUsers(currentUser!, allUsers!);
+}
 function addTask(id: string, task: Task): void {
     const { allUsers, currentUser } = getTasksFromCurrentAndGlobalUsers(id, "addTask", task);
     saveCurrentAndAllUsers(currentUser!, allUsers!);
@@ -111,7 +126,7 @@ function saveCurrentAndAllUsers(currentUser: User, allUsers: User[]): void {
 export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, task?: Task, comment?: string, commentId?: string): Task[] | undefined {
     switch (deleteOrUpdate) {
         case "delete":
-            deleteTask(id)
+            deleteTask(id);
             break;
         case "update":
             updateTask(id, task!)
@@ -119,12 +134,16 @@ export function deleteOrUpdateTaskFromUser(id: string, deleteOrUpdate: string, t
         case "addTask":
             addTask(id, task!)
             break;
+        case "doneTask":
+            doneTask(id)
+            break;    
         case "addComment":
             addComment(id, comment!)
             break;
         case "deleteComment":
             deleteComment(id, commentId!)
             break;
+
     }
     const { currentUser, allUsers, userGlobal } = getCurrentAndAllUsers();
     return currentUser?.list
@@ -141,7 +160,7 @@ export function getTaskToEdit(id: string): Task | undefined {
 
 
 export function getCurrentUserDetails(email?: string): User | undefined {
-    const currentUser = email !== undefined ? getCurrentUser(email) : getCurrentUser();
+    const currentUser: User | null = email !== undefined ? getCurrentUser(email) : getCurrentUser();
 
     if (!currentUser) {
         console.error("No users found in localStorage.");

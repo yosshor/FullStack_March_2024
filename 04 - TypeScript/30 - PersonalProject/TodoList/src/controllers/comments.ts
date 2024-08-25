@@ -17,7 +17,7 @@ export function addCommentForm(event: any, idUser?: string): void {
         const taskElement = document.getElementById(`a${id}`) as HTMLDivElement;
         const commentForm = taskElement.querySelectorAll('.comment-form');
         
-        //check if already have comment-form so not add new one
+        //check if already have comment-form so do not add a new one
         if (commentForm.length > 0)
         {
             console.log('have already comment form')

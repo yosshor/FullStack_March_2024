@@ -2,27 +2,43 @@ import { Task } from "../models/task";
 import { renderHeaderUser } from "../views/header";
 import { handleEditHtmlTag, renderTasksList } from "../views/tasksList";
 import { deleteOrUpdateTaskFromUser, getCurrentUserDetails, getTaskToEdit } from "./addTaskToUser";
+import { showPopUpFinishYourTask } from "./popup";
 
 
 
+/**
+ * Handles the addition of a new task to the user's task list.
+ *
+ * @param {string} id - The unique identifier of the user.
+ * @param {string} title - The title of the task to be added.
+ * @param {string} desc - The description of the task to be added.
+ * @param {string} author - The author of the task to be added.
+ * @param {Date} expectToBeDone - The expected completion date of the task.
+ * @return {void | undefined} Returns undefined if an error occurs, otherwise returns void.
+ */
 export function handleAddTask(id: string, title: string, desc: string, author: string, expectToBeDone: Date): void | undefined {
     try {
-        const task = new Task(title, desc, author, expectToBeDone);
-        const userTasks: Task[] | undefined = deleteOrUpdateTaskFromUser(id, "addTask", task);
-        if (userTasks) renderListOfTasks(userTasks!);
+        const command = "addTask"
+        handleTasksOperation(title, desc, author, expectToBeDone, id, command);
     } catch (error) {
         console.error(error);
         return undefined;
     }
 }
 
-export function renderHeaderDiv(){
-   //header
-   const user = getCurrentUserDetails();
-   const header = document.getElementById('header') as HTMLDivElement;
-   const str : string = renderHeaderUser(user!)!;
-   header.innerHTML = str
-   console.log(str)
+function handleTasksOperation(title: string, desc: string, author: string, expectToBeDone: Date, id: string, command: string) {
+    const task = new Task(title, desc, author, expectToBeDone);
+    const userTasks: Task[] | undefined = deleteOrUpdateTaskFromUser(id, command, task);
+    if (userTasks) renderListOfTasks(userTasks!);
+}
+
+export function renderHeaderDiv() {
+    //header
+    const user = getCurrentUserDetails();
+    const header = document.getElementById('header') as HTMLDivElement;
+    const str: string = renderHeaderUser(user!)!;
+    header.innerHTML = str
+    console.log(str)
 }
 
 export function renderListOfTasks(userTasks: Task[]): void {
@@ -35,6 +51,20 @@ export function renderListOfTasks(userTasks: Task[]): void {
         console.log('list', list);
         renderTasksList(list, userTasks);
     }
+
+    const formElement = document.getElementById('form') as HTMLDivElement;
+    console.log(formElement);
+
+    if (formElement) {
+        console.log(formElement);
+        //run set time interval to run every minute
+        setInterval(showPopUpFinishYourTask, 10000);
+    }
+}
+
+export function handleDoneClick(id: string): void {
+    const tasks: Task[] | undefined = deleteOrUpdateTaskFromUser(id, 'doneTask');
+    if (tasks) renderListOfTasks(tasks);
 }
 
 export function handleDeleteTask(id: string) {

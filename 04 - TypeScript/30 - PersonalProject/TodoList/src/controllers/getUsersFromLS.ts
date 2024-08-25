@@ -22,7 +22,7 @@ export function getCurrentUser(email?: string): User | null {
 
     // Rehydrate the task list and comments
     currentUser.list = parsedUser.list.map((taskData: any) => {
-        const task = new Task(taskData.title, taskData.desc, taskData.author, new Date(taskData.expectToBeDone), taskData.id);
+        const task = new Task(taskData.title, taskData.desc, taskData.author, new Date(taskData.expectToBeDone), taskData.id, taskData.done);
 
         // Rehydrate the comments array for each task
         task.comments = taskData.comments.map((commentData: any) =>
@@ -48,7 +48,7 @@ export function getAllUsers(): User[] {
         const user = new User(userData.firstName, userData.lastName, userData.email, userData.password, userData.id);
         // Rehydrate tasks and their comments
         user.list = userData.list.map((taskData: any) => {
-            const task = new Task(taskData.title, taskData.desc, taskData.author, new Date(taskData.expectToBeDone), taskData.id);
+            const task = new Task(taskData.title, taskData.desc, taskData.author, new Date(taskData.expectToBeDone), taskData.id, taskData.done);
 
             // Rehydrate comments
             task.comments = taskData.comments.map((commentData: any) =>

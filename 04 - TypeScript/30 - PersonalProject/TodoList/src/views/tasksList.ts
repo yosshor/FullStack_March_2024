@@ -1,12 +1,10 @@
 import { Task } from "../models/task";
-import { handleDeleteTask, handleEditTask, handleUpdateTask } from "../controllers/handleAddTask";
-import { handleSubmit } from "./todoForm";
-
-import './styles/dist/taskList.css'
+import { handleDeleteTask, handleDoneClick, handleEditTask, handleUpdateTask } from "../controllers/handleAddTask";
 import { addCommentForm, handleDeleteComment } from "../controllers/comments";
 import { renderAllComments } from "./comments";
 import { renderLogin } from "../controllers/login";
 
+import './styles/taskList.scss'
 
 export function renderTasksList(listElement: HTMLDivElement, userTasks: Task[]): void | undefined {
     try {
@@ -33,6 +31,7 @@ export function addClickListenerEvent(): void {
     const addCommentButtons = document.querySelectorAll('[name="add-comment"]');
     const commentsDivEventListener = document.querySelectorAll<HTMLDivElement>('button[name="delete"]')
     const signout = document.getElementById("sign-out") as HTMLButtonElement;
+    const taskDone = document.querySelectorAll('.task-done');
 
     if (deleteList) {
         deleteList.forEach(item => item.addEventListener('click', handleDelete))
@@ -52,7 +51,16 @@ export function addClickListenerEvent(): void {
     if (signout) {
         signout.addEventListener('click', handleSignOutClick)
     }
+    if (taskDone) {
+        taskDone.forEach(item => item.addEventListener('click', handleTaskDone))
+    }
 
+
+}
+
+function handleTaskDone(event: any) {
+    const id = event.target.id.split('task-done-')[1];
+    handleDoneClick(id)
 }
 
 function handleDelete(event: any): void {
@@ -82,18 +90,19 @@ function handleSignOutClick(event: any) {
     const body = document.querySelector('body') as HTMLBodyElement;
     body.innerHTML = `<div class="todo-list" id="todo-list"></div>`
     const app = document.querySelector<HTMLDivElement>('#todo-list')! as HTMLDivElement;
-    if(app) renderLogin(app);
+    if (app) renderLogin(app);
     console.log('sign out event')
 }
 
-function renderTask(task: Task): string | undefined {
+export function renderTask(task: Task): string | undefined {
     try {
         //task div element
         const taskElement = `
-            <div class= "task-info" id="a${task.id}">
+            <div class="task-info" id="a${task.id}">
                 <div class='task'>
                     <h3 class='name'>${task.title}</h3>
                     <p class='desc'>${task.desc}</p>
+                    <p id='task-done-${task.id}' class='task-done'>    ${task.done === false ? "&#128078;" : "&#128077;"}</p>
                     <p class='be-done'> Done Until : ${task.expectToBeDone.toDateString() + " " + task.expectToBeDone.toLocaleTimeString()}</p>
                     <div class='buttons'>
                         <button class='delete' id=${task.id}>Delete</button>

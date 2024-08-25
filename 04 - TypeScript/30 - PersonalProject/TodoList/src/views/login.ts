@@ -1,5 +1,5 @@
-import './styles/dist/login.css'
-import './styles/dist/buttons.css'
+import './styles/login.scss'
+import './styles/buttons.scss'
 
 
 export function renderLoginPage(): string {

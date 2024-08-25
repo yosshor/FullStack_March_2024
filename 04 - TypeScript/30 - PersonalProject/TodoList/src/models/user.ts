@@ -10,7 +10,6 @@ export class User {
     password: string;
     list: Task[];
 
-
     constructor(firstName: string, lastName: string, email: string, password: string, id?: string) {
         this.id = id ?? crypto.randomUUID().toString();
         this.firstName = firstName;
@@ -26,7 +25,7 @@ export class User {
     getAllTasks(): Task[] {
         return this.list;
     }
-    
+
     addCommentToTask(taskId: string, comment: Comment) {
         const task = this.list.find(t => t.id === taskId);
         if (task) {
@@ -38,6 +37,10 @@ export class User {
 
     getAllComments(): Comment[] {
         return this.list.flatMap(task => task.getComments());
+    }
+
+    getDoneTasks(): Task[] {
+        return this.list.filter(task => task.done === true);
     }
 }
 

@@ -1,6 +1,6 @@
 
-import './styles/dist/comments.css'
-import './styles/dist/buttons.css'
+import './styles/comments.scss'
+import './styles/buttons.scss'
 import { Comment } from '../models/comment';
 
 export function renderFormComment(id: string): string {
