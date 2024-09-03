@@ -49,11 +49,13 @@
             flex-direction: row;
 
             input[type=text],
-            input[type=password] {
+            #password {
                margin-right: 20px;
                border-radius: 10px;
                background-color: white;
                color: black;
+               height: 30px;
+               border: 1px solid black;
 
                &:hover {
                   cursor: pointer;
@@ -84,16 +86,17 @@
          align-items: center;
          border: 2px solid black;
 
-         .row {
+         .row-register {
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             align-items: center;
-
+            // height: 100%;
 
             label {
                padding-right: 10px;
-               width: 120px;
+               width: 150px;
+
 
             }
 
@@ -105,34 +108,40 @@
 
             select {
                display: flex;
-               width: 160px;
-               height: 30px;
+               width: 170px;
+               height: 25px;
                background-color: white;
                color: black;
                border-radius: 10px;
+               align-items: center;
 
                option {
                   padding: 10px;
                   width: 20px;
                   height: fit-content;
 
+
                }
             }
 
             input[type=text],
-            input[type=password] {
-               margin-top: 20px;
-               margin-bottom: 10px;
+            #password {
+               // margin-top: 12px;
+               // margin-bottom: 10px;
                border-radius: 10px;
                height: 20px;
                width: 50%;
                background-color: white;
                color: black;
-
+               border: 1px solid black;
+               margin: 0;
             }
 
-            input[type=password] {
+            #password {
                margin-bottom: 20px;
+               margin-top: 6px;
+               height: 25px;
+               width: 52%;
 
             }
 

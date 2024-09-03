@@ -2,12 +2,12 @@ import { checkEmailExists, insertUser } from "./indexedDb";
 import { User, UserType } from "../../models/User";
 import { getAllUsers } from "./currentUser";
 import { homePage } from "../../controllers/HomeController";
+import { renderLogin } from "./login";
 
 export async function handleClickSignUp(event: any): Promise<void> {
     try {
         event.preventDefault()
         const form = event.target;
-        debugger
         const firstName = form.fname.value as string;
         const lastName = form.lname.value as string;
         const email = form.email.value as string;
@@ -30,7 +30,7 @@ export async function handleClickSignUp(event: any): Promise<void> {
         localStorage.setItem('CurrentUser', JSON.stringify(user));
         localStorage.setItem('AllUsers', JSON.stringify(users));
         event.target.reset();
- 
+
         //checking if the mail already exists
         const allUsersMail = await checkEmailExists(email);
         if (allUsersMail) {
@@ -60,4 +60,10 @@ export function moveToToyFoodPage(): void {
     if (register) register.remove();
 
     homePage();
+}
+
+export function handleClickHomeButton() {
+    const app = document.querySelector<HTMLDivElement>('#app')! as HTMLDivElement;
+    if (app) renderLogin(app);
+
 }

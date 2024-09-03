@@ -67,11 +67,19 @@ export function renderCheckoutPage(div: HTMLDivElement, cart: Cart): void {
             </label>
             <p>Total <span class="price" style="color:black"><b>$${cart.totalPrice.toFixed(2)}</b></span></p>
 
-            <input type="submit" value="Checkout" class="btn">
+            <input id="checkoutBtn" type="submit" value="Checkout" class="btn">
         </form>
         </div>
     </div>`
     div.innerHTML = checkout;
 
-
+    //replace button with checkout thank you
+    const checkoutBtn = document.querySelector('#checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            div.innerHTML = `
+            <h1>Thank you for your order</h1>
+            <p>You will receive an email confirmation shortly.</p>`
+        })
+    }
 }

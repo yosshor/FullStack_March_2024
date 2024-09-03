@@ -1,7 +1,5 @@
 import { getCart, homePage } from '../controllers/HomeController';
 import { Cart } from '../models/Cart';
-import { Item, ItemCategory } from '../models/Item';
-import { User } from '../models/User';
 import { addItem } from './addItem';
 import { renderCartPage } from './CartView';
 
@@ -62,6 +60,8 @@ function addEventListener() {
     const home = document.querySelector("#home");
     const addItem = document.querySelector("#addItem");
     const cartItems = document.querySelector("#cartItems");
+    const cartIcon = document.querySelector(".header__user__cart")
+
     if (home) {
         home.addEventListener('click', handleHomeClick);
     }
@@ -70,6 +70,9 @@ function addEventListener() {
     }
     if (cartItems) {
         cartItems.addEventListener('click', handleCartItemsClick);
+    }
+    if(cartIcon) {  
+        cartIcon.addEventListener('click', handleCartItemsClick);
     }
 }
 
