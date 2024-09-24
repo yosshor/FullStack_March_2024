@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/style.css">
+</head>
+<body>
+    <form id="add-items" onsubmit="handleAddProduct(event)">
+        <input type="text" name="nameOfProduct" placeholder="product name" required>
+        <input type="number" name="priceOfProduct" placeholder="product price" required>
+        <input type="submit" value="Add">
+    </form>
+    <div id="productList"></div>
+
+    <button onclick="handleCheapProducts()">Cheap products</button>
+    <button onclick="handleExpensiveProducts()">Expensive products</button>
+    <button onclick="handleAllProducts()">All products</button>
+    <button onclick="handleGetSum()">Sum of all products prices</button>
+    <div id="sum"></div>
+    <script src="./dist/index.js"></script>
+</body>
+</html>
