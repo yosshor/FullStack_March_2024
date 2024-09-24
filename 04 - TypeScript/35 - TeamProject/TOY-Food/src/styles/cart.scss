@@ -1,0 +1,105 @@
+.cart-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    align-items: flex-start; 
+}
+.item-list {
+    flex: 1;
+}
+
+.item-card {
+    margin-bottom: 20px;
+   
+}
+.total {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 450px; 
+    height: 100%;
+    box-sizing: border-box; 
+   
+    margin-left: 20px; 
+}
+
+.total p {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.total a {
+    width: 80%;
+}
+
+.total h4 {
+    width: 100%;
+}
+
+.total h4 span {
+    width: 80%;
+    align-items: center;
+}
+
+.container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+.btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+a {
+    color: #2196F3;
+}
+
+hr {
+    border: 1px solid lightgrey;
+}
+
+span.price {
+    float: right;
+    color: grey;
+}
+
+.show-total-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    span {
+        padding-left: 10px;
+    }
+}

@@ -1,0 +1,54 @@
+@import "buttons", "inputs", "colors", "header", "footer", "search-bar", "content-page";
+
+:root {
+    font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+    color: #343a40;
+    background-color: #ddbea9;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f3c2;
+    color: #343a40;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+    color: #343a40;
+}
+
+#app {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+.card {
+    padding: 2em;
+    background-color: #cedf9f;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.read-the-docs {
+    color: #888;
+}

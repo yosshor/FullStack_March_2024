@@ -1,0 +1,181 @@
+:root {
+    --primary-color: #ccd5ae;
+    --secondary-color: #e9edc9;
+    --third-color: #fefae0;
+    --accent-color: #d4a373;
+    --neutral-color: #faedcd;
+    --dark-color: #6b705c;
+    --light-text-color: #ffffff;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap');
+
+.acme-regular {
+    font-family: 'Acme', sans-serif;
+    font-weight: 400;
+}
+
+.atma-light {
+    font-family: 'Atma', sans-serif;
+    font-weight: 300;
+}
+.wrapper {
+    max-width: 62.5rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+#content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
+    background-color: var(--third-color);
+    h2 {
+        font-family: 'Acme', sans-serif;
+        font-size: 2rem;
+        color: var(--dark-color);
+        text-align: center;
+    }
+    .form-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1.25rem;
+        width: 100%;
+    }
+    .item-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
+        gap: 1.25rem;
+        justify-content: center;
+        width: 100%;
+        padding: 1.25rem;
+    }
+    .item-card {
+        background-color: var(--secondary-color);
+        border-radius: 0.9375rem;
+        box-shadow: 0px 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 25rem;
+        width: 15.625rem;
+        cursor: pointer;
+        padding: 0;
+        position: relative;
+
+        .switchedView {
+            width: 100%;
+            height: 8rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: opacity 1s ease;
+            img {
+                width: 100%;
+                height: 80%;
+                object-fit: cover;
+                transition: opacity 1s ease;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .description {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 80%;
+                background-color: var(--neutral-color);
+                color: var(--dark-color);
+                opacity: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: opacity 1s ease;
+            }
+            &:hover img {
+                opacity: 0;
+            }
+            &:hover .description {
+                opacity: 1;
+            }
+        }
+        .item-content {
+            padding-top: 0.25rem;
+            position: relative;
+            margin-bottom: 2rem;
+            p.price {
+                margin: 0;
+                padding: 0;
+                font-size: 1.2rem;
+                color: var(--dark-color);
+            }
+            .item-quantity {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 0.625rem;
+                .decrease, .increase {
+                    background-color: var(--accent-color);
+                    color: var(--light-text-color);
+                    width: 30%;
+                    margin: 0 0.25rem;
+                    border: none;
+                    border-radius: 1.25rem;
+                    padding: 0.5rem;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    &:hover {
+                        background-color: var(--neutral-color);
+                    }
+                }
+                .increase {
+                    background-color: var(--primary-color);
+                }
+            }
+        }
+        button.add-to-order {
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
+            border: none;
+            border-radius: 0.9375rem;
+            padding: 0.625rem 1.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+            &:hover {
+                background-color: var(--neutral-color);
+                color: var(--dark-color);
+            }
+        }
+    }
+    .total-section {
+        margin-top: 1.25rem;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+}
+button.decrease, button.increase {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.9375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: var(--neutral-color);
+        color: var(--dark-color);
+    }
+}
