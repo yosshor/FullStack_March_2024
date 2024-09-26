@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./dist/app.js" defer></script>
+    <link rel="stylesheet" href=".//dist/styles.css">
+    <title>Pets</title>
+</head>
+<body onload="main()">
+    <div class="pet-wrapper">
+        <h1>Pets</h1>
+        <div class="pet-form">
+            <form id="add-pet-form">
+                <input type="text" name="name" id="name" placeholder="Enter Pet Name">
+                <input type="text" name="type" id="type" placeholder="Enter Pet Type">
+                <input type="text" name="breed" id="breed" placeholder="Enter Pet Breed">
+                <input type="text" name="age" id="age" placeholder="Enter Pet Age">
+                <input type="submit" id="add-pet" value="Add Pet">
+            </form>
+        </div>
+        <div id="pets"></div>
+    </div>
+</body>
+</html>
