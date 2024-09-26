@@ -1,0 +1,27 @@
+body {
+    background-color: teal;
+    color: white;
+}
+
+#studentsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    .student {
+        width: fit-content;
+        background-color: rgb(21, 20, 20);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        min-width: 200px;
+
+        &__image {
+            width: 100%;
+            min-height: 200px;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+}

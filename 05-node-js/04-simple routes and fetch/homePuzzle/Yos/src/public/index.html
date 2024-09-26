@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/app.js" defer></script>
+
+    <title>Front</title>
+</head>
+
+<body>
+
+    <div id="root">
+        <h1>Frontend Hello user</h1>
+        <p>Express is a web application framework for Node.js</p>
+        <label id="error" class="error"></label>
+        <form id='form' action="">
+            <input type="text" placeholder="insert your name" required name="name" id="name">
+            <input type="url" placeholder="insert your image url" required name="image" id="image">
+            <button type="submit">Submit</button>
+        </form>
+        <div>
+            <button id="show-all">Show All</button>
+        </div>
+
+        <div class="users" id="users">
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

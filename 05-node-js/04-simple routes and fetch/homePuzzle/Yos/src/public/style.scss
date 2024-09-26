@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: #d5beab;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        text-align: center;
+        color: blue;
+    }
+
+    .users {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .user {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            height: 250px;
+            label{
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+            img {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+            .delete{
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                button{
+                    background-color: red;
+                    color: white;
+                    border: 1px solid black;
+                    padding: 5px;
+                    border-radius: 10px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+#error{
+    color: red;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+    justify-content: center
+}
