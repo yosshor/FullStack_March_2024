@@ -1,0 +1,34 @@
+{
+<<<<<<< HEAD
+  "compile-hero.disable-compile-files-on-did-save-code": false,
+  "liveServer.settings.port": 5502,
+  "cSpell.words": [
+    "baking",
+    "Delivrability",
+    "Ivardisplay",
+    "Kedar",
+    "Predesign",
+    "predesigning",
+    "Reut",
+    "Yossi"
+  ]
+}
+=======
+    "compile-hero.disable-compile-files-on-did-save-code": false,
+    "liveServer.settings.port": 5502,
+    "cSpell.words": [
+        "age",
+        "baking",
+        "Delivrability",
+        "Ivardisplay",
+        "Kedar",
+        "Predesign",
+        "predesigning",
+        "Reut",
+        "Yossi"
+    ],
+    "cSpell.ignoreWords": [
+        "return"
+    ]
+}
+>>>>>>> c516ae45cd34dcc88296eb77d54b4cbe2ed8d48a

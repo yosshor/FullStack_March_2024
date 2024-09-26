@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    flex-direction: column;
+    h1{
+        text-align: center;
+        color: blue;
+        &:hover{
+            cursor: pointer;
+        }   
+    }
+    p{
+        color: red;
+        text-align: center;
+    }
+}
