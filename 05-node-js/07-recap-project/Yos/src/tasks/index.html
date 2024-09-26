@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/styles.css">
+    <script src="./dist/app.js" defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Tasks</title>
+</head>
+<body onload="main()">
+
+    <div>
+        <!-- showing all Tasks -->
+        <div class="info"> 
+            <h1>Tasks List</h1>
+            <div class="get-data">
+                <button onclick="window.location.href='/users'">Go to Users Page</button>
+                <button onclick="handleGetAllTasks()">Get All Tasks</button>
+            </div>
+            <div>
+                <h4>Add new Tasks</h4>
+                <form id="add-task-form" onsubmit="handleAddTask(event)">
+                    <input type="text" name="task" id="task" placeholder="Enter Task">
+                    <input type="text" name="description" id="description" placeholder="Enter Description">
+                    <input type="submit" id="add-task" value="Add Task">
+                <p id="add-task-message"></p>
+            </div>
+
+        </div>
+    
+        <!-- <div id="users"></div> -->
+        <div id="tasks"></div>
+    </div>
+
+</body>
+
+</html>

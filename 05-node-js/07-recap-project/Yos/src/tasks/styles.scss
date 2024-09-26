@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+
+    .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 20px;
+
+        .get-data {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-left: 5px;
+
+            button {
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 4px;
+                margin-left: 5px;
+
+            }
+        }
+    }
+}
+
+#tasks {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .task {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 70%;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .details {
+            .name {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .email {
+                font-size: 14px;
+                color: #666;
+            }
+        }
+    }
+}
+
+
+#add-task-form {
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    #task,
+    #description,
+    #add-task {
+        width: 60%;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+        margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 40px;
+
+    }
+
+    #add-task {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        height: 40px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        border:none;
+    }
+
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+}
+
+.form-submit-button {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    input[type=submit] {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}

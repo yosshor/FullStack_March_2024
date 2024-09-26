@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/styles.css">
+    <script src="./dist/app.js" defer></script>
+    <title>Users</title>
+</head>
+
+<body onload="main()">
+
+    <div>
+        <!-- showing all users -->
+        <div class="info"> 
+            <h1>Users List</h1>
+            <div class="get-data">
+
+                <button onclick="handleGetAllUsers()">Get All Users</button>
+                <!--  on click move to tasks page -->
+                <button onclick="window.location.href='../tasks/index.html'">Go to Tasks Page</button>
+
+                <button onclick="handleGetAllTasks()">Get All Tasks</button>
+            </div>
+            <div>
+                <h4>Add new Tasks</h4>
+                <form id="add-task-form" onsubmit="handleAddUser(event)">
+                    <input type="text" name="name" id="name" placeholder="Enter Name" required>
+                    <input type="text" name="title" id="title" placeholder="Enter Title" required>
+                    <input type="number" name="age" id="age" placeholder="Enter Age" required>
+                    <input type="submit" id="add-task" value="Add User">
+                <p id="add-task-message"></p>
+            </div>
+        </div>
+        <div id="users"></div>
+        <!-- <div id="tasks"></div> -->
+    </div>
+
+</body>
+
+</html>
