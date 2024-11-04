@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./dist/home.js" defer></script>
+    <link rel="stylesheet" href="./dist/home.css" />
+    <title>Home Admin</title>
+  </head>
+  <body onload="helloAdmin()">
+    <div id='header' class="header" >
+      <h1>Home - Admin - Page</h1>
+      <button onclick="logout()">Logout</button>
+    </div>
+    <div id="userName"></div>
+    <div id="pets"></div>
+    <div class="test-get-user">
+      <button onclick="getUsers()">Get User</button>
+      <div id="user"></div>
+    </div>
+    <div id="usersTable"></div>
+  </body>
+</html>
