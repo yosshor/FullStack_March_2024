@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./dist/style.css" />
+
+    <script src="./dist/index.js" defer></script>
+  </head>
+  <body onload="main()">
+    <h1>Pets List Page</h1>
+    <div class="get-data">
+      <button class="btn btn-warning btn-lg" onclick="handleAddNewPet(event)">
+        Add Pet
+      </button>
+      <!-- button to move to user page located in ../users/index.html -->
+      <button
+        class="btn btn-primary btn-lg"
+        onclick="window.location.href='../users/'"
+      >
+        Go to Users Page
+      </button>
+    </div>
+    <div id="pets"></div>
+  </body>
+</html>
