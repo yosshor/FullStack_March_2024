@@ -1,0 +1,2 @@
+create middleware ```isAdmin``` that checks if the user is an admin or not. If the user is an admin, the middleware should call the next function. If the user is not an admin, the middleware should return a 403 status code with a message "You are not an admin". 
+```javascript
