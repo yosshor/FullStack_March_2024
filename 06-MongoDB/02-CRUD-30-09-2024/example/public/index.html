@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/index.js"></script>
+</head>
+<body onload="main()">
+    <h1>Hi</h1>
+    <form onsubmit="handelAddPetToDB(event)">
+        <input type="text" name="name" placeholder="name" required>
+        <input type="text" name="species"  placeholder="Species" required>
+        <input type="number" name="age" placeholder="age" min="0" max="25" required>
+        <input type="number" name="price"  placeholder="Price in USD" required>
+        <input type="url" name="imageURL" placeholder="Image URL">
+        <button type="submit">Add Pet</button>
+    </form>
+    <div id="pets"></div>
+</body>
+</html>
