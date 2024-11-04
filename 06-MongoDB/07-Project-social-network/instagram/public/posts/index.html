@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts - Instagram Clone</title>
+  <link rel="stylesheet" href="./dist/post.css?v=1.0">
+</head>
+<body onload="fetchPosts()">
+  <header>
+    <h1>Instagram Clone</h1>
+    <div id="user-actions">
+      <button id="log-out" onclick="handleLogOut(event)">Log Out</button>
+    </div>
+  </header>
+  <div id="content">
+    <form id="new-post" onsubmit="handleSubmitPost(event)">
+      <h2>Create New Post</h2>
+      <textarea name="postContent" id="post-content" placeholder="What's on your mind?"></textarea>
+      <input name="postImage" type="file" id="post-image">
+      <button type="submit" id="create-post">Post</button>
+    </form>
+    <div id="posts">
+      <h2>All Posts</h2>
+      <button id="get-posts">Get All Posts</button>
+      <div id="post-list"></div>
+    </div>
+  </div>
+  <script src="./dist/post.js"></script>
+</body>
+</html>

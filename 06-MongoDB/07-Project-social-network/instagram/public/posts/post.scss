@@ -1,0 +1,243 @@
+// Variables
+$font-stack: Arial,
+sans-serif;
+$primary-color: #3897f0;
+$background-color: #fafafa;
+$text-color: #333;
+$secondary-color: #f8f8f8;
+$border-color: #e6e6e6;
+$button-hover-color: darken($primary-color, 10%);
+$input-focus-border-color: lighten($primary-color, 20%);
+
+// Global Styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-stack;
+  background-color: $background-color;
+  color: $text-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+// Header
+header {
+  background-color: $primary-color;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  #user-actions {
+    #log-out {
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}
+
+// Content Wrapper
+#content {
+  width: 90%;
+  max-width: 700px;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+// New Post Form
+#new-post {
+  background-color: white;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+
+  #post-content {
+    width: 100%;
+    height: 80px;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    padding: 0.7rem;
+    resize: none;
+    margin-bottom: 1rem;
+    font-family: $font-stack;
+    transition: border-color 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: $input-focus-border-color;
+      box-shadow: 0px 0px 4px rgba($primary-color, 0.2);
+    }
+  }
+
+  #post-image {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  #create-post {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+
+    &:hover {
+      background-color: $button-hover-color;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// Posts Section
+#posts {
+  background-color: white;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+
+  #get-posts {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-bottom: 1rem;
+
+    &:hover {
+      background-color: $button-hover-color;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  #post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
+// Post Items
+.post-item {
+  border: 1px solid $border-color;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: $secondary-color;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+
+  .post-header {
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content {
+    margin-bottom: 0.5rem;
+    color: $text-color;
+    line-height: 1.5;
+  }
+
+  .post-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+
+    button {
+      background-color: transparent;
+      border: none;
+      color: $primary-color;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 0.5rem;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: lighten($primary-color, 40%);
+      }
+    }
+  }
+}
+
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  .comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around ; 
+    background-color: $secondary-color;
+    border: 1px solid $border-color;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    height: 1.5;
+
+  }
+}
