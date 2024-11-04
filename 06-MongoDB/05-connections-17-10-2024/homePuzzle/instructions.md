@@ -1,0 +1,2 @@
+1) Design (using draw.io), tables for social network. with the following enteties: User, Post, Friends, Comments ,and likes
+2) (optional) create a database for the social network using mongoose and express.
