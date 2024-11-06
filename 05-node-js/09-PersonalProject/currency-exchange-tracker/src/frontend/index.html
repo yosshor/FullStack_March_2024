@@ -1,0 +1,39 @@
+<!-- src/frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Exchange Tracker</h1>
+        <div class="currency-management">
+            <h2>Manage Currencies</h2>
+            <form id="currency-form">
+                <input type="text" id="currency-name" placeholder="Currency Name" required>
+                <input type="text" id="currency-code" placeholder="Currency Code" required>
+                <button type="submit">Add Currency</button>
+            </form>
+            <ul id="currency-list"></ul>
+        </div>
+        <div class="exchange-rates">
+            <h2>Exchange Rates</h2>
+            <div id="exchange-rates-chart"></div>
+        </div>
+        <div class="currency-conversion">
+            <h2>Currency Conversion</h2>
+            <form id="conversion-form">
+                <input type="number" id="amount" placeholder="Amount" required>
+                <input type="text" id="from-currency" placeholder="From Currency" required>
+                <input type="text" id="to-currency" placeholder="To Currency" required>
+                <button type="submit">Convert</button>
+            </form>
+            <div id="conversion-result"></div>
+        </div>
+    </div>
+    <script src="bundle.js"></script>
+</body>
+</html>
