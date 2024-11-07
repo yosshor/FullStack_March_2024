@@ -1,140 +1,86 @@
 import { Comment } from "../models/Comment";
 import { Recipe } from "../models/Recipe";
 import { Like } from "../models/Like";
+import User from "../models/User";
+import jwt from 'jwt-simple'
 
 export const createRecipe = async (req: any, res: any) => {
   try {
-    console.log(req.body);
-    // const { userId } = req.cookies;
-    console.log(req.userId);
-    const {title, instructions, ingredients, cookingTime, servingSize, category, image } = req.body;
+    const {userRecipe} = req.cookies;
+    const secret = process.env.SECRET!;
+    // jwt decode
+    const user = jwt.decode(userRecipe, secret);
+    const userIds = user.userId;
+    const {
+      title,
+      instructions,
+      ingredients,
+      cookingTime,
+      servingSize,
+      category,
+      image,
+    } = req.body;
     const recipe = new Recipe({
-      userId:req.userId,
+      userId: userIds,
       title: title,
-      instructions:instructions,
-      ingredients:ingredients,
-      cookingTime:parseInt(cookingTime),
-      servingSize:parseInt(servingSize),
-      category:category,
-      image:image
-    })
+      instructions: instructions,
+      ingredients: ingredients,
+      cookingTime: parseInt(cookingTime),
+      servingSize: parseInt(servingSize),
+      category: category,
+      image: image,
+    });
 
     await recipe.save();
     res.status(200).send();
   } catch (err: any) {
-    console.error(err.message)
+    console.error(err.message);
     res.status(500).json({ error: err.message });
   }
 };
 
-export const getPosts = async (req: any, res: any) => {
+export const getAllRecipes = async (req: Request, res: any) => {
   try {
-    console.log("get all posts");
-
-    //bring all the posts from all user, likes and comments populated
-    // Aggregate posts with user details, likes count, and comments populated
-    const posts = await Recipe.aggregate([
-      {
-        $lookup: {
-          from: "users",
-          localField: "userId",
-          foreignField: "_id",
-          as: "userDetails",
-        },
-      },
-      {
-        $lookup: {
-          from: "likes",
-          localField: "_id",
-          foreignField: "postId",
-          as: "likes",
-        },
-      },
-      {
-        $lookup: {
-          from: "comments",
-          localField: "_id",
-          foreignField: "postId",
-          as: "comments",
-        },
-      },
-      {
-        $unwind: {
-          path: "$comments",
-          preserveNullAndEmptyArrays: true,
-        },
-      },
-      {
-        $lookup: {
-          from: "users",
-          localField: "comments.userId",
-          foreignField: "_id",
-          as: "comments.userDetails",
-        },
-      },
-      {
-        $addFields: {
-          "comments.userDetails": {
-            $arrayElemAt: ["$comments.userDetails", 0],
-          },
-        },
-      },
-      {
-        $group: {
-          _id: "$_id",
-          userDetails: { $first: "$userDetails" },
-          content: { $first: "$content" },
-          image: { $first: "$image" },
-          likesCount: { $first: { $size: "$likes" } },
-          comments: { $push: "$comments" },
-          createdAt: { $first: "$createdAt" },
-          updatedAt: { $first: "$updatedAt" },
-        },
-      },
-      {
-        $project: {
-          userDetails: { $arrayElemAt: ["$userDetails", 0] },
-          content: 1,
-          image: 1,
-          likesCount: 1,
-          comments: 1,
-          createdAt: 1,
-          updatedAt: 1,
-        },
-      },
-    ]);
-
-    res.json(posts);
-  } catch (err: any) {
-    console.log(err);
-    res.status(500).json({ error: err.message });
+    const recipes = await Recipe.find();
+    res.json(recipes);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch recipes" });
+  }
+};
+export const likeRecipe = async (req: any, res: any) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) {
+      return res.status(404).json({ error: 'Recipe not found' });
+    }
+    recipe.likes.push(req.body.userId);
+    await recipe.save();
+    res.json(recipe);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to like recipe' });
   }
 };
 
-export const likePost = async (req: any, res: any) => {
-  try {
-    console.log("like post", req.params.postId);
-    const like = new Like({
-      postId: req.params.postId,
-      userId: req.user.id,
-    });
-    await like.save();
-    res.status(201).json(like);
-  } catch (err: any) {
-    res.status(500).json({ error: err.message });
-  }
-};
 
-export const commentOnPost = async (req: any, res: any) => {
+export const addComment = async (req: any, res: any) => {
   try {
-    const comment = new Comment({
-      postId: req.params.postId,
-      userId: req.user.id,
-      content: req.body.content,
-    });
+    const { userId, text } = req.body;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    const comment = new Comment({ user: userId, text });
     await comment.save();
-    res.status(201).json(comment);
-  } catch (err: any) {
-    res.status(500).json({ error: err.message });
+
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) {
+      return res.status(404).json({ error: 'Recipe not found' });
+    }
+    recipe.comments.push(comment._id);
+    await recipe.save();
+
+    res.json(recipe);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to add comment' });
   }
 };

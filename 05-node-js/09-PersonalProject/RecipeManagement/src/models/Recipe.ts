@@ -16,8 +16,8 @@ const recipeSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   category: { type: String, required: true, 
-      enum: ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"] },
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Like" }],
+  enum: ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"] },
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 })
 

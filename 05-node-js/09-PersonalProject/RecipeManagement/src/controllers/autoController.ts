@@ -1,10 +1,16 @@
 import User from "../models/User";
 import bcrypt from "bcryptjs";
+import jwt1 from 'jwt-simple';
 import jwt from "jsonwebtoken";
+
+
+const secret = ():string => { return process.env.SECRET as string };
+
+
 
 export const register = async (req: any, res: any) => {
   try {
-    console.log(req.body);
+    
     const { username, email, password, firstName, lastName } = req.body;
     const profilePicture = req.file ? req.file.path : null;
     console.log(profilePicture, username, email, password, firstName, lastName);
@@ -23,16 +29,30 @@ export const register = async (req: any, res: any) => {
       profilePicture,
     });
 
+
+    //jwt
+    const payload = {
+      userId: user._id,
+      email: user.email,
+      name: user.firstName + " " + user.lastName, 
+      role: "User",
+    };
+
+    const payloadJWT = jwt1.encode(payload, secret());
+    console.log(payloadJWT);
+
     await user.save();
-    res.cookie("userId", user._id.toString(), {
+    res.cookie("userRecipe",payloadJWT, {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24,
+      maxAge: 1000 * 60 * 60 * 24 * 1,
     });
+
     const token = jwt.sign({ id: user._id }, "your_jwt_secret", {
       expiresIn: "12h",
     });
     console.log("Token generated:", token);
     res.json({ token });
+
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }
@@ -67,9 +87,21 @@ export async function login(req: any, res: any): Promise<void> {
       console.log("Invalid credentials");
       return res.status(400).json({ error: "Invalid credentials" });
     }
-    res.cookie("userId", user._id.toString(), {
+
+
+       //jwt
+       const payload = {
+        userId: user._id,
+        email: user.email,
+        name: user.firstName + " " + user.lastName, 
+        role: "User",
+      };
+      const payloadJWT = jwt1.encode(payload, secret());
+      console.log(payloadJWT);
+  
+    res.cookie("userRecipe", payloadJWT, {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24,
+      maxAge: 1000 * 60 * 60 * 24 * 1 ,
     });
     const token = jwt.sign({ id: user._id }, "your_jwt_secret", {
       expiresIn: "12h",
