@@ -45,6 +45,7 @@ async function addRecipe(title :string, instructions:string, ingredients:string,
 
     if (response.ok) {
       console.log("recipe added")
+      window.location.href = "../show-all-recipes/index.html";
       // fetchPosts();
     } else {
       alert("Error creating post");

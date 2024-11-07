@@ -2,15 +2,13 @@ import { Comment } from "../models/Comment";
 import { Recipe } from "../models/Recipe";
 import { Like } from "../models/Like";
 import User from "../models/User";
-import jwt from 'jwt-simple'
+import jwt from "jwt-simple";
+import { getUserIdAndData } from "./uploadPictureController";
 
 export const createRecipe = async (req: any, res: any) => {
   try {
-    const {userRecipe} = req.cookies;
-    const secret = process.env.SECRET!;
-    // jwt decode
-    const user = jwt.decode(userRecipe, secret);
-    const userIds = user.userId;
+    const {userId, userData } = getUserIdAndData(req);
+
     const {
       title,
       instructions,
@@ -21,7 +19,7 @@ export const createRecipe = async (req: any, res: any) => {
       image,
     } = req.body;
     const recipe = new Recipe({
-      userId: userIds,
+      user: userId,
       title: title,
       instructions: instructions,
       ingredients: ingredients,
@@ -41,7 +39,17 @@ export const createRecipe = async (req: any, res: any) => {
 
 export const getAllRecipes = async (req: Request, res: any) => {
   try {
-    const recipes = await Recipe.find();
+    // Populate the user field to get all user information
+    const recipes = await Recipe.find()
+      .populate("user")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+          model: "User",
+        },
+      })
+      .populate("likes");
     res.json(recipes);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch recipes" });
@@ -51,36 +59,35 @@ export const likeRecipe = async (req: any, res: any) => {
   try {
     const recipe = await Recipe.findById(req.params.id);
     if (!recipe) {
-      return res.status(404).json({ error: 'Recipe not found' });
+      return res.status(404).json({ error: "Recipe not found" });
     }
     recipe.likes.push(req.body.userId);
     await recipe.save();
     res.json(recipe);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to like recipe' });
+    res.status(500).json({ error: "Failed to like recipe" });
   }
 };
-
 
 export const addComment = async (req: any, res: any) => {
   try {
     const { userId, text } = req.body;
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: "User not found" });
     }
     const comment = new Comment({ user: userId, text });
     await comment.save();
 
     const recipe = await Recipe.findById(req.params.id);
     if (!recipe) {
-      return res.status(404).json({ error: 'Recipe not found' });
+      return res.status(404).json({ error: "Recipe not found" });
     }
     recipe.comments.push(comment._id);
     await recipe.save();
 
     res.json(recipe);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to add comment' });
+    res.status(500).json({ error: "Failed to add comment" });
   }
 };

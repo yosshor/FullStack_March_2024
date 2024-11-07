@@ -1,3 +1,8 @@
+interface User {
+  fullName: string;
+  profilePicture: string;
+}
+
 interface Recipe {
   _id: string;
   title: string;
@@ -10,7 +15,9 @@ interface Recipe {
   image: string;
   likes: string[];
   comments: { user: { name: string }, text: string }[];
+  user: User;
 }
+
 
 async function fetchRecipes() {
     try {
@@ -23,7 +30,6 @@ async function fetchRecipes() {
     }
   }
   
-
   function displayRecipes(recipes: Recipe[]) {
     const recipesList = document.getElementById('recipes-list')!;
     recipesList.innerHTML = '';
@@ -32,6 +38,23 @@ async function fetchRecipes() {
       const recipeCard = document.createElement('div');
       recipeCard.className = 'recipe-card';
   
+      // User information
+      const userSection = document.createElement('div');
+      userSection.className = 'user-section';
+      
+      console.log(recipe.user.profilePicture)
+      const userImage = document.createElement('img');
+      userImage.src = `../${recipe.user.profilePicture}`;
+      userImage.alt = `${recipe.user.fullName}'s profile picture`;
+      userSection.appendChild(userImage);
+  
+      const userName = document.createElement('p');
+      userName.textContent = recipe.user.fullName;
+      userSection.appendChild(userName);
+  
+      recipeCard.appendChild(userSection);
+  
+      // Recipe details
       const recipeTitle = document.createElement('h2');
       recipeTitle.textContent = recipe.title;
       recipeCard.appendChild(recipeTitle);
@@ -137,4 +160,4 @@ async function fetchRecipes() {
     }
   }
   
-  document.addEventListener('DOMContentLoaded', fetchRecipes);
+  // document.addEventListener('DOMContentLoaded', fetchRecipes);

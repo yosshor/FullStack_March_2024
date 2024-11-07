@@ -13,11 +13,6 @@ const userSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Virtual field for full name
-// userSchema.virtual('fullName').get(function() {
-//   return `${this.firstName} ${this.lastName}`;
-// });
-
 userSchema.pre('save', async function(next) {
   if (!this.fullName) {
     this.fullName = `${this.firstName} ${this.lastName}`;

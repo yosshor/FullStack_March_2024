@@ -1,5 +1,3 @@
-
-
 async function handleRegisterSubmit(event: any): Promise<void> {
   try {
     event.preventDefault();
@@ -10,13 +8,7 @@ async function handleRegisterSubmit(event: any): Promise<void> {
     const lastName = form.lastName.value;
     const profilePicture = form.profilePicture.files[0];
     console.log(email, password, firstName, lastName, profilePicture);
-    await registerUser(
-      email,
-      password,
-      firstName,
-      lastName,
-      profilePicture
-    );
+    await registerUser(email, password, firstName, lastName, profilePicture);
   } catch (error) {
     console.error(error);
   }
@@ -31,6 +23,7 @@ async function registerUser(
 ): Promise<void> {
   try {
     console.log(email, password, firstName, lastName, profilePicture);
+
     const data = {
       email: email,
       password: password,
@@ -40,7 +33,7 @@ async function registerUser(
     };
     console.log(data);
 
-    const response:any = await fetch("/api/auth/register", {
+    const response: any = await fetch("/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,10 +43,25 @@ async function registerUser(
 
     if (response.ok) {
       console.log("Registration successful");
-      const { token } = await response.json();
-      console.log(token);
-      document.cookie = `auth=${token}; path=/`;
-      window.location.href = "../posts/index.html";
+
+      // Upload profile picture
+      const pictureFormData = new FormData();
+      pictureFormData.append("profilePicture", profilePicture);
+
+      const uploadResponse = await fetch("/api/users/uploadProfilePicture", {
+        method: "POST",
+        body: pictureFormData,
+      });
+
+      if (uploadResponse.ok) {
+        console.log("Registration and profile picture upload successful");
+        const { token } = await response.json();
+        console.log(token);
+        document.cookie = `auth=${token}; path=/`;
+        window.location.href = "../recipe/index.html";
+      } else {
+        alert("Failed to upload profile picture");
+      }
     } else {
       console.error("User already exists, please try again");
     }
