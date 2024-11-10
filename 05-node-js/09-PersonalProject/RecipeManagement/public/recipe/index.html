@@ -1,63 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe</title>
-  <link rel="stylesheet" href="./dist/recipe.css?v=1.0">
-</head>
-<body onload="fetchRecipes()">
-  <header>
-    <h1>Recipe Management</h1>
-    <div id="user-actions">
-      <button id="log-out" onclick="handleLogOut(event)">Log Out</button>
-    </div>
-  </header>
-  <div id="content">
-    <form id="new-recipe" onsubmit="handleSubmitRecipes(event)">
-      <h2>Create New Recipe</h2>
-      <div>
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" required>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe</title>
+    <link rel="stylesheet" href="./dist/recipe.css?v=1.0" />
+  </head>
+  <body onload="fetchRecipes()">
+    <header>
+      <h1>Recipe Management</h1>
+      <div id="user-actions">
+        <button id="log-out" onclick="handleLogOut(event)">Log Out</button>
       </div>
-      <div>
-        <label for="instructions">Instructions</label>
-        <textarea id="instructions" name="instructions" required></textarea>
-      </div>
-      <div>
-        <label for="ingredients">Ingredients</label>
-        <textarea id="ingredients" name="ingredients" required></textarea>
-      </div>
-      <div>
-        <label for="cooking_time">Cooking Time</label>
-        <input type="number" id="cooking_time" name="cooking_time" required>
-      </div>
-      <div>
-        <label for="serve_size">Serve Size</label>
-        <input type="number" id="serve_size" name="serve_size" required>
-      </div>
-      <div>
-        <label for="category">Category</label>
-        <select id="category" name="category" required>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-          <option value="Snack">Snack</option>
-          <option value="Dessert">Dessert</option>
-        </select>
-      </div>
-      <div>
-        <label for="image">Image</label>
-        <input type="file" id="image" name="image" accept="image/*" >
-      </div>
-      <button type="submit">Create Recipe</button>
-    </form>
-    <!-- <div id="recipes">
+    </header>
+    <div id="content">
+      <form id="new-recipe" onsubmit="handleSubmitRecipes(event)">
+        <h2>Create New Recipe</h2>
+        <div>
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+        <div>
+          <label for="instructions">Instructions</label>
+          <textarea id="instructions" name="instructions" required></textarea>
+        </div>
+        <div>
+          <label for="ingredients">Ingredients</label>
+          <textarea id="ingredients" name="ingredients" required></textarea>
+        </div>
+        <div>
+          <label for="cooking_time">Cooking Time</label>
+          <input type="number" id="cooking_time" name="cooking_time" required />
+        </div>
+        <div>
+          <label for="serve_size">Serve Size</label>
+          <input type="number" id="serve_size" name="serve_size" required />
+        </div>
+        <div>
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+            <option value="Dessert">Dessert</option>
+          </select>
+        </div>
+
+        <div class="image-label-input">
+          <label>
+            <input type="radio" name="imageOption" value="file" checked />
+            Upload Image
+          </label>
+          <label>
+            <input type="radio" name="imageOption" value="url" />
+            Use Image URL
+          </label>
+        </div>
+        <div id="file-input">
+          <label for="image">Image</label>
+          <input type="file" id="image" name="image" accept="image/*" />
+        </div>
+
+        <div id="url-input" style="display: none">
+          <label for="image_url">Image URL</label>
+          <input type="text" id="image_url" name="url_input" name="image_url" />
+        </div>
+        <button type="submit">Create Recipe</button>
+      </form>
+      <!-- <div id="recipes">
       <h2>All Recipes</h2>
       <button id="get-recipes">Get All Recipes</button>
       <div id="recipes-list"></div>
     </div> -->
-  </div>
-  <script src="./dist/recipe.js"></script>
-</body>
+    </div>
+    <script src="./dist/recipe.js"></script>
+  </body>
 </html>

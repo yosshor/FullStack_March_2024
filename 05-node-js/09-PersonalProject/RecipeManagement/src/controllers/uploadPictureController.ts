@@ -2,6 +2,7 @@ import path from "path";
 import multer from "multer";
 import User from "../models/User";
 import jwt from "jwt-simple";
+import { Recipe } from "../models/Recipe";
 
 // Configure multer storage
 const storage = multer.diskStorage({
@@ -38,6 +39,8 @@ export const uploadProfilePicture = [
     }
   },
 ];
+
+
 
 export function getUserIdAndData(req: any): { userId: string; userData: string } {
   const { userRecipe } = req.cookies;
