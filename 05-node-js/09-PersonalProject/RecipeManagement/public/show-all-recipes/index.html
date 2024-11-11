@@ -8,7 +8,13 @@
 </head>
 <body onload="fetchRecipes()">
   <header>
-    <h1>All Recipes</h1>
+    <div id="title">
+      <h1>All Recipes</h1>
+    </div>
+    <div id="user-actions">
+      <button id="add-recipe" onclick='window.location.href = "../recipe/index.html"'>Add New Recipe</button>
+      <button id="log-out" onclick="handleLogOut(event)">Log Out</button>
+    </div>
   </header>
   <div id="content">
     <div id="recipes-list"></div>

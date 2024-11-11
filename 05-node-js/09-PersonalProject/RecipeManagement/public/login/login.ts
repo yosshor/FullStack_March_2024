@@ -27,7 +27,7 @@ async function login(username: string, email:string, password: string): Promise<
       const { token } = await response.json();
       console.log(token);
       document.cookie = `auth=${token}; path=/`;
-      window.location.href = "../recipe/index.html";
+      window.location.href = "../show-all-recipes/index.html";
     } else {
       console.log(response);
       alert("Sign-in failed");
@@ -36,3 +36,5 @@ async function login(username: string, email:string, password: string): Promise<
     console.error(error);
   }
 }
+
+
