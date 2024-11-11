@@ -14,7 +14,11 @@ interface Recipe {
   category: string;
   image: string;
   likes: string[];
-  comments: { userId: { fullName: string }; content: string, createdAt: string }[];
+  comments: {
+    userId: { fullName: string };
+    content: string;
+    createdAt: string;
+  }[];
   user: User;
 }
 
@@ -23,7 +27,7 @@ async function fetchRecipes() {
     const response = await fetch("/api/recipe/get-all");
     const recipes = await response.json();
     console.log(recipes);
-    if(recipes.length === 0){
+    if (recipes.length === 0) {
       return noRecipesFound();
     }
     displayRecipes(recipes);
@@ -63,7 +67,7 @@ function displayRecipes(recipes: Recipe[]) {
 
     console.log(recipe.user.profilePicture);
     const userImage = document.createElement("img");
-    userImage.src = `../${recipe.user.profilePicture}` ;
+    userImage.src = `../${recipe.user.profilePicture}`;
     userImage.alt = `${recipe.user.fullName}'s profile picture`;
     userSection.appendChild(userImage);
 
@@ -84,8 +88,9 @@ function displayRecipes(recipes: Recipe[]) {
     const recipeImgCard = document.createElement("div");
     recipeImgCard.className = "recipe-image";
     const recipeImage = document.createElement("img");
-    recipeImage.src =  recipe.image.includes('uploads\\recipes') ? `../${recipe.image}` 
-                    : recipe.image;
+    recipeImage.src = recipe.image.includes("uploads\\recipes")
+      ? `../${recipe.image}`
+      : recipe.image;
     recipeImage.alt = `${recipe.title}'s recipe picture`;
     recipeImgCard.appendChild(recipeImage);
     recipeCard.appendChild(recipeImgCard);
@@ -118,6 +123,14 @@ function displayRecipes(recipes: Recipe[]) {
     likeButton.onclick = () => likeRecipe(recipe._id);
     recipeCard.appendChild(likeButton);
 
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-recipe";
+    deleteButton.style.backgroundColor = "red";
+    deleteButton.style.margin = "10px";
+    deleteButton.textContent = `Delete Recipe`;
+    deleteButton.onclick = () => deleteRecipe(recipe._id);
+    recipeCard.appendChild(deleteButton);
+
     const commentSection = document.createElement("div");
     commentSection.className = "comment-section";
 
@@ -133,16 +146,18 @@ function displayRecipes(recipes: Recipe[]) {
 
     const commentsList = document.createElement("ul");
     recipe.comments.forEach((comment) => {
-      const commentItem = document.createElement('li');
-      const commentText = document.createElement('span');
-        commentItem.textContent = `${comment.userId.fullName}: ${comment.content} `;                       
-         
-        const commentDate = document.createElement('span');
-        commentDate.className = 'comment-date';
-        commentDate.textContent = `${comment.createdAt.split('T')[0]} ${comment.createdAt.split('T')[1].split('.')[0]}`;
+      const commentItem = document.createElement("li");
+      const commentText = document.createElement("span");
+      commentItem.textContent = `${comment.userId.fullName}: ${comment.content} `;
 
-        commentItem.appendChild(commentDate);
-        commentItem.appendChild(commentText);
+      const commentDate = document.createElement("span");
+      commentDate.className = "comment-date";
+      commentDate.textContent = `${comment.createdAt.split("T")[0]} ${
+        comment.createdAt.split("T")[1].split(".")[0]
+      }`;
+
+      commentItem.appendChild(commentDate);
+      commentItem.appendChild(commentText);
       commentsList.appendChild(commentItem);
     });
     commentSection.appendChild(commentsList);
@@ -151,6 +166,26 @@ function displayRecipes(recipes: Recipe[]) {
 
     recipesList.appendChild(recipeCard);
   });
+}
+
+async function deleteRecipe(recipeId: string) {
+  try {
+    console.log("Deleting recipe", recipeId);
+    const response = await fetch(`/api/recipe/${recipeId}/delete`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      console.log("Recipe deleted");
+      fetchRecipes();
+    } else {
+      console.error("Error deleting recipe");
+    }
+  } catch (error) {
+    console.log("Error deleting recipe", error);
+  }
 }
 
 async function likeRecipe(recipeId: string) {
@@ -180,9 +215,9 @@ async function addComment(recipeId: string, comment: string) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ text: comment }), 
+      body: JSON.stringify({ text: comment }),
     });
-    console.log("Adding comment", recipeId, comment, response); 
+    console.log("Adding comment", recipeId, comment, response);
     if (response.ok) {
       fetchRecipes();
     } else {
@@ -199,38 +234,40 @@ function handleLogOut() {
   window.location.href = "../login/index.html";
 }
 
-
-function searchRecipes(){
-  const searchInput = document.getElementById("search-input") as HTMLInputElement;
+function searchRecipes() {
+  const searchInput = document.getElementById(
+    "search-input"
+  ) as HTMLInputElement;
   const searchValue = searchInput.value;
   console.log("Searching for recipes", searchValue);
-  if(searchValue === ""){
+  if (searchValue === "") {
     fetchRecipes();
     return;
   }
   fetch(`/api/recipe/search?query=${searchValue}`)
-  .then(response => response.json())
-  .then(recipes => {
-    console.log(recipes);
-    displayRecipes(recipes);
-  })
-  .catch(error => console.error("Error searching recipes", error));
+    .then((response) => response.json())
+    .then((recipes) => {
+      console.log(recipes);
+      displayRecipes(recipes);
+    })
+    .catch((error) => console.error("Error searching recipes", error));
 }
 
-
-function searchRecipesIngredients(){
-  const searchInput = document.getElementById("search-ingredients-input") as HTMLInputElement;
+function searchRecipesIngredients() {
+  const searchInput = document.getElementById(
+    "search-ingredients-input"
+  ) as HTMLInputElement;
   const searchValue = searchInput.value;
   console.log("Searching for recipes ingredients", searchValue);
-  if(searchValue === ""){
+  if (searchValue === "") {
     fetchRecipes();
     return;
   }
   fetch(`/api/recipe/searchIngredients?query=${searchValue}`)
-  .then(response => response.json())
-  .then(recipes => {
-    console.log(recipes);
-    displayRecipes(recipes);
-  })
-  .catch(error => console.error("Error searching recipes", error));
+    .then((response) => response.json())
+    .then((recipes) => {
+      console.log(recipes);
+      displayRecipes(recipes);
+    })
+    .catch((error) => console.error("Error searching recipes", error));
 }

@@ -55,7 +55,6 @@ export const getAllRecipes = async (req: Request, res: any) => {
   }
 };
 
-
 export const searchRecipes = async (req: any, res: any) => {
   try {
     const { query } = req.query;
@@ -72,6 +71,25 @@ export const searchRecipes = async (req: any, res: any) => {
   } catch (error) {
     console.error("Error fetching recipes:", error);
     res.status(500).json({ error: "Failed to fetch recipes" });
+  }
+};
+
+export const deleteRecipe = async (req: any, res: any) => {
+  try {
+    const recipeId = req.params.Id;
+    const { userId, userData } = getUserIdAndData(req);
+    const recipe = await Recipe.findById(recipeId);
+    if (!recipe) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+    if (recipe.user.toString() !== userId) {
+      return res.status(401).json({ error: "User not authorized" });
+    }
+    await Recipe.deleteOne({ _id: recipe._id });
+    res.status(200).json({ message: "Recipe removed" });
+  } catch (error) {
+    console.error("Error deleting recipe:", error);
+    res.status(500).json({ error: "Failed to delete recipe" });
   }
 };
 

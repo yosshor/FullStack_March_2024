@@ -6,6 +6,7 @@ import {
   addComment,
   searchRecipes,
   searchRecipesIngredients,
+  deleteRecipe,
 } from "../controllers/recipeController";
 import multer from "multer";
 
@@ -25,6 +26,7 @@ router.post("/:id/like",recipeMiddleware, likeRecipe);
 router.post("/:id/comment",recipeMiddleware, addComment);
 router.get("/search", recipeMiddleware, searchRecipes);
 router.get("/searchIngredients", recipeMiddleware, searchRecipesIngredients);
+router.delete("/:Id/delete", recipeMiddleware, deleteRecipe);
 
 
 // module.exports = router;
