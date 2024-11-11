@@ -13,20 +13,28 @@ $card-border-color: #ddd;
 $card-shadow-color: rgba(0, 0, 0, 0.1);
 $card-padding: 20px;
 $card-margin: 20px;
-$card-width: calc(33.333% - 40px);
+$card-width: 50%; //calc(33.333% - 40px);
 $card-hover-shadow-color: rgba(0, 0, 0, 0.2);
 
-#title {
-    margin-left: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#title{
+  margin-left: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-title {
+  margin: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #content {
   padding: 20px;
 
   #recipes-list {
+    width: $card-width;
 
     display: flex;
     flex-wrap: wrap;
@@ -34,11 +42,12 @@ $card-hover-shadow-color: rgba(0, 0, 0, 0.2);
     justify-content: center;
 
     .recipe-card {
+      
       background-color: $card-bg-color;
       border: 1px solid $card-border-color;
       border-radius: $input-border-radius;
       padding: $card-padding;
-      width: $card-width;
+      width: 100%;
       box-shadow: 0 0 10px $card-shadow-color;
       transition: box-shadow 0.3s ease;
 
@@ -75,8 +84,9 @@ $card-hover-shadow-color: rgba(0, 0, 0, 0.2);
         align-items: center;
 
         img {
-          max-width: 100%;
-          width: 90%;
+          max-width: 70%;
+          width: 60%;
+          height: 40%;
           border-radius: $input-border-radius;
           margin-bottom: 10px;
           align-items: center;
@@ -138,6 +148,7 @@ $card-hover-shadow-color: rgba(0, 0, 0, 0.2);
           }
         }
 
+
         ul {
           list-style-type: none;
           padding: 0;
@@ -148,6 +159,21 @@ $card-hover-shadow-color: rgba(0, 0, 0, 0.2);
             padding: 10px;
             border-radius: $input-border-radius;
             margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            position:relative;
+            .comment-date {
+              position: absolute;
+              font-size: 0.8em;
+              color: darken($text-color, 20%);
+              margin-right: 10px;
+              right: 0%;
+              right:0px;
+            }
+
+            span {
+              display: flex;
+            }
           }
         }
       }

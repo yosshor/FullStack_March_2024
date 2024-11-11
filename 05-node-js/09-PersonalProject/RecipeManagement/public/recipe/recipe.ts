@@ -29,7 +29,6 @@ async function handleSubmitRecipes(event: any): Promise<void> {
       image_url,
       image
     );
-    // await addPost(content, image);
   } catch (error) {
     console.error(error);
   }
@@ -65,7 +64,7 @@ async function addRecipe(
     formData.append("category", category);
     formData.append("image", imageUrl ?? null);
 
-    const token = getCookie("auth");
+    const token:string = getCookie("auth");
     // console.log(token);
     const response = await fetch("/api/recipe", {
       method: "POST",
@@ -90,12 +89,8 @@ async function addRecipe(
   }
 }
 
-async function addRecipeImage(
-  image: File,
-  title: string,
-  token: string,
-  response: any
-) {
+async function addRecipeImage(image: File, title: string,
+                              token: string, response: any): Promise<void> {
   const recipeId = response._id;
   const imageFormData = new FormData();
   imageFormData.append("image", image);
@@ -115,25 +110,8 @@ async function addRecipeImage(
   }
 }
 
-async function fetchRecipes() {
-  // const postList = document.getElementById("post-list") as HTMLDivElement;
-  // const token = getCookie("auth");
-  // const response = await fetch("/api/posts", {
-  //   method: "GET",
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   },
-  // });
-  // if (response.ok) {
-  //   const posts = await response.json();
-  //   console.log(posts);
-  //   displayPosts(posts, postList);
-  // } else {
-  //   console.error(response);
-  // }
-}
 
-function getCookie(name) {
+function getCookie(name): string {
   return document.cookie.split("; ").reduce((r, v) => {
     const parts = v.split("=");
     return parts[0] === name ? decodeURIComponent(parts[1]) : r;
@@ -141,46 +119,11 @@ function getCookie(name) {
 }
 
 
-function handleLogOut() {
+function handleLogOut():void {
   document.cookie = "auth=; Max-Age=0; path=/";
   window.location.href = "../login/index.html";
 }
 
-// async function likePost(postId: any): Promise<void> {
-//   const token: string = getCookie("auth");
-//   fetch(`/api/posts/${postId}/like`, {
-//     method: "POST",
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   })
-//     .then((response) => {
-//       if (response.ok) {
-//         fetchPosts();
-//       } else {
-//         alert("Error liking post");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// }
-
-// const commentOnPost = async (postId: any): Promise<void> => {
-//   const comment = prompt("Enter your comment:");
-//   if (!comment) return;
-
-//   const token = getCookie("auth");
-//   await fetch(`/api/posts/${postId}/comment`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify({ content: comment }),
-//   });
-//   fetchPosts();
-// };
 
 document.addEventListener("DOMContentLoaded", () => {
   const fileInputDiv = document.getElementById("file-input") as HTMLDivElement;
@@ -189,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     'input[name="imageOption"]'
   );
 
-  imageOptionRadios.forEach((radio) => {
+  imageOptionRadios.forEach((radio:any) => {
     radio.addEventListener("change", (event) => {
       const eventTarget = event.target as HTMLInputElement
       if (eventTarget.value === "file") {

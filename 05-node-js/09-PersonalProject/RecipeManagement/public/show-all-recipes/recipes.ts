@@ -14,7 +14,7 @@ interface Recipe {
   category: string;
   image: string;
   likes: string[];
-  comments: { user: { name: string }; text: string }[];
+  comments: { userId: { fullName: string }; content: string, createdAt: string }[];
   user: User;
 }
 
@@ -75,7 +75,7 @@ function displayRecipes(recipes: Recipe[]) {
 
     // Recipe details
     const titleSection = document.createElement("div");
-    titleSection.className = "title";
+    titleSection.className = "recipe-title";
     const recipeTitle = document.createElement("h2");
     recipeTitle.textContent = recipe.title;
     titleSection.appendChild(recipeTitle);
@@ -133,8 +133,16 @@ function displayRecipes(recipes: Recipe[]) {
 
     const commentsList = document.createElement("ul");
     recipe.comments.forEach((comment) => {
-      const commentItem = document.createElement("li");
-      commentItem.textContent = `${comment.user.name}: ${comment.text}`;
+      const commentItem = document.createElement('li');
+      const commentText = document.createElement('span');
+        commentItem.textContent = `${comment.userId.fullName}: ${comment.content} `;                       
+         
+        const commentDate = document.createElement('span');
+        commentDate.className = 'comment-date';
+        commentDate.textContent = `${comment.createdAt.split('T')[0]} ${comment.createdAt.split('T')[1].split('.')[0]}`;
+
+        commentItem.appendChild(commentDate);
+        commentItem.appendChild(commentText);
       commentsList.appendChild(commentItem);
     });
     commentSection.appendChild(commentsList);
@@ -147,14 +155,15 @@ function displayRecipes(recipes: Recipe[]) {
 
 async function likeRecipe(recipeId: string) {
   try {
+    console.log("Liking recipe", recipeId);
     const response = await fetch(`/api/recipe/${recipeId}/like`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userId: "USER_ID" }), // Replace 'USER_ID' with the actual user ID
     });
     if (response.ok) {
+      console.log("Recipe liked");
       fetchRecipes();
     } else {
       console.error("Error liking recipe");
@@ -171,8 +180,9 @@ async function addComment(recipeId: string, comment: string) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userId: "USER_ID", text: comment }), // Replace 'USER_ID' with the actual user ID
+      body: JSON.stringify({ text: comment }), 
     });
+    console.log("Adding comment", recipeId, comment, response); 
     if (response.ok) {
       fetchRecipes();
     } else {
@@ -187,4 +197,40 @@ async function addComment(recipeId: string, comment: string) {
 function handleLogOut() {
   document.cookie = "auth=; Max-Age=0; path=/";
   window.location.href = "../login/index.html";
+}
+
+
+function searchRecipes(){
+  const searchInput = document.getElementById("search-input") as HTMLInputElement;
+  const searchValue = searchInput.value;
+  console.log("Searching for recipes", searchValue);
+  if(searchValue === ""){
+    fetchRecipes();
+    return;
+  }
+  fetch(`/api/recipe/search?query=${searchValue}`)
+  .then(response => response.json())
+  .then(recipes => {
+    console.log(recipes);
+    displayRecipes(recipes);
+  })
+  .catch(error => console.error("Error searching recipes", error));
+}
+
+
+function searchRecipesIngredients(){
+  const searchInput = document.getElementById("search-ingredients-input") as HTMLInputElement;
+  const searchValue = searchInput.value;
+  console.log("Searching for recipes ingredients", searchValue);
+  if(searchValue === ""){
+    fetchRecipes();
+    return;
+  }
+  fetch(`/api/recipe/searchIngredients?query=${searchValue}`)
+  .then(response => response.json())
+  .then(recipes => {
+    console.log(recipes);
+    displayRecipes(recipes);
+  })
+  .catch(error => console.error("Error searching recipes", error));
 }

@@ -17,6 +17,14 @@
     </div>
   </header>
   <div id="content">
+    <div id="search-bar">
+      <input type="text" id="search-input" placeholder="Search by recipe name" 
+      oninput="searchRecipes()">
+    </div>
+    <div id="search-bar">
+      <input type="text" id="search-ingredients-input" placeholder="Search by recipe ingredients name" 
+      oninput="searchRecipesIngredients()">
+    </div>
     <div id="recipes-list"></div>
   </div>
   <script src="./dist/recipes.js"></script>

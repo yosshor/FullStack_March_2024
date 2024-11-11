@@ -4,6 +4,8 @@ import {
   getAllRecipes,
   likeRecipe,
   addComment,
+  searchRecipes,
+  searchRecipesIngredients,
 } from "../controllers/recipeController";
 import multer from "multer";
 
@@ -19,7 +21,11 @@ const upload = multer({ dest: "uploads/" });
 router.post("/", authMiddleware, upload.single("image"), createRecipe);
 router.post("/uploadRecipePicture", recipeGetRecipeId, uploadRecipePicture);
 router.get("/get-all", recipeMiddleware, getAllRecipes);
-router.post("/:id/like", likeRecipe);
-router.post("/:id/comment", addComment);
+router.post("/:id/like",recipeMiddleware, likeRecipe);
+router.post("/:id/comment",recipeMiddleware, addComment);
+router.get("/search", recipeMiddleware, searchRecipes);
+router.get("/searchIngredients", recipeMiddleware, searchRecipesIngredients);
+
+
 // module.exports = router;
 export default router;
