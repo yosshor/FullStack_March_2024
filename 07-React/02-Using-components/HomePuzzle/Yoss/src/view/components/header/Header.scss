@@ -1,0 +1,26 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #448fda;
+    border-bottom: 1px solid #e9ecef;
+    .header__logo{
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #30ca45;
+    }
+    .header__nav{
+        display: flex;
+        align-items: center;
+        .header__nav-item{
+            margin-right: 10px;
+            font-size: 1rem;
+            color: #343a40;
+            cursor: pointer;
+            &:hover{
+                color: #007bff;
+            }
+        }
+    }
+}

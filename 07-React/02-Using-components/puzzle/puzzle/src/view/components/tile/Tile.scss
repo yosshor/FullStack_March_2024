@@ -1,0 +1,147 @@
+.chess-cell-odd {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+    color: #000;
+
+    &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+}
+
+.chess-cell-even {
+
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+}
+
+.selected {
+    border: 1px solid #d41212;
+    box-shadow: 5px 5px 18px red;
+    box-sizing: border-box;
+    z-index: 1;
+    width: 110%;
+    height: 110%;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+
+}
+
+.pawn {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-black/black-pawn.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.king {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-black/black-king.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.queen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-black/black-queen.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.rook {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-black/rook.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.knight {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-black/knight.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bishop {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-black/black-bishop.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.pawn-white {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-white/pawn-white.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.king-white{
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-white/king-white.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.queen-white {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-white/queen-white.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.rook-white {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-white/rook-white.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.knight-white {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-white/knight-white.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bishop-white {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/img/pieces-white/bishop-white.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

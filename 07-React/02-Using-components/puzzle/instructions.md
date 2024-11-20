@@ -1,0 +1,2 @@
+Create chessboard from components.
+You should Tile component that will render a single tile of the chessboard. it will get a property of either black or white and render a div with a class of either black or white.
