@@ -28,6 +28,7 @@ const GithubUserProfile = () => {
         return;
       }
       setLoading(false);
+      setError(null);
       setUserData(userData);
       return userData;
 
