@@ -20,6 +20,7 @@ const UserInfo: FC<UserInfoProps> = ({ userData }) => {
 
     return (
         <>
+            
             <div className='user-wrapper'>
                 <div className="user-image">
                     <img src={userData.avatar_url} alt="avatar" />

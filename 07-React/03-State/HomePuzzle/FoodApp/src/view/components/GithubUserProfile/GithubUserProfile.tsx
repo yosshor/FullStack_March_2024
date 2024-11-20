@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserInfo from "../UserInfo/UserInfo";
-
+import "./GithubUserProfile.scss";
 
 const GithubUserProfile = () => {
   const [userName, setUserName] = useState("yosshor");
@@ -11,7 +11,7 @@ const GithubUserProfile = () => {
   function handleChangeUserName(e: any) {
     setUserName(e.target.value);
   }
-  
+
   async function handleClickEvent() {
     await fetchUserData(userName);
   }
@@ -22,6 +22,11 @@ const GithubUserProfile = () => {
       const response = await fetch(`https://api.github.com/users/${userName}`);
       const userData = await response.json();
       console.log("userData: ", userData);
+      if (userData.message === "Not Found" || userData.status == "404") {
+        setError("User Not Found");
+        setUserData(null);
+        return;
+      }
       setLoading(false);
       setUserData(userData);
       return userData;
@@ -43,13 +48,14 @@ const GithubUserProfile = () => {
         {error && <div>Error fetching data</div>}
       </div>
       <input
+        id='search-by-username'
         name="search-by-username"
         onChange={(event) => handleChangeUserName(event)}
         type="text"
         placeholder="insert github user"
         value={userName} />
       <button className="user-search-button" onClick={handleClickEvent}>Search</button>
-      {userData ? <UserInfo userData={userData} /> : "Not Found"}
+      {userData ? <UserInfo userData={userData} /> : <div style={{color: 'red', padding:'50px'}}>User Not Found</div>}
 
     </>
   );
