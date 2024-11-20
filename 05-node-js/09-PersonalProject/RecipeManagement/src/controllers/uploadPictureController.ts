@@ -42,6 +42,9 @@ export const uploadProfilePicture = [
 
 
 
+
+
+// Function to get user id and data from the request
 export function getUserIdAndData(req: any): { userId: string; userData: string } {
   const { userRecipe } = req.cookies;
   const secret = process.env.SECRET!;
@@ -50,3 +53,5 @@ export function getUserIdAndData(req: any): { userId: string; userData: string }
   const userId = userData.userId;
   return { userId: userId, userData: userData };
 }
+
+

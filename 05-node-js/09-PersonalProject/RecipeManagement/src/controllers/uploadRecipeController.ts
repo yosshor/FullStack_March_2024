@@ -2,6 +2,7 @@ import multer from "multer";
 import path from "path";
 import { getUserIdAndData } from "./uploadPictureController";
 import { Recipe } from "../models/Recipe";
+import fs from "fs";
 
 // Configure multer storage
 const storage = multer.diskStorage({
@@ -10,7 +11,7 @@ const storage = multer.diskStorage({
   },
   filename: (req: any, file: any, cb: any) => {
     // const { userId, userData } = getUserIdAndData(req);
-    const recipeId = req.recipeId ;// req.query.recipeId;
+    const recipeId = req.recipeId; // req.query.recipeId;
     cb(null, `${recipeId}${path.extname(file.originalname)}`);
   },
 });
@@ -22,16 +23,17 @@ export const uploadRecipePicture = [
   upload.single("image"),
   async (req: any, res: any) => {
     try {
-      console.log("uploading recipe image file to server");
-      const recipeId = req.recipeId ;// req.query.recipeId;
-      console.log(recipeId);
+      const recipeId = req.recipeId; // req.query.recipeId;
       const recipe = await Recipe.findById(recipeId);
       if (recipe) {
+        // // If the recipe has already an image, delete it
+        // deleteImageIfExist(req);
+
+        // Save the new image path into the recipe details
         recipe.image = req.file.path;
-        console.log("recipe image path", req.file.path);
         await recipe.save();
         console.log("successfully upload and save path into recipe details");
-        res.json(recipe);
+        res.status(200).json(recipe);
       } else {
         res.status(404).json({ error: "User not found" });
       }
@@ -40,3 +42,16 @@ export const uploadRecipePicture = [
     }
   },
 ];
+
+function deleteImageIfExist(req: any): void {
+  if (fs.existsSync(req.file.path)) {
+    console.log("file exists");
+    fs.unlink(req.file.path, (err) => {
+      if (err) {
+        console.error("Error deleting existing image:", err);
+      } else {
+        console.log("Existing image deleted:", req.file.path);
+      }
+    });
+  }
+}

@@ -59,7 +59,11 @@ async function registerUser(
         console.log(token);
         document.cookie = `auth=${token}; path=/`;
         window.location.href = "../recipe/index.html";
+        Swal.fire("Cancelled", "Your recipe is safe!", "info");
+
       } else {
+      // User canceled deletion
+        Swal.fire("Cancelled", "Your recipe is safe!", "info");
         alert("Failed to upload profile picture");
       }
     } else {

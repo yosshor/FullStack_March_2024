@@ -1,6 +1,7 @@
 interface User {
   fullName: string;
   profilePicture: string;
+  _id: string;
 }
 
 interface Recipe {
@@ -26,7 +27,6 @@ async function fetchRecipes() {
   try {
     const response = await fetch("/api/recipe/get-all");
     const recipes = await response.json();
-    console.log(recipes);
     if (recipes.length === 0) {
       return noRecipesFound();
     }
@@ -53,8 +53,18 @@ function noRecipesFound() {
   return;
 }
 
-function displayRecipes(recipes: Recipe[]) {
+async function displayRecipes(recipes: Recipe[]) {
+  const user = await fetch("/api/users/getUserData", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const {userId, userData} = await user.json();
   const recipesList = document.getElementById("recipes-list")!;
+  
+  getSelectCategoriesRecipe();
+
   recipesList.innerHTML = "";
 
   recipes.forEach((recipe) => {
@@ -65,7 +75,6 @@ function displayRecipes(recipes: Recipe[]) {
     const userSection = document.createElement("div");
     userSection.className = "user-section";
 
-    console.log(recipe.user.profilePicture);
     const userImage = document.createElement("img");
     userImage.src = `../${recipe.user.profilePicture}`;
     userImage.alt = `${recipe.user.fullName}'s profile picture`;
@@ -131,6 +140,17 @@ function displayRecipes(recipes: Recipe[]) {
     deleteButton.onclick = () => deleteRecipe(recipe._id);
     recipeCard.appendChild(deleteButton);
 
+    if(recipe.user._id === userId) {
+    const updateButton = document.createElement("button");
+    updateButton.className = "update-recipe";
+    updateButton.style.backgroundColor = "yellow";
+    updateButton.style.color = "black";
+    updateButton.style.margin = "5px";
+    updateButton.style.border = "1px solid black";
+    updateButton.textContent = `Update Recipe`;
+    updateButton.onclick = () => updateRecipe(recipe._id);
+    recipeCard.appendChild(updateButton);
+    }
     const commentSection = document.createElement("div");
     commentSection.className = "comment-section";
 
@@ -168,29 +188,60 @@ function displayRecipes(recipes: Recipe[]) {
   });
 }
 
-async function deleteRecipe(recipeId: string) {
+async function deleteRecipe(recipeId: string): Promise<void> {
   try {
-    console.log("Deleting recipe", recipeId);
-    const response = await fetch(`/api/recipe/${recipeId}/delete`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    // Show confirmation dialog
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this recipe!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      cancelButtonText: "Cancel",
+      reverseButtons: true,
     });
-    if (response.ok) {
-      console.log("Recipe deleted");
-      fetchRecipes();
+
+    // Check if the user confirmed the deletion
+    if (result.isConfirmed) {
+      // Send the DELETE request
+      const response = await fetch(`/api/recipe/${recipeId}/delete`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      // Handle the response
+      if (response.ok) {
+        Swal.fire("Deleted!", "Your recipe has been deleted.", "success");
+        fetchRecipes(); // Refresh the list after deletion
+      } else if (response.status === 404) {
+        console.error("Error deleting recipe => Recipe not found");
+        Swal.fire(
+          "Error",
+          "There was an error deleting the recipe. Recipe not found",
+          "error"
+        );
+      } else if (response.status === 401) {
+        console.error("Error deleting recipe => Unauthorized");
+        Swal.fire(
+          "Error",
+          "There was an error deleting the recipe. Unauthorized",
+          "error"
+        );
+      }
     } else {
-      console.error("Error deleting recipe");
+      // User canceled deletion
+      Swal.fire("Cancelled", "Your recipe is safe!", "info");
     }
   } catch (error) {
-    console.log("Error deleting recipe", error);
+    console.error("Error deleting recipe", error);
+    Swal.fire("Error", "There was an error deleting the recipe.", "error");
   }
 }
 
 async function likeRecipe(recipeId: string) {
   try {
-    console.log("Liking recipe", recipeId);
     const response = await fetch(`/api/recipe/${recipeId}/like`, {
       method: "POST",
       headers: {
@@ -198,7 +249,6 @@ async function likeRecipe(recipeId: string) {
       },
     });
     if (response.ok) {
-      console.log("Recipe liked");
       fetchRecipes();
     } else {
       console.error("Error liking recipe");
@@ -217,7 +267,6 @@ async function addComment(recipeId: string, comment: string) {
       },
       body: JSON.stringify({ text: comment }),
     });
-    console.log("Adding comment", recipeId, comment, response);
     if (response.ok) {
       fetchRecipes();
     } else {
@@ -239,7 +288,6 @@ function searchRecipes() {
     "search-input"
   ) as HTMLInputElement;
   const searchValue = searchInput.value;
-  console.log("Searching for recipes", searchValue);
   if (searchValue === "") {
     fetchRecipes();
     return;
@@ -247,7 +295,6 @@ function searchRecipes() {
   fetch(`/api/recipe/search?query=${searchValue}`)
     .then((response) => response.json())
     .then((recipes) => {
-      console.log(recipes);
       displayRecipes(recipes);
     })
     .catch((error) => console.error("Error searching recipes", error));
@@ -258,7 +305,6 @@ function searchRecipesIngredients() {
     "search-ingredients-input"
   ) as HTMLInputElement;
   const searchValue = searchInput.value;
-  console.log("Searching for recipes ingredients", searchValue);
   if (searchValue === "") {
     fetchRecipes();
     return;
@@ -266,8 +312,70 @@ function searchRecipesIngredients() {
   fetch(`/api/recipe/searchIngredients?query=${searchValue}`)
     .then((response) => response.json())
     .then((recipes) => {
-      console.log(recipes);
       displayRecipes(recipes);
     })
     .catch((error) => console.error("Error searching recipes", error));
+}
+
+
+function searchRecipesCategory(){
+  try {
+    const searchInput = document.getElementById("select-category") as HTMLSelectElement;
+    
+    const searchValue = searchInput.value;
+    if (searchValue === "") {
+      fetchRecipes();
+      return;
+    }
+    
+    fetch(`/api/recipe/searchCategory?query=${searchValue}`)
+      .then((response) => response.json())
+      .then((recipes) => {
+        displayRecipes(recipes);
+      })
+      .catch((error) => console.error("Error searching recipes", error));
+
+  } catch (error) {
+    console.error("Error searching recipes", error);
+    
+  }
+}
+
+
+async function updateRecipe(recipeId: string) {
+  await handleUpdateRecipe(recipeId);
+
+}
+
+
+async function handleUpdateRecipe(recipeId: string) {
+  try {
+    window.location.href = `../update-recipe/index.html?recipeId=${recipeId}`;
+  } catch (error) {
+    console.error("Error updating recipe:", error);
+  }
+}
+
+
+async function getSelectCategoriesRecipe(){
+  try {
+    const selectCategories = document.getElementById("select-category") as HTMLSelectElement;
+    selectCategories.innerHTML = "<option value=''>Select Category</option>";
+    const request = await fetch("/api/recipe/get-all");
+    const recipes = await request.json();
+
+    const categories = new Set<string>();
+    recipes.forEach((recipe) => categories.add(recipe.category));  
+  
+    categories.forEach(category => {
+      if(category === "") return;
+      const option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      selectCategories.appendChild(option);
+    });
+
+  } catch (error) {
+    console.error("Error getting categories", error);
+  }
 }

@@ -41,10 +41,26 @@
             oninput="searchRecipesIngredients()"
           />
         </div>
+        <div id="search">
+          <label for="search-input">Search by Category</label>
+          <select
+            id="select-category"
+            onchange="searchRecipesCategory()"
+          >
+            <!-- <option value="">Select Category</option> -->
+          </select>
+          <!-- <input
+            type="text"
+            id="search-category-input"
+            placeholder="Search by recipe category"
+            oninput="searchRecipesCategory()"
+          /> -->
+        </div>
       </div>
 
       <div id="recipes-list"></div>
     </div>
     <script src="./dist/recipes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

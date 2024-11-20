@@ -38,6 +38,36 @@ export const createRecipe = async (req: any, res: any) => {
   }
 };
 
+
+export const updateRecipe = async (req: any, res: any) => {
+  try {
+
+    const { userId, userData } = getUserIdAndData(req);
+    console.log("updateRecipe");
+    const {title,instructions,ingredients,cookingTime,servingSize,category,image,} = req.body;
+    const recipe = await Recipe.findById(req.body.recipeId);
+    if (!recipe) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+    if (recipe.user.toString() !== userId) {
+      return res.status(401).json({ error: "User not authorized" });
+    }
+    recipe.title = title;
+    recipe.instructions = instructions;
+    recipe.ingredients = ingredients;
+    recipe.cookingTime = parseInt(cookingTime);
+    recipe.servingSize = parseInt(servingSize);
+    recipe.category = category;
+    recipe.image = image;
+    await recipe.save();
+    res.status(200).send(recipe);
+
+  } catch (err: any) {
+    console.error(err.message);
+    res.status(500).json({ error: err.message });
+  }
+};
+
 export const getAllRecipes = async (req: Request, res: any) => {
   try {
     // Populate the user field to get all user information
@@ -54,7 +84,23 @@ export const getAllRecipes = async (req: Request, res: any) => {
     res.status(500).json({ error: "Failed to fetch recipes" });
   }
 };
-
+export const getRecipeData = async (req: any, res: any) => {
+  try {
+    const recipeId = req.params.Id;
+    // Populate the user field to get all user information
+    const recipe = await Recipe.findById(recipeId)
+      .populate("user")
+      .populate({
+        path: "comments",
+        populate: { path: "userId" },
+      })
+      .populate("likes");
+    res.status(200).json(recipe); // Send recipes if successful
+  } catch (error) {
+    console.error("Error fetching recipes:", error); // Log error details
+    res.status(500).json({ error: "Failed to fetch recipes" });
+  }
+};
 export const searchRecipes = async (req: any, res: any) => {
   try {
     const { query } = req.query;
@@ -74,7 +120,7 @@ export const searchRecipes = async (req: any, res: any) => {
   }
 };
 
-export const deleteRecipe = async (req: any, res: any) => {
+export const deleteRecipe = async (req: any, res: any): Promise<void> => {
   try {
     const recipeId = req.params.Id;
     const { userId, userData } = getUserIdAndData(req);
@@ -93,7 +139,10 @@ export const deleteRecipe = async (req: any, res: any) => {
   }
 };
 
-export const searchRecipesIngredients = async (req: any, res: any) => {
+export const searchRecipesIngredients = async (
+  req: any,
+  res: any
+): Promise<void> => {
   try {
     const { query } = req.query;
     const recipes = await Recipe.find({
@@ -112,7 +161,30 @@ export const searchRecipesIngredients = async (req: any, res: any) => {
   }
 };
 
-export const likeRecipe = async (req: any, res: any) => {
+export const searchRecipesCategory = async (
+  req: any,
+  res: any
+): Promise<void> => {
+  try {
+    const { query } = req.query;
+    const recipes = await Recipe.find({
+      category: { $regex: query, $options: "i" },
+    })
+      .populate("user")
+      .populate({
+        path: "comments",
+        populate: { path: "userId" },
+      })
+      .populate("likes");
+    res.status(200).json(recipes);
+  } catch (error) {
+    console.error("Error fetching recipes:", error);
+    res.status(500).json({ error: "Failed to fetch recipes" });
+  }
+};
+
+
+export const likeRecipe = async (req: any, res: any): Promise<void> => {
   try {
     const { userId, userData } = getUserIdAndData(req);
     const recipe = await Recipe.findById(req.params.id);
@@ -140,7 +212,7 @@ export const likeRecipe = async (req: any, res: any) => {
   }
 };
 
-export const addComment = async (req: any, res: any) => {
+export const addComment = async (req: any, res: any): Promise<void> => {
   try {
     const { userId, userData } = getUserIdAndData(req);
     const { text } = req.body;

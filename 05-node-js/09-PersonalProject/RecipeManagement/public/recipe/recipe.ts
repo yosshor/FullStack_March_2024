@@ -152,3 +152,118 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+// function getRecipeIdFromUrl() {
+//   const params = new URLSearchParams(window.location.search);
+//   return params.get("recipeId");
+// }
+
+// const recipeId = getRecipeIdFromUrl();
+// if (recipeId) {
+//   fetchAndFillRecipe(recipeId); 
+// }
+
+
+
+// async function fetchAndFillRecipe(recipeId) {
+//   try {
+//     // Fetch recipe data from server
+//     const recipeDetails = await fetch(`/api/recipe/get-recipe-details/${recipeId}`, {
+//       method:"GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },});
+//     const recipe = await recipeDetails.json();
+//     console.log(recipe);
+//       const submitButton = document.getElementById("submit-button") as HTMLInputElement;
+//     // Set values in form fields
+//     (document.getElementById("title") as HTMLInputElement).value = recipe.title;
+//     (document.getElementById("instructions") as HTMLInputElement).value = recipe.instructions;
+//     (document.getElementById("ingredients") as HTMLInputElement).value = recipe.ingredients;
+//     (document.getElementById("cooking_time") as HTMLInputElement).value = recipe.cookingTime;
+//     (document.getElementById("serve_size") as HTMLInputElement).value = recipe.servingSize;
+//     (document.getElementById("category") as HTMLInputElement).value = recipe.category;
+//     submitButton.innerHTML = "Update Recipe";
+//     submitButton.addEventListener('onsubmit',updateRecipe);
+
+//     // Handle image field
+//     if (recipe.image) {
+//       (document.querySelector('input[name="imageOption"][value="url"]') as HTMLInputElement).checked = true;
+//       (document.getElementById("url-input") as HTMLInputElement).style.display = "block";
+//       (document.getElementById("file-input")as HTMLInputElement).style.display = "none";
+//       (document.getElementById("image_url")as HTMLInputElement).value = recipe.image;
+//     } else {
+//       (document.querySelector('input[name="imageOption"][value="file"]')as HTMLInputElement).checked = true;
+//       (document.getElementById("file-input")as HTMLInputElement).style.display = "block";
+//       (document.getElementById("url-input") as HTMLInputElement).style.display = "none";
+//     }
+//   } catch (error) {
+//     console.error("Error fetching recipe data:", error);
+//   }
+// }
+
+// async function updateRecipe(event:any){
+//   try {
+//     event.preventDefault();
+//     const form = event.target;
+//     const title = form.title.value;
+//     const instructions = form.instructions.value;
+//     const ingredients = form.ingredients.value;
+//     const cookingTime = form.cooking_time.value;
+//     const servingSize = form.serve_size.value;
+//     const category = form.category.value;
+//     const image_url = form.image_url.value;
+//     const image = form.image.files[0];
+//     console.log(title,instructions,ingredients,cookingTime,servingSize,category,image_url,image)
+//     // updateRecipeData(title,instructions,ingredients,cookingTime,servingSize,category,image_url,image);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+
+// async function updateRecipeData(
+//   title: string,
+//   instructions: string,
+//   ingredients: string,
+//   cookingTime: number,
+//   servingSize: number,
+//   category: string,
+//   imageUrl: string,
+//   image: File
+// ): Promise<void> {
+//   try {
+//     const formData = new FormData();
+//     formData.append("title", title);
+//     formData.append("instructions", instructions);
+//     formData.append("ingredients", ingredients);
+//     formData.append("cookingTime", cookingTime.toString());
+//     formData.append("servingSize", servingSize.toString());
+//     formData.append("category", category);
+//     formData.append("image", imageUrl ?? null);
+//     console.log(formData);
+//     // const token:string = getCookie("auth");
+//     // // console.log(token);
+//     // const response = await fetch("/api/recipe/update-recipe", {
+//     //   method: "PUT",
+//     //   headers: {
+//     //     Authorization: `Bearer ${token}`,
+//     //   },
+//     //   body: formData,
+//     // });
+
+//     // if (response.ok) {
+//     //   console.log("recipe added");
+//     //   if (image) {
+//     //     const res = await response.json();
+//     //     await addRecipeImage(image, title, token, res);
+//     //   }
+//     //   window.location.href = "../show-all-recipes/index.html";
+//     // } else {
+//     //   alert("Error creating post");
+//     // }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
