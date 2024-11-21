@@ -1,7 +1,6 @@
-import { set } from 'mongoose'
 import React, { useEffect, useState } from 'react'
 import './Food.scss'
-
+import '../GenerateImages/GenerateImages.scss'
 
 
 
@@ -11,8 +10,7 @@ const Food = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
 
-
-    useEffect(() => {
+    function generateImage(){
         setLoading(true)
         fetch('https://foodish-api.com/api/')
             .then(res => res.json())
@@ -26,6 +24,11 @@ const Food = () => {
                 setLoading(false);
             });
         console.log(foodUrl)
+    }
+
+
+    useEffect(() => {
+        generateImage();
     }, [])
 
 
@@ -33,9 +36,12 @@ const Food = () => {
     return (
         <>
             <div>Food</div>
+            <div className="generate-new-images">
+                <button onClick={() => generateImage()}>New Food</button>
+            </div>
             <div className="food-img">
                 {loading ? <div>Loading...</div> : error ? <div>Error... {error}</div> :
-                 <img  src={foodUrl} alt="food" />}
+                    <img src={foodUrl} alt="food" />}
             </div>
         </>
     )
