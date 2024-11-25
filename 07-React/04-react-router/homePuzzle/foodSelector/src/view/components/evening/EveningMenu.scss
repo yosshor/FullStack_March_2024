@@ -1,0 +1,40 @@
+.evening-menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    
+
+    li {
+        list-style: none;
+        background-color: white;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        width: 200px;
+        text-align: center;
+        &:hover{
+            cursor: pointer;
+            border: 3px solid blue;
+        }
+        &.title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            &:hover {
+              cursor: pointer;
+              border: none;
+            }
+          }
+    }
+}
+
+.evening-menu {
+    position: absolute;
+    left: 250px;
+    display: flex;
+    top: 20px;
+}
