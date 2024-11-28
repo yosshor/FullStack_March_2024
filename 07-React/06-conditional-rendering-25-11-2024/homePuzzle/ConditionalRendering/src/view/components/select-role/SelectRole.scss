@@ -1,0 +1,35 @@
+.custom-select__control {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    &:hover {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  .custom-select__menu {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .select-role.user {
+    background-color: rgb(121, 204, 121);
+  }
+  
+  .select-role.admin {
+    background-color: rgb(216, 62, 216);
+  }
+  
+  .select-role.superuser {
+    background-color: rgb(129, 129, 235);
+  }
+  
+  .select-role.guest {
+    background-color: rgb(247, 129, 129);
+  }
+  
+  .select-role.moderator {
+    background-color: rgb(230, 194, 129);
+  }
+  

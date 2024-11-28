@@ -1,0 +1,38 @@
+body, html, #root{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.page{
+  width: 100vw;
+  height: 100vh;
+  background-color: tomato;
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  align-items: center;
+  h1{
+    color: white;
+    text-align: center;
+    padding-top: 20vh;
+  }
+}
+
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  height: 10vh;
+  a{
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+  }
+}
+
+.element{
+  padding: 20px;
+  background-color: orange;
+}
