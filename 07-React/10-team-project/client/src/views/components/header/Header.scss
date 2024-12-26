@@ -1,0 +1,104 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 2.5rem;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #00acee;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: relative;
+
+    .logo-header {
+        position: absolute;
+        left: 3rem;
+        top: 1rem;
+        align-items: center;
+        cursor: pointer;
+        gap: 10px;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+
+        .logo {
+            h2 {
+                margin: 0;
+                padding: 0;
+            }
+
+            font-size: 2rem;
+            display: flex;
+            justify-content: flex-start;
+
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+        }
+    }
+
+
+    .logout {
+        cursor: pointer;
+    }
+
+}
+
+
+
+.title {
+    font-size: 2rem;
+    color: black;
+}
+
+.user-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
+
+
+.active-link {
+    font-weight: bold;
+    // color: #db1630;
+    /* Active link color */
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-right: '40px';
+    width: 100%;    
+
+}
+
+.search-button {
+    background-color: #00acee;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    list-style: none;
+    width: 6vw;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    height: max-content;
+    position: relative;
+    top: 10px;
+}
