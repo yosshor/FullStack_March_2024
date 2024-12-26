@@ -1,0 +1,77 @@
+.jokeWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #887a7a;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    color: black;
+    height: 3em;
+    width: 100%;
+    .joke{
+        font-size: 1.5rem;
+        font-weight: 100;
+        text-align: center;
+        padding-right: 20px;
+    }
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #e0c0c0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    color: black;
+
+    &__new{
+        background-color: #91f091;
+    }
+    &__delete{
+        background-color: #f51717;
+    }
+    &__add{
+        background-color: #f8e115;
+    }
+    &__update{
+        background-color: #3bcbdf;
+    }
+}
+.addJoke{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    color: black;
+    height: 3em;
+    width: 100%;
+
+    
+    .addJoke__input{
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        font-weight: 100;
+        text-align: center;
+        border: 2px solid black;
+        border-radius: 20px;
+        background-color: #a38a8a;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        color: black;
+    }
+
+    
+}
