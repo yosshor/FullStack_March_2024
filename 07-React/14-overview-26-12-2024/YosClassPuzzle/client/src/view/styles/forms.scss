@@ -1,0 +1,119 @@
+// Variables
+$primary-color: #6366f1;
+$secondary-color: #4f46e5;
+$error-color: #ef4444;
+$success-color: #22c55e;
+$border-radius: 8px;
+$box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+$transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Form
+.form {
+    max-width: 500px;
+    padding: 2.5rem;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+
+    &__group {
+        margin-bottom: 1.75rem;
+        position: relative;
+    }
+
+    &__label {
+        display: block;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: #374151;
+        letter-spacing: 0.025em;
+    }
+}
+
+// Input & Select shared styles
+%form-control {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: $border-radius;
+    font-size: 0.95rem;
+    transition: $transition;
+    background: #f9fafb;
+    color: #1f2937;
+
+    &::placeholder {
+        color: #9ca3af;
+    }
+
+    &:hover {
+        border-color: #d1d5db;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
+        background: white;
+        box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+    }
+
+    &:disabled {
+        background: #f3f4f6;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    &.error {
+        border-color: $error-color;
+
+        &:focus {
+            box-shadow: 0 0 0 4px rgba($error-color, 0.1);
+        }
+    }
+
+    &.success {
+        border-color: $success-color;
+
+        &:focus {
+            box-shadow: 0 0 0 4px rgba($success-color, 0.1);
+        }
+    }
+}
+
+// Input specific
+input {
+    @extend %form-control;
+
+    &[type="date"] {
+        padding: 0.75rem 1rem;
+    }
+
+    &[type="checkbox"],
+    &[type="radio"] {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 3px;
+        margin-right: 0.5rem;
+
+        &:checked {
+            background-color: $primary-color;
+            border-color: $primary-color;
+        }
+    }
+}
+
+// Select specific
+select {
+    @extend %form-control;
+    appearance: none;
+    background: #f9fafb url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") no-repeat right 1rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &:focus {
+        background-color: white;
+    }
+}
