@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { registerToDB } from "../../../controllers/db/users/setUser";
 import styles from "./Register.module.scss"
+import { useNavigate } from "react-router-dom";
 
 
 const Register: React.FC = () => {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const data = await registerToDB({ username, email, password });
     console.log(data);
-    alert("Registration Successful");
+    console.log("Registration Successful");
+    navigate("/");
+
   };
 
 

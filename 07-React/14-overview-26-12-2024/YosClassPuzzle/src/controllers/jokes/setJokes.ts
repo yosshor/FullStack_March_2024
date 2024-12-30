@@ -5,6 +5,7 @@ import { Response } from "express";
 export const addJoke = async (req: Request, res: Response) => {
     try {
         const { joke } = req.body;
+        console.log('joke', joke, req.cookies)
 
         if (!joke) {
             return res.status(400).json({ message: 'Joke is required ' });

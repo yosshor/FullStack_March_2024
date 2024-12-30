@@ -26,10 +26,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
+  origin: 'http://localhost:5173', // Your React app origin
+  credentials: true // Allow cookies to be sent with requests
 }));
-app.use(express.static('public'));
 
 const apiRouter = express.Router();
 

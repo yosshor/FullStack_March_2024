@@ -5,6 +5,7 @@ export async function checkUser(req: any, res: any, next: NextFunction) {
     try {
         // Do something
         const { userId } = req.cookies;
+        console.log("req.cookies", req.cookies);
         console.log(userId);
 
         const userDB = await User.findById(userId);

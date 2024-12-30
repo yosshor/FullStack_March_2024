@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "./view/pages/main/Main";
 import LoginPage from "./view/pages/login/LoginPage";
-import Jokes from "./view/pages/jokes/Jokes";
+import RandomJokes from "./view/pages/randomJokes/RandomJokes";
 import Register from "./view/pages/register/Register";
 
 
@@ -21,6 +21,6 @@ export const router = createBrowserRouter([
     },
     {
         path: "/jokes",
-        element: <Jokes />,
+        element: <RandomJokes />,
     }
 ]);
