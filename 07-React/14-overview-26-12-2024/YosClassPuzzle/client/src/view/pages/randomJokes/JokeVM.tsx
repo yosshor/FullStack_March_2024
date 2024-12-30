@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 
 interface UseJokeOutput {
     joke: { joke: string, _id: string };
+    jokes : { joke: string, _id: string }[];
     loading: boolean;
     error: any;
-    handleGetJoke: () => void;
+    handleGetRandomJoke: () => void;
+    handleGetAllJokes: () => void;
     handleJoke: (urlRoute: string, method: string, body: any) => void;
 }
 
@@ -13,10 +15,11 @@ export const useJoke = (): UseJokeOutput => {
     try {
 
         const [joke, setJoke] = useState<{ joke: string, _id: string }>({ joke: '', _id: '' });
+        const [jokes, setJokes] = useState<{ joke: string, _id: string }[]>([]);
         const [loading, setLoading] = useState<boolean>(true);
         const [error, setError] = useState();
 
-        function getJoke() {
+        function getRandomJoke() {
             try {
                 fetch('http://localhost:3000/api/jokes/get-random-joke')
                     .then(response => response.json())
@@ -36,11 +39,32 @@ export const useJoke = (): UseJokeOutput => {
                 console.log(error)
             }
         }
-        function handleGetJoke() {
-            getJoke();
+
+        function getAllJokes() {
+            try {
+                fetch('http://localhost:3000/api/jokes/get-all-jokes')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        setJokes(data.jokes)
+                        setLoading(false)
+                    })
+                    .catch(error => {
+                        setError(error)
+                        setLoading(false)
+                    })
+            } catch (error) {
+                console.log(error)
+            }
         }
 
+        function handleGetRandomJoke() {
+            getRandomJoke();
+        }
 
+        function handleGetAllJokes() {
+            getAllJokes();
+        }
 
         function handleJoke(urlRoute: string, method: string, body: any) {
             console.log(urlRoute, method, body) 
@@ -55,22 +79,24 @@ export const useJoke = (): UseJokeOutput => {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    getJoke()
+                    getAllJokes()
                 })
                 .catch(error => {
                     console.log(error)
                 })
         }
         useEffect(() => {
-            getJoke()
+            getAllJokes()
         }, [])
-        return { joke, loading, error, handleGetJoke, handleJoke }
+        return { joke, jokes, loading, error, handleGetRandomJoke,handleGetAllJokes, handleJoke }
     } catch (error: any) {
         return {
             joke: { joke: '', _id: '' },
+            jokes : [],
             loading: false,
             error: error.message,
-            handleGetJoke: () => { },
+            handleGetRandomJoke: () => { },
+            handleGetAllJokes: () => { },
             handleJoke: () => { }
         }
     }
