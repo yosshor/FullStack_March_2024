@@ -32,10 +32,7 @@ const ModalJoke: FC<ModalProps> = ({ children, onClose }) => {
                             Close
                         </button>
                         {children}
-                        <div className={styles.buttons}>
-                            <button className={styles.updateButton} onClick={onClose}>Update</button>
-                            <button className={styles.deleteButton} onClick={onClose}>Delete</button>
-                        </div>
+
                     </div>
                 </div>
             </div>

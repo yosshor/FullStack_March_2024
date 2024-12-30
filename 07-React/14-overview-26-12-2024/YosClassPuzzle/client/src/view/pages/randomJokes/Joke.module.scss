@@ -75,3 +75,27 @@
 
     
 }
+
+.updateButton {
+    background-color: rgb(45, 160, 41);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+.deleteButton {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+.wrapperButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}

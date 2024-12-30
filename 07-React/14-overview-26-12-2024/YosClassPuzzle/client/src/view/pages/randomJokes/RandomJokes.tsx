@@ -9,6 +9,12 @@ const RandomJokes = () => {
   const [newJoke, setNewJoke] = useState<string>('');
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [modalJoke, setModalJoke] = useState<JSX.Element | null>(null);
+  const [inputJoke, setInputJoke] = useState<string>('');
+
+  const handleModalInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputJoke(e.target.value);
+    };
+
 
   const handleAddJoke = () => {
     if (!newJoke.trim()) return;
@@ -18,22 +24,38 @@ const RandomJokes = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewJoke(e.target.value);
+    setInputJoke(e.target.value);
   };
 
   const handleModalClose = () => setModalVisible(false);
 
-  const handleUpdateJoke = (joke: string, jokeId: string) => {
+  const handleUpdateJokeModal = (joke: string, jokeId: string) => {
     setModalVisible(true);
     console.log(`Update joke with ID: ${jokeId} ${joke}`);
-    setModalJoke(getModal(joke));
+    setModalJoke(getModal(joke, jokeId));
   };
 
-  const getModal = (joke:string) => <ModalJoke onClose={handleModalClose}>
-    <div>
-      <h2>{joke}</h2>
+  const handleUpdateJoke = (joke: string, jokeId: string) => {
+    console.log(`Update joke with ID: ${jokeId} ${inputJoke}`);
+    // handleJoke('update-joke', 'PUT', { joke: joke, id: jokeId });
 
-    </div>
-  </ModalJoke>;
+  }
+
+
+
+  const getModal = (joke: string, jokeId: string) =>
+    <ModalJoke onClose={handleModalClose}>
+      <div>
+        <input type="text" value={inputJoke} onChange={handleModalInputChange}></input>
+      </div>
+      <div className={style.wrapperButtons}>
+        <button className={style.updateButton} onClick={() => handleUpdateJoke(joke, jokeId)}>Update</button>
+        <button className={style.deleteButton} onClick={() => {
+          handleJoke('delete-joke', 'DELETE', { _id: jokeId });
+          setModalVisible(false);
+        }}>Delete</button>
+      </div>
+    </ModalJoke >;
 
 
   return (
@@ -75,7 +97,7 @@ const RandomJokes = () => {
               </p>
             )}
             <button
-              onClick={() => handleUpdateJoke(joke.joke, joke._id)}
+              onClick={() => handleUpdateJokeModal(joke.joke, joke._id)}
               className={`${style.buttons} ${style.buttons__update}`}
             >
               Update

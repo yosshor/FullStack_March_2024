@@ -18,7 +18,13 @@ export const useJoke = (): UseJokeOutput => {
         const [jokes, setJokes] = useState<{ joke: string, _id: string }[]>([]);
         const [loading, setLoading] = useState<boolean>(true);
         const [error, setError] = useState();
+        const [inputJoke, setInputJoke] = useState<string>('');
 
+        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+            setInputJoke(e.target.value);
+          };
+
+          
         function getRandomJoke() {
             try {
                 fetch('http://localhost:3000/api/jokes/get-random-joke')
