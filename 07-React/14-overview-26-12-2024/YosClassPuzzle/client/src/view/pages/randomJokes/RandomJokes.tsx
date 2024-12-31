@@ -1,20 +1,17 @@
 import { useState } from "react";
 import { useJoke } from "./JokeVM";
 import style from './Joke.module.scss';
-import ModalJoke from "../../components/modalJoke/ModalJoke";
-import { get } from "http";
+import JokeModal from "./JokeModal";
 
 const RandomJokes = () => {
-  const { joke, jokes, loading, error, handleGetRandomJoke, handleGetAllJokes, handleJoke } = useJoke();
+  const { jokes, loading, error, handleGetRandomJoke, handleJoke } = useJoke();
   const [newJoke, setNewJoke] = useState<string>('');
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [modalJoke, setModalJoke] = useState<JSX.Element | null>(null);
-  const [inputJoke, setInputJoke] = useState<string>('');
+  const [selectedJoke, setSelectedJoke] = useState<{ joke: string; jokeId: string } | null>(null);
 
-  const handleModalInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInputJoke(e.target.value);
-    };
-
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewJoke(e.target.value);
+  };
 
   const handleAddJoke = () => {
     if (!newJoke.trim()) return;
@@ -22,41 +19,15 @@ const RandomJokes = () => {
     setNewJoke('');
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewJoke(e.target.value);
-    setInputJoke(e.target.value);
-  };
-
-  const handleModalClose = () => setModalVisible(false);
-
   const handleUpdateJokeModal = (joke: string, jokeId: string) => {
+    setSelectedJoke({ joke, jokeId });
     setModalVisible(true);
-    console.log(`Update joke with ID: ${jokeId} ${joke}`);
-    setModalJoke(getModal(joke, jokeId));
   };
 
-  const handleUpdateJoke = (joke: string, jokeId: string) => {
-    console.log(`Update joke with ID: ${jokeId} ${inputJoke}`);
-    // handleJoke('update-joke', 'PUT', { joke: joke, id: jokeId });
-
-  }
-
-
-
-  const getModal = (joke: string, jokeId: string) =>
-    <ModalJoke onClose={handleModalClose}>
-      <div>
-        <input type="text" value={inputJoke} onChange={handleModalInputChange}></input>
-      </div>
-      <div className={style.wrapperButtons}>
-        <button className={style.updateButton} onClick={() => handleUpdateJoke(joke, jokeId)}>Update</button>
-        <button className={style.deleteButton} onClick={() => {
-          handleJoke('delete-joke', 'DELETE', { _id: jokeId });
-          setModalVisible(false);
-        }}>Delete</button>
-      </div>
-    </ModalJoke >;
-
+  const closeModal = () => {
+    setModalVisible(false);
+    setSelectedJoke(null);
+  };
 
   return (
     <div>
@@ -106,7 +77,14 @@ const RandomJokes = () => {
         ))}
       </div>
 
-      {modalVisible && modalJoke}
+      {modalVisible && selectedJoke && (
+        <JokeModal
+          joke={selectedJoke.joke}
+          jokeId={selectedJoke.jokeId}
+          onClose={closeModal}
+          handleJoke={handleJoke}
+        />
+      )}
     </div>
   );
 };

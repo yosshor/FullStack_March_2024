@@ -1,12 +1,15 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./ModalJoke.module.scss";
 
 interface ModalProps {
     children: React.ReactNode;
     onClose: () => void;
+    title: string;
 }
 
-const ModalJoke: FC<ModalProps> = ({ children, onClose }) => {
+const ModalJoke: FC<ModalProps> = ({ children, onClose, title }) => {
+
+
     useEffect(() => {
         // Add the overlay class to the body
         document.body.style.overflow = "hidden";
@@ -24,13 +27,17 @@ const ModalJoke: FC<ModalProps> = ({ children, onClose }) => {
             {/* Modal */}
             <div className={styles.body}>
                 <div className={styles.modal}>
+
                     <div className={styles.modalContent}>
-                        <button
-                            className={styles.closeButton}
-                            onClick={onClose}
-                        >
-                            Close
-                        </button>
+                        <div className={styles.header}>
+                            <h3 className={styles.modalTitle}>{title}</h3>
+                            <button
+                                className={styles.closeButton}
+                                onClick={onClose}
+                            >
+                                Close
+                            </button>
+                        </div>
                         {children}
 
                     </div>
