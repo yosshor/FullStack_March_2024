@@ -2,31 +2,42 @@ import React, { useEffect } from "react";
 import Phaser from 'phaser';
 import space from '../../../assets/images/spaceship1.png';
 import fire from '../../../assets/images/f.png';
-import fireball from '../../../assets/images/utils/ball.png';
+import fireball from '../../../assets/images/meteors/ball.png';
 import explosion from '../../../assets/images/meteors/explosion.png';
 import explosion1 from '../../../assets/images/meteors/explosion1.png';
-import fireball1 from '../../../assets/images/meteors/fireball2.jpeg';
-import fireball2 from '../../../assets/images/meteors/fireball3.jpeg';
-import fireball3 from '../../../assets/images/meteors/fireball4.jpeg';
-import asteroid from '../../../assets/images/meteors/asteroid.jpeg';
+import fireball1 from '../../../assets/images/meteors/fireball2.png';
+import fireball2 from '../../../assets/images/meteors/fireball3.png';
+import fireball3 from '../../../assets/images/meteors/fireball4.png';
+import asteroid from '../../../assets/images/meteors/asteroid.png';
 import asteroid1 from '../../../assets/images/meteors/asteroid2.png';
-
+import starsDown from '../../../assets/images/vid/starsVid2.mp4';
+import explosionSound from '../../../assets/images/sounds/explosion-sound.mp3';
+import fireSound from '../../../assets/images/sounds/gun.mp3';
+import uhohh from '../../../assets/images/sounds/uh-ohh.mp3';
+import './PhaserGame.scss';
 interface Props {
     onGameOver: (score: number) => void;
 }
 
 const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
-    
+
     let playerVelocity = 200;
+    let overlapTimes = 3;
+
     useEffect(() => {
         const config: Phaser.Types.Core.GameConfig = {
             type: Phaser.AUTO,
-            width: 1000,
-            height: 800,
+            width: 1200,
+            height: 1000,
             physics: {
                 default: 'arcade',
                 arcade: { debug: false },
             },
+            // backgroundColor: '#1e1e2f', // Set the canvas background color
+            dom: {
+                createContainer: true,
+            },
+
             scene: {
                 preload,
                 create,
@@ -40,10 +51,13 @@ const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
         let cursors: Phaser.Types.Input.Keyboard.CursorKeys;
         let bullets: Phaser.Physics.Arcade.Group;
         let meteors: Phaser.Physics.Arcade.Group;
-        let score = 1;
+        let score = 0;
         let scoreText: Phaser.GameObjects.Text;
+        let liveText: Phaser.GameObjects.Text;
+        
 
         function preload(this: Phaser.Scene): void {
+            this.load.video('backgroundVideo', starsDown); // Load the video
             this.load.image('player', space);
             this.load.image('bullet', fire);
             this.load.image('meteor', fireball);
@@ -54,9 +68,24 @@ const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
             this.load.image('meteor4', asteroid);
             this.load.image('meteor5', asteroid1);
             this.load.image('explosion', explosion);
+            this.load.audio('explosionSound', explosionSound); // Load the sound effect
+            this.load.audio('fireSound', fireSound); // Load the sound effect
+            this.load.audio('ohhSound', uhohh); // Load the sound effect
+            
+
+
+
         }
 
         function create(this: Phaser.Scene): void {
+
+            const video = this.add.video(500, 400, 'backgroundVideo'); // Center the video
+            video.setDisplaySize(1000, 800); // Scale the video to fit canvas
+            video.play(true); // Play the video on loop
+            video.setMute(true); // Mute the video if needed
+            // Ensure the video renders behind all other objects
+            video.setDepth(-80);
+
             // Create the player sprite
             player = this.physics.add.sprite(400, 1000, 'player').setCollideWorldBounds(true).setScale(0.5);
 
@@ -67,6 +96,11 @@ const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
             // Array of meteor image keys
             const meteorKeys = ['explosion1', "meteor", 'meteor1', 'meteor2', 'meteor3', 'meteor4', 'meteor5', 'explosion'];
 
+            // Add the sound object
+            const explosionSound = this.sound.add('explosionSound');
+            const gunSound = this.sound.add('fireSound');
+            const ohhSound = this.sound.add('ohhSound');
+
             // Add a timed event to spawn meteors
             this.time.addEvent({
                 delay: 1000, // Spawn a meteor every 1000ms
@@ -75,9 +109,6 @@ const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
                     const randomKey = Phaser.Utils.Array.GetRandom(meteorKeys); // Pick a random meteor key
                     const meteor = meteors.create(x, 0, randomKey); // Create the meteor
                     meteor.setVelocityY(playerVelocity); // Set its velocity
-                    // if (score < 100) meteor.setVelocityY(playerVelocity); // Set its velocity
-                    // else if (score >= 100 && score < 200) meteor.setVelocityY(300);
-                    // else if (score >= 200 && score < 300) meteor.setVelocityY(400);
                     meteor.setOrigin(0.5, 0.5); // Ensure it scales from the center
                     meteor.setScale(0.5); // Scale it to 50% of its original size
 
@@ -106,6 +137,8 @@ const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
                     const rightBullet = bullets.create(player.x + 20, player.y - 20, 'bullet');
                     rightBullet.setVelocityY(-playerVelocity).setScale(0.15);
                 }
+                  // Play the sound effect
+                  gunSound.play({ volume: 0.3, loop: false });
             });
 
             // Add overlap event for bullets hitting meteors
@@ -114,17 +147,26 @@ const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
                 meteor.destroy();
                 score += 10;
                 scoreText.setText(`Score: ${score}`);
+
+                // Play the sound effect
+                explosionSound.play();
             });
 
             // Add overlap event for meteors catching the player
             this.physics.add.overlap(player, meteors, (player, meteor) => {
                 meteor.destroy(); // Destroy the meteor
-                score -= 10; // Decrease score when a meteor hits the player
+                if(score !== 0) score -= 10; // Decrease score when a meteor hits the player
                 score = Math.max(0, score); // Prevent score from going below 0
+                overlapTimes -= 1;
+                overlapTimes = Math.max(0, overlapTimes); 
                 scoreText.setText(`Score: ${score}`); // Update the score display
+                liveText.setText(`Live: ${overlapTimes}`); // Update the score display
+                ohhSound.play(); // Play the sound effect
             });
 
-            scoreText = this.add.text(10, 10, 'Score: 0', { fontSize: '20px', color: '#fff' });
+            scoreText = this.add.text(10, 10, `Score: ${score}`, { fontSize: '30px', color: '#fff' });
+            liveText = this.add.text(10, 50, `Live: ${overlapTimes}`, { fontSize: '30px', color: '#fff' });
+
         }
 
         function update(this: Phaser.Scene): void {
@@ -142,16 +184,14 @@ const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
             else if (score >= 400 && score < 500) {
                 playerVelocity = 600;
             }
-            console.log(score, playerVelocity);
+            // console.log(score, playerVelocity);
 
 
             if (cursors.left?.isDown) player.setVelocityX(-playerVelocity);
             else if (cursors.right?.isDown) player.setVelocityX(playerVelocity);
             else player.setVelocityX(0);
 
-
-            // Check if the score is zero and end the game
-            if (score <= 0) {
+            if(overlapTimes <= 0 || score < 0){
                 game.destroy(true); // Destroy the game
                 onGameOver(score); // Call the game over callback with the final score
             }

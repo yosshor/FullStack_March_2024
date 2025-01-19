@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './HighScores.module.scss';
 
 interface HighScore {
     username: string;
@@ -15,7 +16,8 @@ const HighScores: React.FC = () => {
     useEffect(() => {
         const fetchHighScores = async () => {
             try {
-                const response = await axios.get('/api/scores/high-scores');
+                const response = await axios.get('http://localhost:3000/api/scores/high-scores');
+                console.log(response.data);
                 if (Array.isArray(response.data)) {
                     setHighScores(response.data);
                 } else {
@@ -41,7 +43,7 @@ const HighScores: React.FC = () => {
 
     return (
         <div>
-            <h2>High Scores</h2>
+            <h2>High Scores Top 10</h2>
             {Array.isArray(highScores) && highScores.length > 0 ? (
                 <table>
                     <thead>

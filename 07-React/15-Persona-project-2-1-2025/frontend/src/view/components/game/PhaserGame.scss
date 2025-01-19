@@ -1,0 +1,13 @@
+#phaser-container {
+  display: grid;
+  place-items: center; // Centers both horizontally and vertically
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e1e2f, #2c3e50);
+
+  canvas {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
