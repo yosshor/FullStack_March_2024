@@ -1,0 +1,39 @@
+.game-wrapper {
+    display: 'flex';
+    flex-direction: 'column';
+    justify-content: 'center';
+    width: '100%';
+}
+
+.canvas-style {
+    height: '2px';
+    display: 'flex';
+    flex-direction: 'column';
+    justify-content: 'center';
+    width: '100%';
+}
+
+.game-over {
+    display: 'flex';
+    flex-direction: 'column';
+    justify-content: 'center';
+    margin: '20px';
+
+    .buttons-wrapper {
+        display: 'flex';
+        flex-direction: 'row';
+        justify-content: 'center';
+        margin: '20px';
+
+        button {
+            height: 30px;
+            width: max-content;
+            margin: '10px';
+            padding: 20px;
+            border-radius: 10px;
+            align-items: center;
+            display: inline-flex;
+            margin-left: 20px;
+        }
+    }
+}

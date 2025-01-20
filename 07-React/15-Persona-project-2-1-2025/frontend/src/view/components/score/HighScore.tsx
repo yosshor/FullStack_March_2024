@@ -4,7 +4,7 @@ import './HighScores.module.scss';
 
 interface HighScore {
     username: string;
-    score: number;
+    maxScore: number;
     date: string;
 }
 
@@ -50,7 +50,7 @@ const HighScores: React.FC = () => {
                         <tr>
                             <th>Rank</th>
                             <th>Username</th>
-                            <th>Score</th>
+                            <th>MaxScore</th>
                             <th>Date</th>
                         </tr>
                     </thead>
@@ -59,7 +59,7 @@ const HighScores: React.FC = () => {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{score.username}</td>
-                                <td>{score.score}</td>
+                                <td>{score.maxScore}</td>
                                 <td>{new Date(score.date).toLocaleDateString()}</td>
                             </tr>
                         ))}

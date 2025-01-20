@@ -3,7 +3,7 @@ import { User } from "../../model/users/userModel";
 
 export async function checkUser(req: any, res: any, next: NextFunction) {
     try {
-        // Do something
+        // extract userId from cookies
         const { userId } = req.cookies;
         console.log("req.cookies", req.cookies);
         console.log(userId);

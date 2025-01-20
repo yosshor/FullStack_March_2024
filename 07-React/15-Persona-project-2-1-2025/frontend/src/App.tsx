@@ -1,16 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './view/pages/Home';
-import Game from './view/pages/Game';
+import { BrowserRouter as Router, Routes, Route, RouterProvider } from 'react-router-dom';
+import router from './router';
 
 const App: React.FC = () => {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/game" element={<Game />} />
-            </Routes>
-        </Router>
+        <RouterProvider router={router} />
     );
 };
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginUser } from './setUser';
+import { login } from './setUser';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -16,10 +16,10 @@ export const useLoginViewModel = () => {
       const password = form.get('password') as string;
 
       setError(null);
-      const {ok} = await loginUser(email, password);
+      const {ok} = await login(email, password);
       if (ok) {
         console.log('user logged in');
-        navigate('/jokes')
+        navigate('/home')
       }
     } catch (err) {
       setError('Invalid username or password');

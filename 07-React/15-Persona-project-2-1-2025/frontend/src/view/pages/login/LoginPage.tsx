@@ -1,12 +1,24 @@
-import React from 'react';
 import { useLoginViewModel } from './loginViewModel';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../home/Home';
 
 
 const LoginPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  //checking if the user is logged in
+  const { token } = useContext(UserContext);
+  useEffect(() => {
+    if (token) {
+      console.log('token', token);
+      navigate('/home');
+    }
+  }, [token, navigate]);
 
   const { handleSubmit, error } = useLoginViewModel();
-
-  return (
+  const login = <>
+    <Link to="/register"><button>Register</button></Link>
     <div>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
@@ -28,7 +40,16 @@ const LoginPage: React.FC = () => {
       </form>
       {error && <p>{error}</p>}
     </div>
+  </>
+
+
+  return (
+    <div>
+      {token ? null : login}
+    </div>
+
   );
+
 };
 
 

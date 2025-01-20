@@ -184,6 +184,12 @@ const PhaserGame: React.FC<Props> = ({ onGameOver }) => {
             else if (score >= 400 && score < 500) {
                 playerVelocity = 600;
             }
+            else if (score >= 500 && score < 600) {
+                playerVelocity = 700;
+            }
+            else if (score >= 600 && score < 700) {
+                playerVelocity = 800;
+            }
             // console.log(score, playerVelocity);
 
 

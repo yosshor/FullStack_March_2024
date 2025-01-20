@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { registerToDB } from "../../../controllers/db/users/setUser";
+import { register } from "../../../controllers/db/users/setUser";
 import styles from "./Register.module.scss"
 import { useNavigate } from "react-router-dom";
 
@@ -12,10 +12,10 @@ const Register: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = await registerToDB({ username, email, password });
+    const data = await register({ username, email, password });
     console.log(data);
     console.log("Registration Successful");
-    navigate("/");
+    navigate("/home");
 
   };
 
