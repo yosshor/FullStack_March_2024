@@ -8,7 +8,7 @@ import { COOKIE_NAME } from '../../../../config';
 
 const cookieName = COOKIE_NAME as string;
 console.log("cookieName", cookieName);
-const getCookie = (name: string): string | null => {
+export const getCookie = (name: string): string | null => {
     const value = document.cookie;
     const parts = value ? value.split(`${name}=`)[1].split(";")[0] : null;
     return parts;
@@ -24,14 +24,12 @@ const Home: React.FC = () => {
         console.log('User logged out!');
         document.cookie = `${cookieName}=; Max-Age=0; path=/`;
         window.location.reload()
-        // navigate('/'); // Redirect to login page
     };
 
 
     useEffect(() => {
         const cookie = document.cookie;
         token = cookie ? getCookie(cookieName) : null;
-        console.log(token);
         if (!token) {
             navigate('/');
         }

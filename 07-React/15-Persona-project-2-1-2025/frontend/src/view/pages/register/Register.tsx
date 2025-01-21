@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { register } from "../../../controllers/db/users/setUser";
 import styles from "./Register.module.scss"
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 const Register: React.FC = () => {
   const [username, setName] = useState("");
@@ -54,7 +53,11 @@ const Register: React.FC = () => {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', gap: '10px' }}>
+
+          <button style={{ backgroundColor: 'lightGreen', color: 'black' }} type="submit">Register</button>
+          <Link to="/login"><button style={{width:'max-content', color: 'black' }}>Login</button></Link>
+        </div>
       </form>
     </div>
   );

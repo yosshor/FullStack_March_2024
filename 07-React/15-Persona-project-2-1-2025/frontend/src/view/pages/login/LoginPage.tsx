@@ -2,6 +2,7 @@ import { useLoginViewModel } from './loginViewModel';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../home/Home';
+import styles from './Login.module.scss';
 
 
 const LoginPage: React.FC = () => {
@@ -18,8 +19,7 @@ const LoginPage: React.FC = () => {
 
   const { handleSubmit, error } = useLoginViewModel();
   const login = <>
-    <Link to="/register"><button>Register</button></Link>
-    <div>
+    <div className={styles.container}>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -36,7 +36,12 @@ const LoginPage: React.FC = () => {
             name='password'
           />
         </div>
-        <button type="submit">Login</button>
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', gap: '10px' }}>
+
+          <button style={{ color: 'black' }} type="submit">Login</button>
+          <Link to="/register"><button style={{ backgroundColor: 'lightGreen', color: 'black' }}>Register</button></Link>
+        </div>
+
       </form>
       {error && <p>{error}</p>}
     </div>
