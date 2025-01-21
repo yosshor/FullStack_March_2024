@@ -33,11 +33,11 @@ const Game: React.FC = () => {
     return (
         <div className='game-wrapper'>
             {!gameOver ? (
-                <div className='game-wrapper'>
+                <div >
                     <h1 style={{ color: 'white' }}>Phaser Game</h1>
-                    <canvas className= 'canvas-style' >
                         <PhaserGame onGameOver={handleGameOver} />
-                    </canvas>
+                    {/* <canvas className= 'canvas-style' >
+                    </canvas> */}
                 </div>
             ) : (
                 <div className='game-over'>

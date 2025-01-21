@@ -11,6 +11,9 @@
     flex-direction: 'column';
     justify-content: 'center';
     width: '100%';
+    canvas{
+        height: 1px;
+    }
 }
 
 .game-over {
