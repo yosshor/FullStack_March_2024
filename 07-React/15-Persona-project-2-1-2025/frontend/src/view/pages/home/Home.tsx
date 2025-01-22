@@ -33,8 +33,7 @@ const Home: React.FC = () => {
         if (!token) {
             navigate('/');
         }
-    }
-        , [navigate]);
+    }, [navigate]);
 
 
     return (

@@ -1,14 +1,48 @@
+import { set } from "mongoose";
 import { useState } from "react";
 
 export const useGameViewModel = () => {
-  const [score, setScore] = useState(0);
+  const [newScore, setNewScore] = useState(0);
+  const [score, setOldScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [error, setError] = useState("");
+  const [comment, setComment] = useState<string>("");
+  const [header, setHeader] = useState<string>("");
+
+
+  async function getHighScore(finalScore: number) {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/scores/get-user-high-scores",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+      const data: { email: string; maxScore: number } = await response.json();
+      console.log(data);
+      setOldScore(data.maxScore);
+      if (data.maxScore < finalScore) {
+        setComment(
+          `Your Max Score : ${data.maxScore} \n Congratulations! You have a new high score!`
+        );
+      } else {
+        setComment(
+          `Your Max Score : ${data.maxScore} \n You can do better! Try again!`
+        );
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
 
   const handleGameOver = async (finalScore: number) => {
-    setScore(finalScore);
+    setNewScore(finalScore);
     setGameOver(true);
-    console.log("Game Over! Your score: ", finalScore);
+    setHeader(`Game Over! Your score: ${finalScore}`);
+    await getHighScore(finalScore);
     try {
       await fetch("http://localhost:3000/api/scores/save", {
         method: "POST",
@@ -21,7 +55,7 @@ export const useGameViewModel = () => {
     } catch (err) {
       setError("Invalid username or password");
     }
-    // await axios.post('http://localhost:3000/api/scores/save', { email: 'testMail', username: 'Player1', score: finalScore });
+    console.log("gameOver",finalScore, score, newScore, comment, gameOver, error);
   };
-  return { score, gameOver, error, handleGameOver };
+  return { header, score, newScore, comment, gameOver, error, handleGameOver };
 };

@@ -45,20 +45,9 @@ export function update(this: Phaser.Scene): void {
   } else {
     player.setVelocityX(0);
   }
-  console.log(
-    "Player Velocity:",
-    playerVelocity,
-    "Delay:",
-    delay,
-    "Score:",
-    score,
-    "Lives:",
-    lives
-  );
 
   if (lives <= 0 || score < 0) {
     this.scene.stop(); // Stop the scene
-    // game.destroy(true); // Destroy the game
     onGameOver(score); // Call the game over callback with the final score
   }
 }
