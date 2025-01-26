@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "../../../controllers/db/users/setUser";
+import { register } from "../../../controllers/auth/users/register";
 import styles from "./Register.module.scss"
 import { Link, useNavigate } from "react-router-dom";
 

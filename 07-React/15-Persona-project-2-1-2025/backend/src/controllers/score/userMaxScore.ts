@@ -19,7 +19,7 @@ export const getUserMaxScores = async (req: any, res: any) => {
     ]);
 
     if (maxScore.length === 0) {
-      return res.status(404).json({ error: 'No scores found for this user.' });
+      return res.status(200).json({ email:'', maxScore: 0 });
     }
 
     res.status(200).json({ email, maxScore: maxScore[0].maxScore });

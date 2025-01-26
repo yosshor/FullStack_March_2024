@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Phaser from 'phaser';
-import './PhaserGame.scss';
+import './StarshipGame.scss';
 import { update } from '../../../controllers/game/update';
 import { create } from '../../../controllers/game/create';
 import { preload } from '../../../controllers/game/preload';

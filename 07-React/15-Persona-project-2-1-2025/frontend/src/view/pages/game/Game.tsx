@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PhaserGame from '../../components/game/PhaserGame';
+import StarshipGame from '../../components/game/StarshipGame';
 import { getCookie, UserContext } from '../home/Home';
 import { useNavigate } from 'react-router-dom';
 import './Game.scss';
@@ -31,7 +31,7 @@ const Game: React.FC = () => {
             {!gameOver ? (
                 <div >
                     <h1 style={{ color: 'white' }}>Phaser Game</h1>
-                    <PhaserGame onGameOver={handleGameOver} />
+                    <StarshipGame onGameOver={handleGameOver} />
                 </div>
             ) : (
                 <Modal title="Game Over" onClose={() => navigate('/home')}>
