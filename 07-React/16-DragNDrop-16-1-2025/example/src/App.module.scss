@@ -1,0 +1,18 @@
+.box{
+    background-color: teal;
+    height: 100px;
+    width:100px;
+    position:absolute;
+    top:0;
+    left:0;
+    cursor:grab;
+}
+
+.dropZone{
+    background-color: lightcoral;
+    height: 200px;
+    width:200px;
+    position:relative;
+    margin-top: 20px;
+    cursor:grab;
+}
