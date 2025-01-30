@@ -12,7 +12,8 @@ export const userTwitterCookie = document.cookie
   ?.split("=")[1];
 
 const devState = {
-  mode: 'developer', url: 'http://localhost:3000',
+  mode: 'developer',
+  url: 'http://localhost:3000',
   userTwitterCookie: userTwitterCookie
 };
 export const productionState = createContext(devState);
@@ -33,7 +34,7 @@ const Home = () => {
           throw new Error("No token found in cookies");
         }
 
-        const response = await fetch(`${devState.url}/api/post/get-all`, { 
+        const response = await fetch(`${devState.url}/api/post/get-all`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

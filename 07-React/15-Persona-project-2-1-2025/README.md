@@ -1,6 +1,6 @@
 # StarShip Game Project
 
-This project is a React-based game application that includes a Phaser game and a game-over modal. The application is designed to provide an engaging user experience with a simple and intuitive interface.
+This project is a React-based game application that includes a Phaser game, Redux state management, and a game-over modal. The application is designed to provide an engaging user experience with a simple and intuitive interface.
 
 ## Features
 
@@ -13,10 +13,13 @@ This project is a React-based game application that includes a Phaser game and a
 - **SweetAlert Integration**: SweetAlert is used to show elegant alerts and messages during the application lifecycle.
 - **MongoDB Integration**: MongoDB is used to store user data, including login credentials and scores.
 - **Interactive Gameplay**: If the fire from the starship overlaps with the meteors, a sound effect is played, and the meteor disappears, adding an interactive and dynamic experience to the gameplay.
+- **Redux State Management**: Redux is used to manage global state, such as user authentication, scores, and game state persistence.
 
 ## Technologies Used
 
 - React
+- Redux Toolkit
+- Redux Persist
 - Phaser
 - TypeScript
 - SweetAlert
@@ -38,6 +41,11 @@ This project is a React-based game application that includes a Phaser game and a
     - `Register.tsx`: Handles user registration functionality.
     - `Home.tsx`: Home page. If the user is not logged in, they are redirected to the Login page.
     - `Game.tsx`: The main game component that handles the game logic and UI.
+  - `redux/`
+    - `store.ts`: Configures the Redux store with reducers and middleware.
+    - `slices/`
+      - `userSlice.ts`: Manages user authentication state.
+      - `gameSlice.ts`: Manages game-related state, such as scores and lives.
   - `router.tsx`: Defines the routes for the application, including login, register, home, and game pages.
 
 ## Getting Started
@@ -64,6 +72,20 @@ This project is a React-based game application that includes a Phaser game and a
 4. **Open the application**:
    Open your browser and navigate to `http://localhost:3000`.
 
+## Redux State Management
+
+### `store.ts`
+
+Configures the Redux store and enables state persistence.
+
+### `userSlice.ts`
+
+Manages user authentication state.
+
+### `gameSlice.ts`
+
+Manages game-related state, such as scores and lives.
+
 ## Usage
 
 - **Authentication**: Users must log in or register to access the game. If a user tries to access the game without authentication, they will see a SweetAlert prompt asking them to log in or register.
@@ -84,6 +106,7 @@ The main game component that includes the following features:
 ### `StarshipGame.tsx`
 
 The Phaser game component that handles the game logic and rendering. Features include:
+
 - Detects when the starship's fire overlaps with meteors.
 - Plays a sound effect upon collision.
 - Removes the meteor from the game screen.
@@ -104,6 +127,7 @@ The modal component that is displayed when the game is over. It includes:
 ### `authService.ts`
 
 Handles authentication logic, including:
+
 - User login and registration requests.
 - JWT token validation.
 - Storing and retrieving tokens from localStorage or sessionStorage.
@@ -130,4 +154,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 
 For any questions or inquiries, please contact [yosishor28@gmail.com](mailto:yosishor28@gmail.com).
-
