@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"], // Your React app origin
+    origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"], // Your React app origin
     credentials: true, // Allow cookies to be sent with requests
   })
 );

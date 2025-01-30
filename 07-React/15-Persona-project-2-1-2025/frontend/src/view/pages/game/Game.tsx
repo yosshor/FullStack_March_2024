@@ -6,6 +6,8 @@ import './Game.scss';
 import { useGameViewModel } from './gameViewModel';
 import { COOKIE_NAME } from '../../../../config';
 import Modal from '../../components/modal/Modal';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../store/slices/userSlice';
 
 const cookieName = COOKIE_NAME as string;
 
@@ -13,6 +15,8 @@ const Game: React.FC = () => {
     const navigate = useNavigate();
     const { token } = useContext(UserContext);
     const { header, score, comment, gameOver, error, handleGameOver } = useGameViewModel();
+    const user = useSelector(selectUser);
+
 
     useEffect(() => {
         if (!token) {
@@ -23,7 +27,7 @@ const Game: React.FC = () => {
         }
     }, [token]);
 
-    
+
 
     return (
         <div className='game-wrapper'>
@@ -34,7 +38,7 @@ const Game: React.FC = () => {
                     <StarshipGame onGameOver={handleGameOver} />
                 </div>
             ) : (
-                <Modal title="Game Over" onClose={() => navigate('/home')}>
+                <Modal title={`Game Over ${user && user.userName}`} onClose={() => navigate('/home')}>
                     <div className='game-over'>
                         <div>
                             <h2 style={{ color: 'black' }}>{header}</h2>

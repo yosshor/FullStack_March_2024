@@ -10,8 +10,9 @@ export const login = async (email: string, password: string) => {
       if (!response.ok) {
         throw new Error("Login failed");
       }
-  
-      return await response.json();
+      const data = await response.json();
+      console.log('data', data);  
+      return  data;
     } catch (error) {
       console.error("Error setting user:", error);
       throw error;

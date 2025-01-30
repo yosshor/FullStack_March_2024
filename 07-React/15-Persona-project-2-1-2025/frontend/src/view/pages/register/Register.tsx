@@ -2,18 +2,31 @@ import React, { useState } from "react";
 import { register } from "../../../controllers/auth/users/register";
 import styles from "./Register.module.scss"
 import { Link, useNavigate } from "react-router-dom";
+import { setUserDetails } from "../../../store/slices/userSlice";
+import { useDispatch } from 'react-redux';
+
 
 const Register: React.FC = () => {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = await register({ username, email, password });
-    console.log(data);
+    const res = await register({ username, email, password });
     console.log("Registration Successful");
+    const data = {
+      userName: res.payload.username,
+      email: res.payload.email,
+      role: res.payload.role,
+      date: res.date.toString(),
+      userId: res.payload.userId,
+      isAuthenticated: true,
+      token: res.token
+    }
+    dispatch(setUserDetails(data));
     navigate("/home");
 
   };
@@ -64,3 +77,4 @@ const Register: React.FC = () => {
 };
 
 export default Register;
+

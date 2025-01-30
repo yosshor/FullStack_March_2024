@@ -1,28 +1,36 @@
 import React, { useEffect, createContext } from 'react';
 import HighScores from '../../components/score/HighScore';
 import { useNavigate } from 'react-router-dom';
-import LoginPage from '../login/LoginPage';
 import styles from './Home.module.scss';
-// const cookieName = process.env.COOKIE_NAME as string;
 import { COOKIE_NAME } from '../../../../config';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser, setLogout } from '../../../store/slices/userSlice';
 
 const cookieName = COOKIE_NAME as string;
 console.log("cookieName", cookieName);
 export const getCookie = (name: string): string | null => {
     const value = document.cookie;
-    const parts = value ? value.split(`${name}=`)[1].split(";")[0] : null;
+    const cookie = value.split(';').find((c) => c.trim().startsWith(name));
+    const parts = cookie ? cookie.split(";")[0] : null;
     return parts;
 };
 
 let token = getCookie(cookieName);
 export const UserContext = createContext({ token: token });
 
+
 const Home: React.FC = () => {
     const navigate = useNavigate();
+    const user = useSelector(selectUser);
+    const dispatch = useDispatch();
+    console.log('user', user);
+
 
     const handleLogOut = () => {
         console.log('User logged out!');
         document.cookie = `${cookieName}=; Max-Age=0; path=/`;
+        dispatch(setLogout());
+        console.log('user',user)
         window.location.reload()
     };
 
@@ -37,11 +45,30 @@ const Home: React.FC = () => {
 
 
     return (
-        <>
-            <div>
-                <button style={{ backgroundColor: 'lightseagreen' }} onClick={handleLogOut}>Log Out</button>
+        <div style={{width:'60vw', height:'95vh'}}>
+            <div style={{ gap: '10px',position:'relative',  }}>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    height: '50px',
+                    top:'20px',
+                    marginBottom:'100px'
+
+                }}>
+
+                    <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                        <h2>Welcome {user.userName && user.userName}!</h2>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <button style={{ backgroundColor: '#FF0000' }} onClick={handleLogOut}>Log Out</button>
+                    </div>
+
+                </div>
             </div>
-            <div className={styles.container}>
+            <div className={styles.container} style={{width:'60%', 
+                justifyContent:'center',
+                 position:'absolute'}}>
                 <h1 className={styles.title}>Welcome to Space Shooter!</h1>
                 <p className={styles.description}>
                     Test your reflexes and shooting skills in this thrilling game! Destroy meteors, score points, and challenge the leaderboard.
@@ -54,10 +81,11 @@ const Home: React.FC = () => {
                     <HighScores />
                 </div>
             </div >
-        </>
+        </div>
     );
 };
 
 
 
 export default Home;
+

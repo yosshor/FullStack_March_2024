@@ -39,7 +39,8 @@ export async function login(req: Request, res: Response) {
         sameSite: "lax", 
         secure: false
               });
-      res.status(200).send({ ok: true });
+      res.status(200).send({ ok: true, payload :payload, token: payloadJWT,date: user.dateTime});
+
     } else {
       res.status(401).send({ error: "Invalid email or password" });
     }
@@ -72,6 +73,7 @@ export async function register(req: Request, res: Response) {
       email: user.email,
       username: user.username,
       role: "User",
+  
     };
 
     const payloadJWT = jwt1.encode(payload, secret());
@@ -84,7 +86,8 @@ export async function register(req: Request, res: Response) {
         secure: false, 
         maxAge: 1000 * 60 * 60 * 24 * 1,
       });
-      res.status(200).send({ ok: true });
+      res.status(200).send({ ok: true, payload :payload, token: payloadJWT,date:new Date()});
+
     } else {
       res.status(401).send({ error: "Invalid email or password" });
     }
