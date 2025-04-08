@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Socket.IO chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+    <script>
+        let roomId = undefined;
+        fetch('http://localhost:3000/rooms')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.rooms)
+                renderRooms(data.rooms);
+            })
+            .catch(error => console.error('Error fetching rooms:', error));
+
+            function renderRooms(rooms) {
+                const roomsContainer = document.querySelector('.rooms');
+                rooms.forEach(room => {
+                    console.log(room)
+                    const roomElement = document.createElement('div');
+                    roomElement.className = 'room';
+                    roomElement.textContent = room.room_name;
+                    roomsContainer.appendChild(roomElement);
+                    roomElement.addEventListener('click', () => {
+                        socket.emit('leave room', roomId); // Leave the previous room if any
+                        roomId = room.room_id;
+                        console.log(`Room ID: ${roomId}`);
+                        socket.emit('join room', roomId);
+                        // Here you can add logic to join the room or load messages for that room
+                    });
+                });
+            }
+
+            
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding-bottom: 3rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .wrapper {
+            display: flex;
+            width: 100vw;
+        }
+
+        .rooms {
+            background-color: teal;
+            color: white;
+            flex:1;
+        }
+
+        #room {
+            flex:3;
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            margin: 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        #form {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0.25rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+
+        #input {
+            border: none;
+            padding: 0 1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin: 0.25rem;
+        }
+
+        #input:focus {
+            outline: none;
+        }
+
+        #form>button {
+            background: #333;
+            border: none;
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 3px;
+            outline: none;
+            color: #fff;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages>li {
+            padding: 0.5rem 1rem;
+        }
+
+        #messages>li:nth-child(odd) {
+            background: #efefef;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="rooms"></div>
+        <div id="room">
+            <ul id="messages"></ul>
+            <form id="form" action="">
+                <input id="input" autocomplete="off" /><button>Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const socket = io();
+
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const messages = document.getElementById('messages');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit('chat message', {message:input.value, roomId:roomId});
+
+                input.value = '';
+            }
+        });
+
+        socket.on('chat message', (msg) => {
+            const item = document.createElement('li');
+            item.textContent = msg;
+            messages.appendChild(item);
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+    </script>
+</body>
+
+</html>
